@@ -1,0 +1,133 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:background="@drawable/bg">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical"
+        android:background="@color/gray"
+        android:padding="15dp"
+        android:layout_margin="40dp">
+
+    <ImageView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/button_fechar_dedic"
+        android:background="@drawable/ic_x_fechar"
+        android:layout_gravity="right"
+        android:clickable="true"/>
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:padding="10dp"
+            android:textAlignment="gravity"
+            android:textSize="18dp"
+            android:textStyle="bold"
+            android:id="@+id/titulo_dialog_dedic"
+            android:text="@string/tit_dialog_dedic"/>
+
+
+    <RelativeLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/radio_group_dedic"
+        android:padding="2dp">
+        <RadioGroup
+            android:id="@+id/select_dedic"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:checkedButton="@+id/nivel_dedic2">
+
+            <RadioButton
+                android:id="@+id/nivel_dedic1"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textStyle="bold"
+                android:textSize="16dp"
+                android:textColor="@color/black"
+                android:text="@string/nivel_dedic1"/>
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="-3dp"
+                android:layout_marginLeft="30dp"
+                android:textSize="12dp"
+                android:textColor="@color/black"
+                android:id="@+id/apoio_nivel1"
+                android:text="@string/apoio_nivel1"/>
+
+            <RadioButton
+                android:id="@+id/nivel_dedic2"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textStyle="bold"
+                android:textSize="16dp"
+                android:textColor="@color/black"
+                android:text="@string/nivel_dedic2"/>
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="-3dp"
+                android:layout_marginLeft="30dp"
+                android:textSize="12dp"
+                android:textColor="@color/black"
+                android:id="@+id/apoio_nivel2"
+                android:text="@string/apoio_nivel2"/>
+
+            <RadioButton
+                android:id="@+id/nivel_dedic3"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textStyle="bold"
+                android:textSize="16dp"
+                android:textColor="@color/black"
+                android:text="@string/nivel_dedic3"/>
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="-3dp"
+                android:layout_marginLeft="30dp"
+                android:textSize="12dp"
+                android:textColor="@color/black"
+                android:id="@+id/apoio_nivel3"
+                android:text="@string/apoio_nivel3"/>
+
+            <RadioButton
+                android:id="@+id/nivel_dedic4"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textStyle="bold"
+                android:textSize="16dp"
+                android:textColor="@color/black"
+                android:text="@string/nivel_dedic4"/>
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="-3dp"
+                android:layout_marginLeft="30dp"
+                android:textSize="12dp"
+                android:textColor="@color/black"
+                android:id="@+id/apoio_nivel4"
+                android:text="@string/apoio_nivel4"/>
+        </RadioGroup>
+
+    </RelativeLayout>
+    <Button
+        android:layout_width="match_parent"
+        android:layout_height="40dp"
+        android:layout_marginTop="10dp"
+        android:id="@+id/button_salvar_dedic"
+        android:background="#91abaf"
+        android:text="Salvar"
+        android:textStyle="bold"
+        android:textColor="@color/black" />
+
+    </LinearLayout>
+
+</LinearLayout>

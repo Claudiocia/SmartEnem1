@@ -1,0 +1,60 @@
+<resources>
+    <string name="app_name">SmartEnem</string>
+    <string name="loading">Carregando... Favor aguardar!</string>
+
+    <!-- Strings do menu floating -->
+    <string name="simulado">Simulado</string>
+    <string name="estudo">Estudo</string>
+    <string name="redacao">Redação</string>
+    <string name="formulas">Fórmulas</string>
+    <string name="dicas">Dicas</string>
+
+    <!-- Strings do menu slider -->
+    <string name="premium">Versão Premium</string>
+    <string name="home">Calendário Enem</string>
+    <string name="plano">Plano de Estudo</string>
+    <string name="metas">Metas</string>
+    <string name="progresso">Desempenhos</string>
+    <string name="indica">Compartilhar</string>
+    <string name="action_settings">Configurações</string>
+    <string name="ajuda">Ajuda</string>
+    <string name="sobre">Sobre</string>
+
+    <string name="cad_quest">Cadastrar Questão</string>
+    <string name="title_activity_metas">Metas</string>
+    <string name="navigation_drawer_open">Open navigation drawer</string>
+    <string name="navigation_drawer_close">Close navigation drawer</string>
+    <string name="title_activity_list">Calendário Enem</string>
+    <string name="title_activity_detail">Detalhes do Evento</string>
+
+    <!-- Strings config metas -->
+    <string name="titulo_Metas">Configurar as Metas</string>
+    <string name="vlrExec">Valor já executado</string>
+    <string name="tit_dialog_dedic">Nível de dedicação</string>
+    <string name="nivel_dedic1">Pouco dedicado</string>
+    <string name="apoio_nivel1">Tem diversas outras atividades além do estudo e vai dedicar apenas algumas horas vagas.</string>
+    <string name="nivel_dedic2">Dedicado</string>
+    <string name="apoio_nivel2">Apesar de ter outras atividades no dia a dia, vai dedicar pelo menos 2 horas diárias para o estudo.</string>
+    <string name="nivel_dedic3">Bastante Dedicado</string>
+    <string name="apoio_nivel3">Divide o tempo entre o estudo e outras atividades, porém dedica cerca de 4 horas diárias ao estudo.</string>
+    <string name="nivel_dedic4">Dedicação Exclusiva</string>
+    <string name="apoio_nivel4">Totalmente dedicado e focado, uma boa nota no Enem é o seu objetivo. Pelo menos 8 horas de estudo por dia.</string>
+    <string name="titulo_dialog_meta">Questões para estudar</string>
+    <string name="apoio_meta">Defina aqui a quantidade de questões referente a esta área do conhecimento que você pretende estudar por dia</string>
+    <string name="hint_meta">*qtd questões a estudar</string>
+    <string name="titulo_dialog_meta_red">Redações a criar</string>
+    <string name="apoio_red">No caso das Redações defina quantas redações você pretende fazer por semana. \nDica: escolha um número de 1 a 5 de acordo com o seu nivel de dedicação</string>
+    <string name="hint_red">*qtd redações</string>
+    <string name="titulo_dialog_simul_compac">Simulados Compactos</string>
+    <string name="apoio_compac">Simulados compactos são voltados para o treino em determinadas áreas. Não têm controle de tempo e a quantidade de questões são variáveis. \nÉ uma prática que auxilia os estudos das matérias</string>
+    <string name="hint_simulados">*qtd simulados</string>
+    <string name="titulo_dialog_simul_comple">Simulados Completos</string>
+    <string name="apoio_comple">Simulados completos buscam reproduzir a prova do Enem como ela é. na Quantidade de questões e no tempo disponível para a realização. \nÉ uma prática que busca preparar o estudante para o ambiente do dia da prova</string>
+
+    <!-- Strings gráficos de desempenho -->
+    <string name="nome_graf_item">Nome do Grafico</string>
+    <string name="titulo_graficos">Selecione um Gráfico</string>
+    <string name="tit_graficos">Gráficos</string>
+    <string name="title_activity_graf">Grafico</string>
+
+</resources>

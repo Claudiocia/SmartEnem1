@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <group android:checkableBehavior="single">
+        <item
+            android:id="@+id/nav_premium"
+            android:icon="@drawable/ic_diamond"
+            android:title="@string/premium" />
+        <item
+            android:id="@+id/nav_home"
+            android:icon="@drawable/ic_home"
+            android:title="@string/home" />
+        <item
+            android:id="@+id/nav_plan_estud"
+            android:icon="@drawable/ic_calendar_clock"
+            android:title="@string/plano" />
+        <item
+            android:id="@+id/nav_meta"
+            android:icon="@drawable/ic_target"
+            android:title="@string/metas" />
+        <item
+            android:id="@+id/nav_desemp"
+            android:icon="@drawable/ic_chart_areaspline"
+            android:title="@string/progresso" />
+        <item
+            android:id="@+id/nav_compart"
+            android:icon="@drawable/ic_share_variant"
+            android:title="@string/indica" />
+    </group>
+
+    <item android:title="Ferramentas">
+        <menu>
+            <item
+                android:id="@+id/nav_config"
+                android:icon="@drawable/ic_wrench"
+                android:title="@string/action_settings" />
+            <item
+                android:id="@+id/nav_ajuda"
+                android:icon="@drawable/ic_help_circle"
+                android:title="@string/ajuda" />
+            <item
+                android:id="@+id/nav_sobre"
+                android:title="@string/sobre" />
+        </menu>
+    </item>
+
+</menu>

@@ -1,0 +1,85 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:paddingLeft="5dp"
+    android:paddingRight="5dp" >
+
+    <TextView
+        android:id="@+id/tv_titulo_evento"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/imagem"
+        android:layout_centerHorizontal="true"
+        android:textAppearance="?android:attr/textAppearanceMedium"
+        android:textColor="@color/black"
+        android:textStyle="bold"
+        android:gravity="center_horizontal"
+        android:textSize="20dp"/>
+
+    <ScrollView
+        android:id="@+id/sv"
+        android:layout_width="fill_parent"
+        android:layout_height="fill_parent"
+        android:layout_below="@+id/tv_titulo_evento"
+        android:layout_marginTop="10dp">
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:textSize="20sp" >
+
+            <TextView
+                android:id="@+id/tv_data_inicio"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentLeft="true"
+                android:text="Data de inicio"
+                android:textColor="@color/black"
+                android:textStyle="normal"
+                android:textSize="12dp"/>
+
+            <TextView
+                android:id="@+id/tv_data_final"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentLeft="true"
+                android:layout_below="@id/tv_data_inicio"
+                android:text="Data de Encerramento"
+                android:textColor="@color/black"
+                android:textStyle="normal"
+                android:textSize="12dp"/>
+
+            <TextView
+                android:id="@+id/tv_local"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentLeft="true"
+                android:layout_below="@+id/tv_data_final"
+                android:text="Local do Evento"
+                android:textColor="@color/black"
+                android:textStyle="normal"
+                android:textSize="12dp"/>
+
+            <com.bluejamesbond.text.DocumentView
+                xmlns:ext="http://schemas.android.com/apk/res-auto"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:id="@+id/dv_conteudo"
+                android:layout_below="@+id/tv_local"
+                ext:documentView_insetPaddingLeft="15dp"
+                ext:documentView_insetPaddingRight="15dp"
+                ext:documentView_insetPaddingTop="10dp"
+                ext:documentView_hyphen="-"
+                ext:documentView_text=""
+                ext:documentView_textAlignment="justified"
+                ext:documentView_textColor="@color/black"
+                ext:documentView_textFormat="plain"
+                ext:documentView_textSize="18sp"
+                ext:documentView_textStyle="plain" />
+
+        </RelativeLayout>
+    </ScrollView>
+
+</RelativeLayout>
