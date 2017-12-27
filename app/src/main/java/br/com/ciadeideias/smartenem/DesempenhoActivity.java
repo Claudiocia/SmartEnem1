@@ -89,7 +89,7 @@ public class DesempenhoActivity extends AppCompatActivity
             finish();
 
         } else if (id == R.id.nav_desemp) {
-            //Toast.makeText(DesempenhoActivity.this, "Voce Clicou no Menu Compartilhar", Toast.LENGTH_SHORT).show();
+            Toast.makeText(DesempenhoActivity.this, "Voce Clicou no Menu Desempenho", Toast.LENGTH_SHORT).show();
 
         } else if (id == R.id.nav_compart){
             Toast.makeText(DesempenhoActivity.this, "Voce Clicou no Menu Compartilhar", Toast.LENGTH_SHORT).show();
@@ -117,9 +117,8 @@ public class DesempenhoActivity extends AppCompatActivity
     public List<NomeGrafico> getListaNome(){
         List<NomeGrafico> mList = new ArrayList<>();
         String[] nomes = new String[]{"Estudos de Áreas X Questões Respondidas", "Questões Certas/Erradas X Área de Estudo",
-                "Tempo de Estudo X Dias", "Quantidade de Simulados Compactos X Dia", "Simulados Completos x Semana",
-                "Tempo X Simulados Completos", "Pontos alcançados X Simulados Completos", "Redações X Semana"};
-        for(int i=0; i<=6; i++){
+                "Tempo de Estudo X Dias", "Quantidade de Simulados Compactos X Dia", "Simulados Completos x Semana"};
+        for(int i=0; i<=4; i++){
             NomeGrafico nome = new NomeGrafico();
             nome.setNome(nomes[i]);
             mList.add(nome);

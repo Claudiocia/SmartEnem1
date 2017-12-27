@@ -13,6 +13,8 @@ import java.util.List;
 
 import br.com.ciadeideias.smartenem.model.Grafico;
 
+import static java.util.Calendar.DAY_OF_MONTH;
+
 /**
  * Created by ClaudioSouza on 07/11/2016.
  */
@@ -71,13 +73,16 @@ public class BDGrafico {
     }
 
     public ArrayList<Grafico> estudosDiarios(String area){
-        ArrayList<Grafico> graficoList = new ArrayList<Grafico>();
+        ArrayList<Grafico> graficoList = new ArrayList<>();
 
         Calendar calendar = Calendar.getInstance();
+
         String dIni, dFim;
-        dFim = (new SimpleDateFormat("dd/MM/yyyy").format(calendar.getTime()));
-        calendar.add(Calendar.DAY_OF_MONTH, -7);
-        dIni = (new SimpleDateFormat("dd/MM/yyyy").format(calendar.getTime()));
+        dFim = (new SimpleDateFormat("yyyy-MM-dd").format(calendar.getTime()));
+        System.out.println("Data final: "+dFim);
+        calendar.add(DAY_OF_MONTH, -6);
+        dIni = (new SimpleDateFormat("yyyy-MM-dd").format(calendar.getTime()));
+        System.out.println("Data Inicial: "+dIni);
 
         String[] args = new String[]{area, dIni, dFim};
 
@@ -86,7 +91,7 @@ public class BDGrafico {
                 "resp_errada", "pts_simul_compac",
                 "pts_simul_comple", "temp_ativo"};
 
-        Cursor cursor = bd.rawQuery("SELECT * FROM graficos WHERE area_nome = ? AND data_realiz >= ? AND data_realiz <= ?", args);
+        Cursor cursor = bd.rawQuery("SELECT * FROM graficos WHERE area_nome = ? AND data_realiz BETWEEN ? AND ?", args);
 
         if (cursor.getCount() > 0){
             cursor.moveToFirst();
@@ -118,7 +123,7 @@ public class BDGrafico {
         Calendar calendar = Calendar.getInstance();
         String dIni, dFim;
         dFim = (new SimpleDateFormat("dd/MM/yyyy").format(calendar.getTime()));
-        calendar.add(Calendar.DAY_OF_MONTH, -7);
+        calendar.add(DAY_OF_MONTH, -7);
         dIni = (new SimpleDateFormat("dd/MM/yyyy").format(calendar.getTime()));
 
         String[] args = new String[]{area, dIni, dFim};
@@ -157,7 +162,7 @@ public class BDGrafico {
         Calendar calendar = Calendar.getInstance();
         String dIni, dFim;
         dFim = (new SimpleDateFormat("dd/MM/yyyy").format(calendar.getTime()));
-        calendar.add(Calendar.DAY_OF_MONTH, -7);
+        calendar.add(DAY_OF_MONTH, -8);
         dIni = (new SimpleDateFormat("dd/MM/yyyy").format(calendar.getTime()));
 
         String[] args = new String[]{arg, dIni, dFim};
@@ -194,7 +199,7 @@ public class BDGrafico {
         Calendar calendar = Calendar.getInstance();
         String dIni, dFim;
         dFim = (new SimpleDateFormat("dd/MM/yyyy").format(calendar.getTime()));
-        calendar.add(Calendar.DAY_OF_MONTH, -7);
+        calendar.add(DAY_OF_MONTH, -6);
         dIni = (new SimpleDateFormat("dd/MM/yyyy").format(calendar.getTime()));
 
         String[] args = new String[]{dIni, dFim};

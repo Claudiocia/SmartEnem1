@@ -1,13 +1,9 @@
 package br.com.ciadeideias.smartenem;
 
+import android.content.DialogInterface;
 import android.content.Intent;
-import android.graphics.Color;
-import android.graphics.DashPathEffect;
-import android.graphics.Paint;
 import android.os.Bundle;
-import android.support.design.widget.FloatingActionButton;
-import android.support.design.widget.Snackbar;
-import android.view.View;
+import android.support.v7.app.AlertDialog;
 import android.support.design.widget.NavigationView;
 import android.support.v4.view.GravityCompat;
 import android.support.v4.widget.DrawerLayout;
@@ -16,33 +12,25 @@ import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.widget.EditText;
 import android.widget.TextView;
 import android.widget.Toast;
 
-import com.jjoe64.graphview.GraphView;
-import com.jjoe64.graphview.LegendRenderer;
-import com.jjoe64.graphview.ValueDependentColor;
-import com.jjoe64.graphview.helper.DateAsXAxisLabelFormatter;
-import com.jjoe64.graphview.helper.StaticLabelsFormatter;
-import com.jjoe64.graphview.series.BarGraphSeries;
-import com.jjoe64.graphview.series.DataPoint;
-import com.jjoe64.graphview.series.LineGraphSeries;
-
 import java.util.ArrayList;
-import java.util.Arrays;
-import java.util.Calendar;
-import java.util.Date;
-import java.util.List;
 
-import br.com.ciadeideias.smartenem.bancodados.BDGrafico;
+import br.com.ciadeideias.smartenem.bancodados.BDMeta;
 import br.com.ciadeideias.smartenem.model.Grafico;
+import br.com.ciadeideias.smartenem.model.Meta;
+import br.com.ciadeideias.smartenem.utils.Desempenho;
 
 public class GrafActivity extends AppCompatActivity
         implements NavigationView.OnNavigationItemSelectedListener {
     ArrayList<Grafico> area1, area2, area3, area4;
-    String titulo;
+
+    String titulo, legenda;
     int tipoGraf;
     Bundle bundle;
+    Meta meta, meta2, meta3, meta4;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -52,7 +40,41 @@ public class GrafActivity extends AppCompatActivity
         setSupportActionBar(toolbar);
 
         TextView tvVolta = (TextView)findViewById(R.id.tv_tit_grafico_);
-        GraphView graph = (GraphView) findViewById(R.id.graph);
+
+        TextView tvLin1Col1 = (TextView)findViewById(R.id.tv_tab_lin1_col1);
+        TextView tvLin1Col2 = (TextView)findViewById(R.id.tv_tab_lin1_col2);
+        TextView tvLin1Col3 = (TextView)findViewById(R.id.tv_tab_lin1_col3);
+        TextView tvLin1Col4 = (TextView)findViewById(R.id.tv_tab_lin1_col4);
+        TextView tvLin1Col5 = (TextView)findViewById(R.id.tv_tab_lin1_col5);
+
+        TextView tvLin2Col1 = (TextView)findViewById(R.id.tv_tab_lin2_col1);
+        TextView tvLin2Col2 = (TextView)findViewById(R.id.tv_tab_lin2_col2);
+        TextView tvLin2Col3 = (TextView)findViewById(R.id.tv_tab_lin2_col3);
+        TextView tvLin2Col4 = (TextView)findViewById(R.id.tv_tab_lin2_col4);
+        TextView tvLin2Col5 = (TextView)findViewById(R.id.tv_tab_lin2_col5);
+
+        TextView tvLin3Col1 = (TextView)findViewById(R.id.tv_tab_lin3_col1);
+        TextView tvLin3Col2 = (TextView)findViewById(R.id.tv_tab_lin3_col2);
+        TextView tvLin3Col3 = (TextView)findViewById(R.id.tv_tab_lin3_col3);
+        TextView tvLin3Col4 = (TextView)findViewById(R.id.tv_tab_lin3_col4);
+        TextView tvLin3Col5 = (TextView)findViewById(R.id.tv_tab_lin3_col5);
+
+        TextView tvLin4Col1 = (TextView)findViewById(R.id.tv_tab_lin4_col1);
+        TextView tvLin4Col2 = (TextView)findViewById(R.id.tv_tab_lin4_col2);
+        TextView tvLin4Col3 = (TextView)findViewById(R.id.tv_tab_lin4_col3);
+        TextView tvLin4Col4 = (TextView)findViewById(R.id.tv_tab_lin4_col4);
+        TextView tvLin4Col5 = (TextView)findViewById(R.id.tv_tab_lin4_col5);
+
+        TextView tvLin5Col1 = (TextView)findViewById(R.id.tv_tab_lin5_col1);
+        TextView tvLin5Col2 = (TextView)findViewById(R.id.tv_tab_lin5_col2);
+        TextView tvLin5Col3 = (TextView)findViewById(R.id.tv_tab_lin5_col3);
+        TextView tvLin5Col4 = (TextView)findViewById(R.id.tv_tab_lin5_col4);
+        TextView tvLin5Col5 = (TextView)findViewById(R.id.tv_tab_lin5_col5);
+
+        TextView tvTabLegend = (TextView) findViewById(R.id.tv_tab_legend);
+
+        BDMeta bdMeta = new BDMeta(this);
+
         bundle = getIntent().getExtras();
         titulo = bundle.getString("titulo");
         tvVolta.setText(titulo);
@@ -60,1218 +82,705 @@ public class GrafActivity extends AppCompatActivity
 
         switch (tipoGraf){
             case 1:
-                String[] dias = new String[8];
+                String area1a, area2a, area3a, area4a;
+                int percMeta = 0, percMeta2 = 0, percMeta3 = 0, percMeta4 = 0;
+                int numDias = 0, numDias2 = 0, numDias3 = 0, numDias4 = 0;
+                int vlrMeta1, vlrMeta2, vlrMeta3, vlrMeta4;
+                int soma = 0, soma2 = 0, soma3 = 0, soma4 = 0;
+
+
+                ArrayList<Integer> a = new ArrayList<Integer>();
+                meta = new Meta();
+                meta = bdMeta.buscarMeta(1);
+                vlrMeta1 = (meta.getValorMeta())*7;
+
+
                 if (bundle.containsKey("area1")) {
                     area1 = bundle.getParcelableArrayList("area1");
-                    String legend = area1.get(0).getAreaNome().toString();
-                    LineGraphSeries<DataPoint> series = new LineGraphSeries<DataPoint>(new DataPoint[]{
+                    area1a = area1.get(0).getAreaNome().toString();
+                    numDias = area1.size();
 
-                    });
-                    int tam = area1.size();
-                    for (int i = 0; i < tam; i++) {
-                        String data = area1.get(i).getDataRealiz().toString();
-                        String[] temp = data.split("-");
-                        dias[i] = temp[0];
-                        int a = area1.get(i).getQtdQuest();
-                        DataPoint dp = new DataPoint(i, a);
-                        series.appendData(dp, true, tam);
+                    for (int i = 0; i < numDias; i++) {
+                        a.add(area1.get(i).getQtdQuest());
                     }
-                    series.setTitle(legend);
-                    series.setColor(Color.BLACK);
-                    series.setDrawDataPoints(true);
-                    series.setDataPointsRadius(10);
-                    series.setThickness(5);
-                    graph.addSeries(series);
-                    if (bundle.containsKey("area2")) {
-                        area2 = bundle.getParcelableArrayList("area2");
-                        String legend2 = area2.get(0).getAreaNome().toString();
-                        LineGraphSeries<DataPoint> series2 = new LineGraphSeries<DataPoint>(new DataPoint[]{
+                    for(int i = 0; i < a.size(); i++){
+                        soma += a.get(i);
+                    }
 
-                        });
-                        int tam2 = area2.size();
-                        for (int i = 0; i < tam2; i++) {
-                            int b = area2.get(i).getQtdQuest();
-                            DataPoint dp2 = new DataPoint(i, b);
-                            series2.appendData(dp2, true, tam2);
-                        }
-                        series2.setTitle(legend2);
-                        series2.setColor(Color.GREEN);
-                        series2.setDrawDataPoints(true);
-                        series2.setDataPointsRadius(10);
-                        series2.setThickness(5);
-                        graph.addSeries(series2);
+                    if (vlrMeta1 == 0){
 
-                        if (bundle.containsKey("area3")) {
-                            area3 = bundle.getParcelableArrayList("area3");
-                            String legend3 = area3.get(0).getAreaNome().toString();
-                            LineGraphSeries<DataPoint> series3 = new LineGraphSeries<DataPoint>(new DataPoint[]{
-
-                            });
-                            int tam3 = area3.size();
-                            for (int i = 0; i < tam3; i++) {
-                                int c = area3.get(i).getQtdQuest();
-                                DataPoint dp3 = new DataPoint(i, c);
-                                series3.appendData(dp3, true, tam3);
+                        new AlertDialog.Builder(this).setTitle("Alerta do sistema")
+                                .setMessage("Você precisa definir as metas de estudos para a Area1. Deseja fazer isso agora?")
+                                .setPositiveButton("Sim", new DialogInterface.OnClickListener() {
+                                    @Override
+                                    public void onClick(DialogInterface dialog, int which) {
+                                        Intent it = new Intent(GrafActivity.this, MetasActivity.class);
+                                        startActivity(it);
+                                        finish();
+                                    }
+                                }).setNegativeButton("Não", new DialogInterface.OnClickListener() {
+                            @Override
+                            public void onClick(DialogInterface dialog, int which) {
+                                Intent it = new Intent(GrafActivity.this, DesempenhoActivity.class);
+                                startActivity(it);
+                                finish();
                             }
-                            series3.setTitle(legend3);
-                            series3.setColor(Color.BLUE);
-                            series3.setDrawDataPoints(true);
-                            series3.setDataPointsRadius(10);
-                            series3.setThickness(5);
-                            graph.addSeries(series3);
+                        }).show();
+                    }
+                    else {
+                        percMeta = (soma * 100) / vlrMeta1;
+                    }
 
-                            if (bundle.containsKey("area4")) {
-                                area4 = bundle.getParcelableArrayList("area4");
-                                String legend4 = area4.get(0).getAreaNome().toString();
-                                LineGraphSeries<DataPoint> series4 = new LineGraphSeries<DataPoint>(new DataPoint[]{
+                }
+                else {
+                    area1a = "Ciências Humanas e suas Tecnologias";
 
-                                });
-                                int tam4 = area4.size();
-                                for (int i = 0; i < tam4; i++) {
-                                    int d = area4.get(i).getQtdQuest();
-                                    DataPoint dp4 = new DataPoint(i, d);
-                                    series4.appendData(dp4, true, tam4);
-                                }
-                                series4.setTitle(legend4);
-                                series4.setColor(Color.RED);
-                                series4.setDrawDataPoints(true);
-                                series4.setDataPointsRadius(10);
-                                series4.setThickness(5);
-                                graph.addSeries(series4);
+                }
+
+                //Definição da área 2
+
+                ArrayList<Integer> a2 = new ArrayList<Integer>();
+
+                meta2 = new Meta();
+                meta2 = bdMeta.buscarMeta(2);
+                vlrMeta2 = (meta2.getValorMeta())*7;
+
+                if (bundle.containsKey("area2")) {
+                    area2 = bundle.getParcelableArrayList("area2");
+                    area2a = area2.get(0).getAreaNome().toString();
+                    numDias2 = area2.size();
+
+                    for (int i = 0; i < numDias2; i++){
+                        a2.add(area2.get(i).getQtdQuest());
+                    }
+                    for (int i = 0; i< a2.size(); i++){
+                        soma2 += a2.get(i);
+                    }
+
+                    if (vlrMeta2 == 0){
+
+                        new AlertDialog.Builder(this).setTitle("Alerta do sistema")
+                                .setMessage("Você precisa definir as metas de estudos para a Area2. Deseja fazer isso agora?")
+                                .setPositiveButton("Sim", new DialogInterface.OnClickListener() {
+                                    @Override
+                                    public void onClick(DialogInterface dialog, int which) {
+                                        Intent it = new Intent(GrafActivity.this, MetasActivity.class);
+                                        startActivity(it);
+                                        finish();
+                                    }
+                                }).setNegativeButton("Não", new DialogInterface.OnClickListener() {
+                            @Override
+                            public void onClick(DialogInterface dialog, int which) {
+                                Intent it = new Intent(GrafActivity.this, DesempenhoActivity.class);
+                                startActivity(it);
+                                finish();
                             }
-                        } else {//if do tres
-                            //tem o 1 o 2 e não tem o tres
-                            if (bundle.containsKey("area4")) {
-                                area4 = bundle.getParcelableArrayList("area4");
-                                String legend4 = area4.get(0).getAreaNome().toString();
-                                LineGraphSeries<DataPoint> series4 = new LineGraphSeries<DataPoint>(new DataPoint[]{
-
-                                });
-                                int tam4 = area4.size();
-                                for (int i = 0; i < tam4; i++) {
-                                    int d = area4.get(i).getQtdQuest();
-                                    DataPoint dp4 = new DataPoint(i, d);
-                                    series4.appendData(dp4, true, tam4);
-                                }
-                                series4.setTitle(legend4);
-                                series4.setColor(Color.RED);
-                                series4.setDrawDataPoints(true);
-                                series4.setDataPointsRadius(10);
-                                series4.setThickness(5);
-                                graph.addSeries(series4);
-                            }
-                        }//fim do if do tres
-                    } else {//else do dois
-                        //tem o 1 mas não tem o dois
-                        if (bundle.containsKey("area3")) {
-                            area3 = bundle.getParcelableArrayList("area3");
-                            String legend3 = area3.get(0).getAreaNome().toString();
-                            LineGraphSeries<DataPoint> series3 = new LineGraphSeries<DataPoint>(new DataPoint[]{
-
-                            });
-                            int tam3 = area3.size();
-                            for (int i = 0; i < tam3; i++) {
-                                int c = area3.get(i).getQtdQuest();
-                                DataPoint dp3 = new DataPoint(i, c);
-                                series3.appendData(dp3, true, tam3);
-                            }
-                            series3.setTitle(legend3);
-                            series3.setColor(Color.BLUE);
-                            series3.setDrawDataPoints(true);
-                            series3.setDataPointsRadius(10);
-                            series3.setThickness(5);
-                            graph.addSeries(series3);
-
-                            if (bundle.containsKey("area4")) {
-                                area4 = bundle.getParcelableArrayList("area4");
-                                String legend4 = area4.get(0).getAreaNome().toString();
-                                LineGraphSeries<DataPoint> series4 = new LineGraphSeries<DataPoint>(new DataPoint[]{
-
-                                });
-                                int tam4 = area4.size();
-                                for (int i = 0; i < tam4; i++) {
-                                    int d = area4.get(i).getQtdQuest();
-                                    DataPoint dp4 = new DataPoint(i, d);
-                                    series4.appendData(dp4, true, tam4);
-                                }
-                                series4.setTitle(legend4);
-                                series4.setColor(Color.RED);
-                                series4.setDrawDataPoints(true);
-                                series4.setDataPointsRadius(10);
-                                series4.setThickness(5);
-                                graph.addSeries(series4);
-                            }
-                        } else {
-                            if (bundle.containsKey("area4")) {
-                                area4 = bundle.getParcelableArrayList("area4");
-                                String legend4 = area4.get(0).getAreaNome().toString();
-                                LineGraphSeries<DataPoint> series4 = new LineGraphSeries<DataPoint>(new DataPoint[]{
-
-                                });
-                                int tam4 = area4.size();
-                                for (int i = 0; i < tam4; i++) {
-                                    int d = area4.get(i).getQtdQuest();
-                                    DataPoint dp4 = new DataPoint(i, d);
-                                    series4.appendData(dp4, true, tam4);
-                                }
-                                series4.setTitle(legend4);
-                                series4.setColor(Color.RED);
-                                series4.setDrawDataPoints(true);
-                                series4.setDataPointsRadius(10);
-                                series4.setThickness(5);
-                                graph.addSeries(series4);
-                            }
-                        }
-
+                        }).show();
+                    }
+                    else {
+                        percMeta2 = (soma2 * 100) / vlrMeta2;
                     }
                 }
-                else {//inicio do else 1
-                    //else se não tiver o 1
-                    if (bundle.containsKey("area2")) {
-                        area2 = bundle.getParcelableArrayList("area2");
-                        String legend2 = area2.get(0).getAreaNome().toString();
-                        LineGraphSeries<DataPoint> series2 = new LineGraphSeries<DataPoint>(new DataPoint[]{
+                else {
+                    area2a = "Ciências da Natureza e suas Tecnologias";
+                }
+                //Definição area 3
 
-                        });
-                        int tam2 = area2.size();
-                        for (int i = 0; i < tam2; i++) {
-                            String data2 = area2.get(i).getDataRealiz().toString();
-                            String[]temp2 = data2.split("-");
-                            dias[i] = temp2[0];
-                            int b = area2.get(i).getQtdQuest();
-                            DataPoint dp2 = new DataPoint(i, b);
-                            series2.appendData(dp2, true, tam2);
-                        }
-                        series2.setTitle(legend2);
-                        series2.setColor(Color.GREEN);
-                        series2.setDrawDataPoints(true);
-                        series2.setDataPointsRadius(10);
-                        series2.setThickness(5);
-                        graph.addSeries(series2);
+                ArrayList<Integer> a3 = new ArrayList<Integer>();
 
-                        if (bundle.containsKey("area3")) {
-                            area3 = bundle.getParcelableArrayList("area3");
-                            String legend3 = area3.get(0).getAreaNome().toString();
-                            LineGraphSeries<DataPoint> series3 = new LineGraphSeries<DataPoint>(new DataPoint[]{
+                meta3 = new Meta();
+                meta3 = bdMeta.buscarMeta(3);
+                vlrMeta3 = (meta3.getValorMeta())*7;
 
-                            });
-                            int tam3 = area3.size();
-                            for (int i = 0; i < tam3; i++) {
-                                int c = area3.get(i).getQtdQuest();
-                                DataPoint dp3 = new DataPoint(i, c);
-                                series3.appendData(dp3, true, tam3);
-                            }
-                            series3.setTitle(legend3);
-                            series3.setColor(Color.BLUE);
-                            series3.setDrawDataPoints(true);
-                            series3.setDataPointsRadius(10);
-                            series3.setThickness(5);
-                            graph.addSeries(series3);
+                if (bundle.containsKey("area3")) {
+                    area3 = bundle.getParcelableArrayList("area3");
+                    area3a = area3.get(0).getAreaNome().toString();
+                    numDias3 = area3.size();
 
-                            if (bundle.containsKey("area4")) {
-                                area4 = bundle.getParcelableArrayList("area4");
-                                String legend4 = area4.get(0).getAreaNome().toString();
-                                LineGraphSeries<DataPoint> series4 = new LineGraphSeries<DataPoint>(new DataPoint[]{
-
-                                });
-                                int tam4 = area4.size();
-                                for (int i = 0; i < tam4; i++) {
-                                    int d = area4.get(i).getQtdQuest();
-                                    DataPoint dp4 = new DataPoint(i, d);
-                                    series4.appendData(dp4, true, tam4);
-                                }
-                                series4.setTitle(legend4);
-                                series4.setColor(Color.RED);
-                                series4.setDrawDataPoints(true);
-                                series4.setDataPointsRadius(10);
-                                series4.setThickness(5);
-                                graph.addSeries(series4);
-                            }
-                        } else {//if do tres
-                            //tem o 1 o 2 e não tem o tres
-                            if (bundle.containsKey("area4")) {
-                                area4 = bundle.getParcelableArrayList("area4");
-                                String legend4 = area4.get(0).getAreaNome().toString();
-                                LineGraphSeries<DataPoint> series4 = new LineGraphSeries<DataPoint>(new DataPoint[]{
-
-                                });
-                                int tam4 = area4.size();
-                                for (int i = 0; i < tam4; i++) {
-                                    int d = area4.get(i).getQtdQuest();
-                                    DataPoint dp4 = new DataPoint(i, d);
-                                    series4.appendData(dp4, true, tam4);
-                                }
-                                series4.setTitle(legend4);
-                                series4.setColor(Color.RED);
-                                series4.setDrawDataPoints(true);
-                                series4.setDataPointsRadius(10);
-                                series4.setThickness(5);
-                                graph.addSeries(series4);
-                            }
-                        }//fim do if do tres
+                    for (int i = 0; i < numDias3; i++){
+                        a3.add(area3.get(i).getQtdQuest());
                     }
-                    else {//else do dois
-                        //não tem o 1  não tem o dois
-                        if (bundle.containsKey("area3")) {
-                            area3 = bundle.getParcelableArrayList("area3");
-                            String legend3 = area3.get(0).getAreaNome().toString();
-                            LineGraphSeries<DataPoint> series3 = new LineGraphSeries<DataPoint>(new DataPoint[]{
-
-                            });
-                            int tam3 = area3.size();
-                            for (int i = 0; i < tam3; i++) {
-                                String data2 = area2.get(i).getDataRealiz().toString();
-                                String[]temp2 = data2.split("-");
-                                dias[i] = temp2[0];
-                                int c = area3.get(i).getQtdQuest();
-                                DataPoint dp3 = new DataPoint(i, c);
-                                series3.appendData(dp3, true, tam3);
-                            }
-                            series3.setTitle(legend3);
-                            series3.setColor(Color.BLUE);
-                            series3.setDrawDataPoints(true);
-                            series3.setDataPointsRadius(10);
-                            series3.setThickness(5);
-                            graph.addSeries(series3);
-
-                            if (bundle.containsKey("area4")) {
-                                area4 = bundle.getParcelableArrayList("area4");
-                                String legend4 = area4.get(0).getAreaNome().toString();
-                                LineGraphSeries<DataPoint> series4 = new LineGraphSeries<DataPoint>(new DataPoint[]{
-
-                                });
-                                int tam4 = area4.size();
-                                for (int i = 0; i < tam4; i++) {
-                                    int d = area4.get(i).getQtdQuest();
-                                    DataPoint dp4 = new DataPoint(i, d);
-                                    series4.appendData(dp4, true, tam4);
-                                }
-                                series4.setTitle(legend4);
-                                series4.setColor(Color.RED);
-                                series4.setDrawDataPoints(true);
-                                series4.setDataPointsRadius(10);
-                                series4.setThickness(5);
-                                graph.addSeries(series4);
-                            }
-                        }
-                        else {
-                            if (bundle.containsKey("area4")) {
-                                area4 = bundle.getParcelableArrayList("area4");
-                                String legend4 = area4.get(0).getAreaNome().toString();
-                                LineGraphSeries<DataPoint> series4 = new LineGraphSeries<DataPoint>(new DataPoint[]{
-
-                                });
-                                int tam4 = area4.size();
-                                for (int i = 0; i < tam4; i++) {
-                                    String data2 = area2.get(i).getDataRealiz().toString();
-                                    String[]temp2 = data2.split("-");
-                                    dias[i] = temp2[0];
-                                    int d = area4.get(i).getQtdQuest();
-                                    DataPoint dp4 = new DataPoint(i, d);
-                                    series4.appendData(dp4, true, tam4);
-                                }
-                                series4.setTitle(legend4);
-                                series4.setColor(Color.RED);
-                                series4.setDrawDataPoints(true);
-                                series4.setDataPointsRadius(10);
-                                series4.setThickness(5);
-                                graph.addSeries(series4);
-                            }
-                        }
+                    for (int i = 0; i< a3.size(); i++){
+                        soma3 += a3.get(i);
                     }
-                }//fim do else 1
-                StaticLabelsFormatter staticLabelsFormatter = new StaticLabelsFormatter(graph);
-                staticLabelsFormatter.setHorizontalLabels(dias);
-                graph.getGridLabelRenderer().setLabelFormatter(staticLabelsFormatter);
-                graph.getGridLabelRenderer().setNumHorizontalLabels(8);
-                graph.getLegendRenderer().setVisible(true);
-                graph.getLegendRenderer().setAlign(LegendRenderer.LegendAlign.BOTTOM);
+
+                    if (vlrMeta3 == 0){
+
+                        new AlertDialog.Builder(this).setTitle("Alerta do sistema")
+                                .setMessage("Você precisa definir as metas de estudos para a Area3. Deseja fazer isso agora?")
+                                .setPositiveButton("Sim", new DialogInterface.OnClickListener() {
+                                    @Override
+                                    public void onClick(DialogInterface dialog, int which) {
+                                        Intent it = new Intent(GrafActivity.this, MetasActivity.class);
+                                        startActivity(it);
+                                        finish();
+                                    }
+                                }).setNegativeButton("Não", new DialogInterface.OnClickListener() {
+                            @Override
+                            public void onClick(DialogInterface dialog, int which) {
+                                Intent it = new Intent(GrafActivity.this, DesempenhoActivity.class);
+                                startActivity(it);
+                                finish();
+                            }
+                        }).show();
+                    }
+                    else {
+                        percMeta3 = (soma3 * 100) / vlrMeta3;
+                    }
+                }
+                else {
+                    area3a = "Matemática e suas Tecnologias";
+                }
+
+                //Definindo area4
+
+                ArrayList<Integer> a4 = new ArrayList<Integer>();
+
+                meta4 = new Meta();
+                meta4 = bdMeta.buscarMeta(4);
+                vlrMeta4 = (meta4.getValorMeta())*7;
+
+                if (bundle.containsKey("area4")) {
+                    area4 = bundle.getParcelableArrayList("area4");
+                    area4a = area4.get(0).getAreaNome().toString();
+                    numDias4 = area4.size();
+
+                    for (int i = 0; i < numDias4; i++){
+                        a4.add(area4.get(i).getQtdQuest());
+                    }
+                    for (int i = 0; i< a4.size(); i++){
+                        soma4 += a4.get(i);
+                    }
+
+                    if (vlrMeta4 == 0){
+
+                        new AlertDialog.Builder(this).setTitle("Alerta do sistema")
+                                .setMessage("Você precisa definir as metas de estudos para a Area4. Deseja fazer isso agora?")
+                                .setPositiveButton("Sim", new DialogInterface.OnClickListener() {
+                                    @Override
+                                    public void onClick(DialogInterface dialog, int which) {
+                                        Intent it = new Intent(GrafActivity.this, MetasActivity.class);
+                                        startActivity(it);
+                                        finish();
+                                    }
+                                }).setNegativeButton("Não", new DialogInterface.OnClickListener() {
+                            @Override
+                            public void onClick(DialogInterface dialog, int which) {
+                                Intent it = new Intent(GrafActivity.this, DesempenhoActivity.class);
+                                startActivity(it);
+                                finish();
+                            }
+                        }).show();
+                    }
+                    else {
+                        percMeta4 = (soma4 * 100) / vlrMeta4;
+                    }
+
+                }
+                else {
+                    area4a = "Linguagens, Código e suas Tecnologias";
+                }
+
+                tvLin1Col1.setText("Área de Estudos");
+                tvLin1Col2.setText("Qtd Dias");
+                tvLin1Col3.setText("Qtd Quest");
+                tvLin1Col4.setText("Meta");
+                tvLin1Col5.setText("% Meta");
+
+                tvLin2Col1.setText(area1a);
+                tvLin2Col2.setText(""+numDias);
+                tvLin2Col3.setText(""+soma);
+                tvLin2Col4.setText(""+vlrMeta1);
+                tvLin2Col5.setText(percMeta+"%");
+
+                tvLin3Col1.setText(area2a);
+                tvLin3Col2.setText(""+numDias2);
+                tvLin3Col3.setText(""+soma2);
+                tvLin3Col4.setText(""+vlrMeta2);
+                tvLin3Col5.setText(percMeta2+"%");
+
+                tvLin4Col1.setText(area3a);
+                tvLin4Col2.setText(""+numDias3);
+                tvLin4Col3.setText(""+soma3);
+                tvLin4Col4.setText(""+vlrMeta3);
+                tvLin4Col5.setText(percMeta3+"%");
+
+                tvLin5Col1.setText(area4a);
+                tvLin5Col2.setText(""+numDias4);
+                tvLin5Col3.setText(""+soma4);
+                tvLin5Col4.setText(""+vlrMeta4);
+                tvLin5Col5.setText(percMeta4+"%");
+
+                legenda ="Legenda:\n\r" +
+                        "Qtd Dias - É a quantidade de dias em que houve estudo na área correspondente ao longo dos últimos 7(sete) dias.\n\r" +
+                        "Qtd Quest - É a quantidade total de questões respondidas por área ao longo dos últimos 7(sete) dias.\n\r" +
+                        "Meta - Corresponde ao valor da meta diária, estabelecida pelo usuário, multiplicada por 7(sete).\n\r" +
+                        "% Meta - Percentual de estudos alcançado nos últimos 7 (sete) dias referente a cada área";
+
+                tvTabLegend.setText(legenda);
 
                 break;
             case 2:
-                String [] areasNomes = new String[6];
-                areasNomes[0] = "";
-                int totalResp, totalResp2, totalResp3, totalResp4;
-                int respCertas, respCertas2, respCertas3, respCertas4;
-                int respErradas, respErradas2, respErradas3, respErradas4;
-                int ordem = 0;
+                String area1b, area2b, area3b, area4b;
+                int numDias1b = 0, numDias2b = 0, numDias3b = 0, numDias4b = 0;
+                int somaQuest1b = 0, somaQuest2b = 0, somaQuest3b = 0, somaQuest4b = 0;
+                int somaAcert1b = 0, somaAcert2b = 0, somaAcert3b = 0, somaAcert4b = 0;
+                int percAcert1b = 0, percAcert2b = 0, percAcert3b = 0, percAcert4b = 0;
 
-                BarGraphSeries<DataPoint> series = new BarGraphSeries<>(new DataPoint[] {
-                        new DataPoint(0, 0),
-                        //new DataPoint(5, 0)
-                });
-                BarGraphSeries<DataPoint> series2 = new BarGraphSeries<>(new DataPoint[] {
-                        new DataPoint(0, 0),
-                        //new DataPoint(5, 0)
-                });
-                BarGraphSeries<DataPoint> series3 = new BarGraphSeries<>(new DataPoint[] {
-                        new DataPoint(0, 0),
-                       // new DataPoint(5, 0)
-                });
+                //Definindo variaveis area1
+                ArrayList<Integer> b1 = new ArrayList<Integer>();
+
                 if (bundle.containsKey("area1")){
+
                     area1 = bundle.getParcelableArrayList("area1");
-                    respCertas = 0;
-                    respErradas = 0;
-                    totalResp = 0;
-                    int tam = area1.size();
-                    for (int i=0; i< tam; i++){
-                        respCertas += area1.get(i).getRespCerta();
-                        respErradas += area1.get(i).getRespErrada();
+                    area1b = area1.get(0).getAreaNome().toString();
+                    numDias1b = area1.size();
+
+                    for (int i = 0; i < numDias1b; i++){
+                        b1.add(area1.get(i).getQtdQuest());
                     }
-                    totalResp = respCertas + respErradas;
-                    ordem +=1;
-                    DataPoint dp = new DataPoint(ordem, totalResp);
-                    DataPoint dpa = new DataPoint(ordem, respCertas);
-                    DataPoint dpb = new DataPoint(ordem, respErradas);
+                    for (int i = 0; i < b1.size(); i++){
+                        somaQuest1b += b1.get(i);
+                    }
+                    b1.clear();
 
-                    if (bundle.containsKey("area2")) {
-                        area2 = bundle.getParcelableArrayList("area2");
-                        respCertas2 = 0;
-                        respErradas2 = 0;
-                        totalResp2 = 0;
-                        int tam2 = area2.size();
-                        for (int i = 0; i < tam2; i++) {
-                            respCertas2 += area2.get(i).getRespCerta();
-                            respErradas2 += area2.get(i).getRespErrada();
-                        }
-                        totalResp2 = respCertas2 + respErradas2;
-                        ordem +=1;
-                        DataPoint dp2 = new DataPoint(ordem, totalResp2);
-                        DataPoint dp2a = new DataPoint(ordem, respCertas2);
-                        DataPoint dp2b = new DataPoint(ordem, respErradas2);
+                    for (int i = 0; i < numDias1b; i++){
+                        b1.add(area1.get(i).getRespCerta());
+                    }
+                    for (int i = 0; i < b1.size(); i++){
+                        somaAcert1b += b1.get(i);
+                    }
 
-                        if (bundle.containsKey("area3")) {
-                            area3 = bundle.getParcelableArrayList("area3");
-                            respCertas3 = 0;
-                            respErradas3 = 0;
-                            totalResp3 = 0;
-                            int tam3 = area3.size();
-                            for (int i = 0; i < tam3; i++) {
-                                respCertas3 += area3.get(i).getRespCerta();
-                                respErradas3 += area3.get(i).getRespErrada();
-                            }
-                            totalResp3 = respCertas3 + respErradas3;
-                            ordem +=1;
-                            DataPoint dp3 = new DataPoint(ordem, totalResp3);
-                            DataPoint dp3a = new DataPoint(ordem, respCertas3);
-                            DataPoint dp3b = new DataPoint(ordem, respErradas3);
-
-                            if (bundle.containsKey("area4")) {
-                                area4 = bundle.getParcelableArrayList("area4");
-                                respCertas4 = 0;
-                                respErradas4 = 0;
-                                totalResp4 = 0;
-                                int tam4 = area4.size();
-                                for (int i = 0; i < tam4; i++) {
-                                    respCertas4 += area4.get(i).getRespCerta();
-                                    respErradas4 += area4.get(i).getRespErrada();
-                                }
-                                totalResp4 = respCertas4 + respErradas4;
-                                ordem +=1;
-                                DataPoint dp4 = new DataPoint(ordem, totalResp4);
-                                DataPoint dp4a = new DataPoint(ordem, respCertas4);
-                                DataPoint dp4b = new DataPoint(ordem, respErradas4);
-                                ordem +=1;
-                                DataPoint dpe = new DataPoint(ordem, 0);
-
-                                series.appendData(dp, true, 6);
-                                series.appendData(dp2, true, 6);
-                                series.appendData(dp3, true, 6);
-                                series.appendData(dp4, true, 6);
-
-                                series2.appendData(dpa, true, 6);
-                                series2.appendData(dp2a, true, 6);
-                                series2.appendData(dp3a, true, 6);
-                                series2.appendData(dp4a, true, 6);
-
-                                series3.appendData(dpb, true, 6);
-                                series3.appendData(dp2b, true, 6);
-                                series3.appendData(dp3b, true, 6);
-                                series3.appendData(dp4b, true, 6);
-                                series3.appendData(dpe, true, 6);
-
-                            }
-                            else{//Tem 1, 2, 3 e não tem o 4
-                                ordem +=1;
-                                DataPoint dpe = new DataPoint(ordem, 0);
-                                series.appendData(dp, true, 6);
-                                series.appendData(dp2, true, 6);
-                                series.appendData(dp3, true, 6);
-                                series2.appendData(dpa, true, 6);
-                                series2.appendData(dp2a, true, 6);
-                                series2.appendData(dp3a, true, 6);
-                                series3.appendData(dpb, true, 6);
-                                series3.appendData(dp2b, true, 6);
-                                series3.appendData(dp3b, true, 6);
-                                series3.appendData(dpe, true, 6);
-                            }
-
-                        }//final if 3
-                        else{
-                            //tem 1 e 2 não tem 3
-                            if (bundle.containsKey("area4")) {
-                                area4 = bundle.getParcelableArrayList("area4");
-                                respCertas4 = 0;
-                                respErradas4 = 0;
-                                totalResp4 = 0;
-                                int tam4 = area4.size();
-                                for (int i = 0; i < tam4; i++) {
-                                    respCertas4 += area4.get(i).getRespCerta();
-                                    respErradas4 += area4.get(i).getRespErrada();
-                                }
-                                totalResp4 = respCertas4 + respErradas4;
-                                ordem +=1;
-                                DataPoint dp4 = new DataPoint(ordem, totalResp4);
-                                DataPoint dp4a = new DataPoint(ordem, respCertas4);
-                                DataPoint dp4b = new DataPoint(ordem, respErradas4);
-                                ordem +=1;
-                                DataPoint dpe = new DataPoint(ordem, 0);
-
-                                series.appendData(dp, true, 6);
-                                series.appendData(dp2, true, 6);
-                                series.appendData(dp4, true, 6);
-                                series2.appendData(dpa, true, 6);
-                                series2.appendData(dp2a, true, 6);
-                                series3.appendData(dp4a, true, 6);
-                                series3.appendData(dpb, true, 6);
-                                series3.appendData(dp2b, true, 6);
-                                series3.appendData(dp4b, true, 6);
-                                series3.appendData(dpe, true, 6);
-
-                            }
-                            else{//Tem 1, 2, 3 e não tem o 4
-                                ordem +=1;
-                                DataPoint dpe = new DataPoint(ordem, 0);
-                                series.appendData(dp, true, 6);
-                                series.appendData(dp2, true, 6);
-                                series2.appendData(dpa, true, 6);
-                                series2.appendData(dp2a, true, 6);
-                                series3.appendData(dpb, true, 6);
-                                series3.appendData(dp2b, true, 6);
-                                series3.appendData(dpe, true, 6);
-                            }
-                        }
-                    }//fim do if2
-                    else{
-                        //tenho 1 não tem o 2
-                        if (bundle.containsKey("area3")) {
-                            area3 = bundle.getParcelableArrayList("area3");
-                            respCertas3 = 0;
-                            respErradas3 = 0;
-                            totalResp3 = 0;
-                            int tam3 = area3.size();
-                            for (int i = 0; i < tam3; i++) {
-                                respCertas3 += area3.get(i).getRespCerta();
-                                respErradas3 += area3.get(i).getRespErrada();
-                            }
-                            totalResp3 = respCertas3 + respErradas3;
-                            ordem +=1;
-                            DataPoint dp3 = new DataPoint(ordem, totalResp3);
-                            DataPoint dp3a = new DataPoint(ordem, respCertas3);
-                            DataPoint dp3b = new DataPoint(ordem, respErradas3);
-
-                            if (bundle.containsKey("area4")) {
-                                area4 = bundle.getParcelableArrayList("area4");
-                                respCertas4 = 0;
-                                respErradas4 = 0;
-                                totalResp4 = 0;
-                                int tam4 = area4.size();
-                                for (int i = 0; i < tam4; i++) {
-                                    respCertas4 += area4.get(i).getRespCerta();
-                                    respErradas4 += area4.get(i).getRespErrada();
-                                }
-                                totalResp4 = respCertas4 + respErradas4;
-                                ordem +=1;
-                                DataPoint dp4 = new DataPoint(ordem, totalResp4);
-                                DataPoint dp4a = new DataPoint(ordem, respCertas4);
-                                DataPoint dp4b = new DataPoint(ordem, respErradas4);
-                                ordem +=1;
-                                DataPoint dpe = new DataPoint(ordem, 0);
-
-                                series.appendData(dp, true, 6);
-                                series.appendData(dp3, true, 6);
-                                series.appendData(dp4, true, 6);
-                                series2.appendData(dpa, true, 6);
-                                series2.appendData(dp3a, true, 6);
-                                series2.appendData(dp4a, true, 6);
-                                series3.appendData(dpb, true, 6);;
-                                series3.appendData(dp3b, true, 6);
-                                series3.appendData(dp4b, true, 6);
-                                series3.appendData(dpe, true, 6);
-
-                            }
-                            else{//Tem 1, não tem oo 2, tem o 3 e não tem o 4
-                                ordem +=1;
-                                DataPoint dpe = new DataPoint(ordem, 0);
-                                series.appendData(dp, true, 6);
-                                series.appendData(dp3, true, 6);
-                                series2.appendData(dpa, true, 6);
-                                series2.appendData(dp3a, true, 6);
-                                series3.appendData(dpb, true, 6);
-                                series3.appendData(dp3b, true, 6);
-                                series3.appendData(dpe, true, 6);
-                            }
-
-                        }//final if 3
-                        else {
-                            //tem 1 e não tem o 2 não tem 3
-                            if (bundle.containsKey("area4")) {
-                                area4 = bundle.getParcelableArrayList("area4");
-                                respCertas4 = 0;
-                                respErradas4 = 0;
-                                totalResp4 = 0;
-                                int tam4 = area4.size();
-                                for (int i = 0; i < tam4; i++) {
-                                    respCertas4 += area4.get(i).getRespCerta();
-                                    respErradas4 += area4.get(i).getRespErrada();
-                                }
-                                totalResp4 = respCertas4 + respErradas4;
-                                ordem += 1;
-                                DataPoint dp4 = new DataPoint(ordem, totalResp4);
-                                DataPoint dp4a = new DataPoint(ordem, respCertas4);
-                                DataPoint dp4b = new DataPoint(ordem, respErradas4);
-                                ordem +=1;
-                                DataPoint dpe = new DataPoint(ordem, 0);
-
-                                series.appendData(dp, true, 6);
-                                series.appendData(dp4, true, 6);
-                                series2.appendData(dpa, true, 6);
-                                series2.appendData(dp4a, true, 6);
-                                series3.appendData(dpb, true, 6);
-                                series3.appendData(dp4b, true, 6);
-                                series3.appendData(dpe, true, 6);
-
-                            } else {//Tem 1, não tem 2, não 3 e não tem o 4
-                                ordem +=1;
-                                DataPoint dpe = new DataPoint(ordem, 0);
-                                series.appendData(dp, true, 6);
-                                series2.appendData(dpa, true, 6);
-                                series3.appendData(dpb, true, 6);
-                                series3.appendData(dpe, true, 6);
-                            }
-                        }
+                    if (somaQuest1b == 0){
+                        percAcert1b = 0;
+                    }
+                    else {
+                        percAcert1b = (somaAcert1b * 100) / somaQuest1b;
                     }
                 }
                 else{
-                    //não contenm 1
-                    if (bundle.containsKey("area2")) {
-                        area2 = bundle.getParcelableArrayList("area2");
-                        respCertas2 = 0;
-                        respErradas2 = 0;
-                        totalResp2 = 0;
-                        int tam2 = area2.size();
-                        for (int i = 0; i < tam2; i++) {
-                            respCertas2 += area2.get(i).getRespCerta();
-                            respErradas2 += area2.get(i).getRespErrada();
-                        }
-                        totalResp2 = respCertas2 + respErradas2;
-                        ordem +=1;
-                        DataPoint dp2 = new DataPoint(ordem, totalResp2);
-                        DataPoint dp2a = new DataPoint(ordem, respCertas2);
-                        DataPoint dp2b = new DataPoint(ordem, respErradas2);
-
-                        if (bundle.containsKey("area3")) {
-                            area3 = bundle.getParcelableArrayList("area3");
-                            respCertas3 = 0;
-                            respErradas3 = 0;
-                            totalResp3 = 0;
-                            int tam3 = area3.size();
-                            for (int i = 0; i < tam3; i++) {
-                                respCertas3 += area3.get(i).getRespCerta();
-                                respErradas3 += area3.get(i).getRespErrada();
-                            }
-                            totalResp3 = respCertas3 + respErradas3;
-                            ordem +=1;
-                            DataPoint dp3 = new DataPoint(ordem, totalResp3);
-                            DataPoint dp3a = new DataPoint(ordem, respCertas3);
-                            DataPoint dp3b = new DataPoint(ordem, respErradas3);
-
-                            if (bundle.containsKey("area4")) {
-                                area4 = bundle.getParcelableArrayList("area4");
-                                respCertas4 = 0;
-                                respErradas4 = 0;
-                                totalResp4 = 0;
-                                int tam4 = area4.size();
-                                for (int i = 0; i < tam4; i++) {
-                                    respCertas4 += area4.get(i).getRespCerta();
-                                    respErradas4 += area4.get(i).getRespErrada();
-                                }
-                                totalResp4 = respCertas4 + respErradas4;
-                                ordem +=1;
-                                DataPoint dp4 = new DataPoint(ordem, totalResp4);
-                                DataPoint dp4a = new DataPoint(ordem, respCertas4);
-                                DataPoint dp4b = new DataPoint(ordem, respErradas4);
-                                ordem +=1;
-                                DataPoint dpe = new DataPoint(ordem, 0);
-
-                                series.appendData(dp2, true, 6);
-                                series.appendData(dp3, true, 6);
-                                series.appendData(dp4, true, 6);
-                                series2.appendData(dp2a, true, 6);
-                                series2.appendData(dp3a, true, 6);
-                                series2.appendData(dp4a, true, 6);
-                                series3.appendData(dp2b, true, 6);
-                                series3.appendData(dp3b, true, 6);
-                                series3.appendData(dp4b, true, 6);
-                                series3.appendData(dpe, true, 6);
-                            }
-                            else{//Tem 1, 2, 3 e não tem o 4
-                                ordem +=1;
-                                DataPoint dpe = new DataPoint(ordem, 0);
-
-                                series.appendData(dp2, true, 6);
-                                series.appendData(dp3, true, 6);
-                                series2.appendData(dp2a, true, 6);
-                                series2.appendData(dp3a, true, 6);
-                                series3.appendData(dp2b, true, 6);
-                                series3.appendData(dp3b, true, 6);
-                                series3.appendData(dpe, true, 6);
-                            }
-
-                        }//final if 3
-                        else{
-                            //tem  e 2 não tem 1 e 3
-                            if (bundle.containsKey("area4")) {
-                                area4 = bundle.getParcelableArrayList("area4");
-                                respCertas4 = 0;
-                                respErradas4 = 0;
-                                totalResp4 = 0;
-                                int tam4 = area4.size();
-                                for (int i = 0; i < tam4; i++) {
-                                    respCertas4 += area4.get(i).getRespCerta();
-                                    respErradas4 += area4.get(i).getRespErrada();
-                                }
-                                totalResp4 = respCertas4 + respErradas4;
-                                ordem +=1;
-                                DataPoint dp4 = new DataPoint(ordem, totalResp4);
-                                DataPoint dp4a = new DataPoint(ordem, respCertas4);
-                                DataPoint dp4b = new DataPoint(ordem, respErradas4);
-                                ordem +=1;
-                                DataPoint dpe = new DataPoint(ordem, 0);
-
-                                series.appendData(dp2, true, 6);
-                                series.appendData(dp4, true, 6);
-                                series2.appendData(dp2a, true, 6);
-                                series2.appendData(dp4a, true, 6);
-                                series3.appendData(dp2b, true, 6);
-                                series3.appendData(dp4b, true, 6);
-                                series3.appendData(dpe, true, 6);
-                            }
-                            else{//Tem 1, 2, 3 e não tem o 4
-                                ordem +=1;
-                                DataPoint dpe = new DataPoint(ordem, 0);
-                                series.appendData(dp2, true, 6);
-                                series2.appendData(dp2a, true, 6);
-                                series3.appendData(dp2b, true, 6);
-                                series3.appendData(dpe, true, 6);
-                            }
-                        }
-                    }//fim do if2
-                    else{
-                        // não tenho 1 não tem o 2
-                        if (bundle.containsKey("area3")) {
-                            area3 = bundle.getParcelableArrayList("area3");
-                            respCertas3 = 0;
-                            respErradas3 = 0;
-                            totalResp3 = 0;
-                            int tam3 = area3.size();
-                            for (int i = 0; i < tam3; i++) {
-                                respCertas3 += area3.get(i).getRespCerta();
-                                respErradas3 += area3.get(i).getRespErrada();
-                            }
-                            totalResp3 = respCertas3 + respErradas3;
-                            ordem +=1;
-                            DataPoint dp3 = new DataPoint(ordem, totalResp3);
-                            DataPoint dp3a = new DataPoint(ordem, respCertas3);
-                            DataPoint dp3b = new DataPoint(ordem, respErradas3);
-
-                            if (bundle.containsKey("area4")) {
-                                area4 = bundle.getParcelableArrayList("area4");
-                                respCertas4 = 0;
-                                respErradas4 = 0;
-                                totalResp4 = 0;
-                                int tam4 = area4.size();
-                                for (int i = 0; i < tam4; i++) {
-                                    respCertas4 += area4.get(i).getRespCerta();
-                                    respErradas4 += area4.get(i).getRespErrada();
-                                }
-                                totalResp4 = respCertas4 + respErradas4;
-                                ordem +=1;
-                                DataPoint dp4 = new DataPoint(ordem, totalResp4);
-                                DataPoint dp4a = new DataPoint(ordem, respCertas4);
-                                DataPoint dp4b = new DataPoint(ordem, respErradas4);
-                                ordem +=1;
-                                DataPoint dpe = new DataPoint(ordem, 0);
-
-                                series.appendData(dp3, true, 6);
-                                series.appendData(dp4, true, 6);
-                                series2.appendData(dp3a, true, 6);
-                                series2.appendData(dp4a, true, 6);
-                                series3.appendData(dp3b, true, 6);
-                                series3.appendData(dp4b, true, 6);
-                                series3.appendData(dpe, true, 6);
-                            }
-                            else{//Não Tem 1, não tem oo 2, tem o 3 e não tem o 4
-                                ordem += 1;
-                                DataPoint dpe = new DataPoint(ordem, 0);
-                                series.appendData(dp3, true, 6);
-                                series2.appendData(dp3a, true, 6);
-                                series3.appendData(dp3b, true, 6);
-                                series3.appendData(dpe, true, 6);
-                            }
-
-                        }//final if 3
-                        else {
-                            //não tem 1 e não tem o 2 não tem 3
-                            if (bundle.containsKey("area4")) {
-                                area4 = bundle.getParcelableArrayList("area4");
-                                respCertas4 = 0;
-                                respErradas4 = 0;
-                                totalResp4 = 0;
-                                int tam4 = area4.size();
-                                for (int i = 0; i < tam4; i++) {
-                                    respCertas4 += area4.get(i).getRespCerta();
-                                    respErradas4 += area4.get(i).getRespErrada();
-                                }
-                                totalResp4 = respCertas4 + respErradas4;
-                                ordem += 1;
-                                DataPoint dp4 = new DataPoint(ordem, totalResp4);
-                                DataPoint dp4a = new DataPoint(ordem, respCertas4);
-                                DataPoint dp4b = new DataPoint(ordem, respErradas4);
-                                ordem +=1;
-                                DataPoint dpe = new DataPoint(ordem, 0);
-
-                                series.appendData(dp4, true, 6);
-                                series2.appendData(dp4a, true, 6);
-                                series3.appendData(dp4b, true, 6);
-                                series3.appendData(dpe, true, 6);
-                            }
-                        }
-                    }
+                    area1b = "Ciências Humanas e suas Tecnologias";
                 }
 
-                graph.addSeries(series);
-                graph.addSeries(series2);
-                graph.addSeries(series3);
+                //Definindo variaveis area2
+                ArrayList<Integer> b2 = new ArrayList<Integer>();
 
-                series.setSpacing(10);
-                series2.setSpacing(10);
-                series3.setSpacing(10);
-                // draw values on top
-                series.setTitle("Total Respondido");
-                series.setColor(Color.GRAY);
-                series.setDrawValuesOnTop(true);
-                series.setValuesOnTopColor(Color.BLACK);
-                series.setValuesOnTopSize(30);
+                if (bundle.containsKey("area2")){
 
-                series2.setTitle("Respostas Certas");
-                series2.setColor(Color.BLUE);
-                series2.setDrawValuesOnTop(true);
-                series2.setValuesOnTopColor(Color.BLUE);
-                series2.setValuesOnTopSize(30);
+                    area2 = bundle.getParcelableArrayList("area2");
+                    area2b = area2.get(0).getAreaNome().toString();
+                    numDias2b = area2.size();
 
-                series3.setTitle("Respostas Erradas");
-                series3.setColor(Color.RED);
-                series3.setDrawValuesOnTop(true);
-                series3.setValuesOnTopColor(Color.RED);
-                series3.setValuesOnTopSize(30);
+                    for (int i = 0; i < numDias2b; i++){
+                        b2.add(area2.get(i).getQtdQuest());
+                    }
+                    for (int i = 0; i < b2.size(); i++){
+                        somaQuest2b += b2.get(i);
+                    }
+                    b2.clear();
 
-                graph.getLegendRenderer().setVisible(true);
-                graph.getLegendRenderer().setAlign(LegendRenderer.LegendAlign.TOP);
-                graph.getLegendRenderer().setFixedPosition(400, -10);
-                graph.getLegendRenderer().setBackgroundColor(Color.WHITE);
+                    for (int i = 0; i < numDias2b; i++){
+                        b2.add(area2.get(i).getRespCerta());
+                    }
+                    for (int i = 0; i < b2.size(); i++){
+                        somaAcert2b += b2.get(i);
+                    }
 
-                String[] dias2 = new String[] {"","Area1", "Area 2", "Area 3", "Area 4", ""};
-                staticLabelsFormatter = new StaticLabelsFormatter(graph);
-                staticLabelsFormatter.setHorizontalLabels(dias2);
-                graph.getGridLabelRenderer().setLabelFormatter(staticLabelsFormatter);
-                graph.getGridLabelRenderer().setNumHorizontalLabels(6);
+                    if (somaQuest2b == 0){
+                        percAcert2b = 0;
+                    }
+                    else {
+                        percAcert2b = (somaAcert2b * 100) / somaQuest2b;
+                    }
+                }
+                else{
+                    area2b = "Ciências da Natureza e suas Tecnologias";
+                }
+
+                //Definindo variaveis area3
+                ArrayList<Integer> b3 = new ArrayList<Integer>();
+
+                if (bundle.containsKey("area3")){
+
+                    area3 = bundle.getParcelableArrayList("area3");
+                    area3b = area3.get(0).getAreaNome().toString();
+                    numDias3b = area3.size();
+
+                    for (int i = 0; i < numDias3b; i++){
+                        b3.add(area3.get(i).getQtdQuest());
+                    }
+                    for (int i = 0; i < b3.size(); i++){
+                        somaQuest3b += b3.get(i);
+                    }
+                    b3.clear();
+
+                    for (int i = 0; i < numDias3b; i++){
+                        b3.add(area3.get(i).getRespCerta());
+                    }
+                    for (int i = 0; i < b3.size(); i++){
+                        somaAcert3b += b3.get(i);
+                    }
+
+                    if (somaQuest3b == 0){
+                        percAcert3b = 0;
+                    }
+                    else {
+                        percAcert3b = (somaAcert3b * 100) / somaQuest3b;
+                    }
+                }
+                else{
+                    area3b = "Matemática e suas Tecnologias";
+                }
+
+                //Definindo variaveis area4
+                ArrayList<Integer> b4 = new ArrayList<Integer>();
+
+                if (bundle.containsKey("area4")){
+
+                    area4 = bundle.getParcelableArrayList("area4");
+                    area4b = area4.get(0).getAreaNome().toString();
+                    numDias4b = area4.size();
+
+                    for (int i = 0; i < numDias4b; i++){
+                        b4.add(area4.get(i).getQtdQuest());
+                    }
+                    for (int i = 0; i < b4.size(); i++){
+                        somaQuest4b += b4.get(i);
+                    }
+                    b4.clear();
+
+                    for (int i = 0; i < numDias4b; i++){
+                        b4.add(area4.get(i).getRespCerta());
+                    }
+                    for (int i = 0; i < b4.size(); i++){
+                        somaAcert4b += b4.get(i);
+                    }
+
+                    if (somaQuest4b == 0){
+                        percAcert4b = 0;
+                    }
+                    else {
+                        percAcert4b = (somaAcert4b * 100) / somaQuest4b;
+                    }
+                }
+                else{
+                    area4b = "Linguagens, Códigos e suas Tecnologias";
+                }
+
+
+                tvLin1Col1.setText("Área de Estudos");
+                tvLin1Col2.setText("Qtd Dias");
+                tvLin1Col3.setText("Qtd Quest");
+                tvLin1Col4.setText("Qtd Acerto");
+                tvLin1Col5.setText("% Acerto");
+
+                tvLin2Col1.setText(area1b);
+                tvLin2Col2.setText(""+numDias1b);
+                tvLin2Col3.setText(""+somaQuest1b);
+                tvLin2Col4.setText(""+somaAcert1b);
+                tvLin2Col5.setText(percAcert1b+"%");
+
+                tvLin3Col1.setText(area2b);
+                tvLin3Col2.setText(""+numDias2b);
+                tvLin3Col3.setText(""+somaQuest2b);
+                tvLin3Col4.setText(""+somaAcert2b);
+                tvLin3Col5.setText(percAcert2b+"%");
+
+                tvLin4Col1.setText(area3b);
+                tvLin4Col2.setText(""+numDias3b);
+                tvLin4Col3.setText(""+somaQuest3b);
+                tvLin4Col4.setText(""+somaAcert3b);
+                tvLin4Col5.setText(percAcert3b+"%");
+
+                tvLin5Col1.setText(area4b);
+                tvLin5Col2.setText(""+numDias4b);
+                tvLin5Col3.setText(""+somaQuest4b);
+                tvLin5Col4.setText(""+somaAcert4b);
+                tvLin5Col5.setText(percAcert4b+"%");
+
+                legenda ="Legenda:\n\r" +
+                        "Qtd Dias - É a quantidade de dias em que houve estudo na área correspondente ao longo dos últimos 7(sete) dias.\n\r" +
+                        "Qtd Quest - É a quantidade total de questões respondidas por área ao longo dos últimos 7(sete) dias.\n\r" +
+                        "Qtd Acerto - Corresponde ao total de respostas certas nos últimos 7(sete) dias.\n\r" +
+                        "% Acerto - Percentual de acerto referente a cada área nos ultimos 7(sete) dias.";
+
+                tvTabLegend.setText(legenda);
+
                 break;
             case 3:
                 // criar grafico 3
-                if(bundle.containsKey("tempo")){
-                    area1 = bundle.getParcelableArrayList("tempo");
 
-                    String legend = "Tempo de estudos diários em minutos";
-                    LineGraphSeries<DataPoint> seriesTempo = new LineGraphSeries<DataPoint>(new DataPoint[]{
-                            new DataPoint(0, 0),
-                    });
-                    String[] diasTempo = new String[8];
-                    diasTempo[0] = "00/00";
-                    String[] tempy = new String [6]; //{"00:00", "01:00", "02:00", "03:00", "04:00", "06:00", "08:00" };
-                    //tempy[0] = "00:00";
-                    int tam = area1.size();
+                String area1c, area2c, area3c, area4c;
+                int numDias1c = 0, numDias2c = 0, numDias3c = 0, numDias4c = 0;
+                int soma1c = 0, soma2c = 0, soma3c = 0, soma4c = 0;
+                int media1c = 0, media2c = 0, media3c = 0, media4c = 0;
+                long somaTempo1c = 0, somaTempo2c = 0, somaTempo3c = 0, somaTempo4c = 0;
+                long mediaTempo1c = 0, mediaTempo2c = 0, mediaTempo3c = 0, mediaTempo4c = 0;
+                String desempSema1c = null, desempSema2c = null, desempSema3c = null, desempSema4c = null;
+                String confgDedic;
+                String tempoTotal1c = null, tempoTotal2c, tempoTotal3c, tempoTotal4c, tempoMedio1c = null, tempoMedio2c, tempoMedio3c, tempoMedio4c;
 
-                    for (int i = 0; i < tam; i++) {
-                        String data = area1.get(i).getDataRealiz().toString();
-                        String[] temp = data.split("-");
+                meta = new Meta();
+                meta = bdMeta.buscarMeta(1);
+                confgDedic = meta.getNivelDedic();
 
+                //Definindo variaveis area1
 
-                        long a = area1.get(i).getTempAtivo() * 1000;
-                        long minutos = (a / 60000)%60;
-                        long horas = a / 3600000;
+                ArrayList<Integer> c1 = new ArrayList<Integer>();
 
-                        String t = String.format("%2d:%2d", horas, minutos);
+                if (bundle.containsKey("area1")){
 
-                        int k = i+1;
-                        diasTempo[k] = temp[0]+"/"+temp[1];
-                        tempy[k] = t;
+                    area1 = bundle.getParcelableArrayList("area1");
+                    area1c = area1.get(0).getAreaNome().toString();
+                    numDias1c = area1.size();
 
-                        DataPoint dp = new DataPoint(k, minutos);
-                        seriesTempo.appendData(dp, true, tam);
-
+                    for (int i = 0; i < numDias1c; i++){
+                        c1.add(area1.get(i).getTempAtivo());
                     }
-                    seriesTempo.setTitle(legend);
-                    seriesTempo.setColor(Color.BLUE);
-                    seriesTempo.setDrawDataPoints(true);
-                    seriesTempo.setDataPointsRadius(10);
-                    seriesTempo.setThickness(5);
-                    graph.addSeries(seriesTempo);
+                    for (int i = 0; i < c1.size(); i++){
+                        soma1c += c1.get(i);
+                    }
 
-                    staticLabelsFormatter = new StaticLabelsFormatter(graph);
-                    staticLabelsFormatter.setHorizontalLabels(diasTempo);
-                    staticLabelsFormatter.setVerticalLabels(tempy);
-                    graph.getGridLabelRenderer().setLabelFormatter(staticLabelsFormatter);
-                    graph.getGridLabelRenderer().setNumHorizontalLabels(7);
-                    graph.getGridLabelRenderer().setNumVerticalLabels(7);
+                    media1c = soma1c / 7;
 
+                    Desempenho desemp = new Desempenho();
+
+                    desempSema1c = desemp.testeDesemp(soma1c, confgDedic);
+
+                    somaTempo1c = soma1c * 1000;
+                    long minutos = (somaTempo1c / 60000)%60;
+                    long horas = somaTempo1c / 3600000;
+
+                    tempoTotal1c = String.format("%2d:%2d", horas, minutos);
+
+                    mediaTempo1c = media1c * 1000;
+                    long minutosM = (mediaTempo1c / 60000)%60;
+                    long horasM = mediaTempo1c / 3600000;
+
+                    tempoMedio1c = String.format("%2d:%2d", horasM, minutosM);
+
+                }else{
+                    area1c = "Ciências Humanas e suas Tecnologias";
+                    tempoMedio1c = "0:00";
+                    tempoTotal1c = "0:00";
+                    desempSema1c = "Não avaliado";
                 }
-                else{
-                    Toast.makeText(this, "Não chegou nenhum dado para a construção do gráfico no período", Toast.LENGTH_LONG).show();
+
+                //Definindo variaveis area2
+
+                ArrayList<Integer> c2 = new ArrayList<Integer>();
+
+                if (bundle.containsKey("area2")){
+
+                    area2 = bundle.getParcelableArrayList("area2");
+                    area2c = area2.get(0).getAreaNome().toString();
+                    numDias2c = area2.size();
+
+                    for (int i = 0; i < numDias2c; i++){
+                        c2.add(area2.get(i).getTempAtivo());
+                    }
+                    for (int i = 0; i < c2.size(); i++){
+                        soma2c += c2.get(i);
+                    }
+
+                    media2c = soma2c / 7;
+
+                    Desempenho desemp2 = new Desempenho();
+
+                    desempSema2c = desemp2.testeDesemp(soma2c, confgDedic);
+
+                    somaTempo2c = soma2c * 1000;
+                    long minutos2 = (somaTempo2c / 60000)%60;
+                    long horas2 = somaTempo2c / 3600000;
+
+                    tempoTotal2c = String.format("%2d:%2d", horas2, minutos2);
+
+                    mediaTempo2c = media2c * 1000;
+                    long minutosM2 = (mediaTempo2c / 60000)%60;
+                    long horasM2 = mediaTempo2c / 3600000;
+
+                    tempoMedio2c = String.format("%2d:%2d", horasM2, minutosM2);
+
+                }else{
+                    area2c = "Ciências Naturais e suas Tecnologias";
+                    tempoMedio2c = "0:00";
+                    tempoTotal2c = "0:00";
+                    desempSema2c = "Não avaliado";
                 }
+
+                //Definindo variaveis area3
+
+                ArrayList<Integer> c3 = new ArrayList<Integer>();
+
+                if (bundle.containsKey("area3")){
+
+                    area3 = bundle.getParcelableArrayList("area3");
+                    area3c = area3.get(0).getAreaNome().toString();
+                    numDias3c = area3.size();
+
+                    for (int i = 0; i < numDias3c; i++){
+                        c3.add(area3.get(i).getTempAtivo());
+                    }
+                    for (int i = 0; i < c3.size(); i++){
+                        soma3c += c3.get(i);
+                    }
+
+                    media3c = soma3c / 7;
+
+                    Desempenho desemp3 = new Desempenho();
+
+                    desempSema3c = desemp3.testeDesemp(soma3c, confgDedic);
+
+                    somaTempo3c = soma3c * 1000;
+                    long minutos3 = (somaTempo3c / 60000)%60;
+                    long horas3 = somaTempo3c / 3600000;
+
+                    tempoTotal3c = String.format("%2d:%2d", horas3, minutos3);
+
+                    mediaTempo3c = media3c * 1000;
+                    long minutosM3 = (mediaTempo3c / 60000)%60;
+                    long horasM3 = mediaTempo3c / 3600000;
+
+                    tempoMedio3c = String.format("%2d:%2d", horasM3, minutosM3);
+
+                }else{
+                    area3c = "Matemática e suas Tecnologias";
+                    tempoMedio3c = "0:00";
+                    tempoTotal3c = "0:00";
+                    desempSema3c = "Não avaliado";
+                }
+
+                //Definindo variaveis area4
+
+                ArrayList<Integer> c4 = new ArrayList<Integer>();
+
+                if (bundle.containsKey("area4")){
+
+                    area4 = bundle.getParcelableArrayList("area4");
+                    area4c = area4.get(0).getAreaNome().toString();
+                    numDias4c = area4.size();
+
+                    for (int i = 0; i < numDias4c; i++){
+                        c4.add(area4.get(i).getTempAtivo());
+                    }
+                    for (int i = 0; i < c4.size(); i++){
+                        soma4c += c4.get(i);
+                    }
+
+                    media4c = soma4c / 7;
+
+                    Desempenho desemp4 = new Desempenho();
+
+                    desempSema4c = desemp4.testeDesemp(soma4c, confgDedic);
+
+                    somaTempo4c = soma4c * 1000;
+                    long minutos4 = (somaTempo4c / 60000)%60;
+                    long horas4 = somaTempo4c / 3600000;
+
+                    tempoTotal4c = String.format("%2d:%2d", horas4, minutos4);
+
+                    mediaTempo4c = media4c * 1000;
+                    long minutosM4 = (mediaTempo4c / 60000)%60;
+                    long horasM4 = mediaTempo4c / 3600000;
+
+                    tempoMedio4c = String.format("%2d:%2d", horasM4, minutosM4);
+
+                }else{
+                    area4c = "Matemática e suas Tecnologias";
+                    tempoMedio4c = "0:00";
+                    tempoTotal4c = "0:00";
+                    desempSema4c = "Não avaliado";
+                }
+
+                //impressão do gráfico
+
+                tvLin1Col1.setText("Área de Estudos");
+                tvLin1Col2.setText("Qtd Dias");
+                tvLin1Col3.setText("Tempo Tot");
+                tvLin1Col4.setText("Média/dia");
+                tvLin1Col5.setText("Desemp");
+
+                tvLin2Col1.setText(area1c);
+                tvLin2Col2.setText(""+numDias1c);
+                tvLin2Col3.setText(tempoTotal1c+"h");
+                tvLin2Col4.setText(tempoMedio1c+"h");
+                tvLin2Col5.setText(desempSema1c);
+
+                tvLin3Col1.setText(area2c);
+                tvLin3Col2.setText(""+numDias2c);
+                tvLin3Col3.setText(tempoTotal2c+"h");
+                tvLin3Col4.setText(tempoMedio2c+'h');
+                tvLin3Col5.setText(desempSema2c);
+
+                tvLin4Col1.setText(area3c);
+                tvLin4Col2.setText(""+numDias3c);
+                tvLin4Col3.setText(tempoTotal3c+"h");
+                tvLin4Col4.setText(tempoMedio3c+'h');
+                tvLin4Col5.setText(desempSema3c);
+
+                tvLin5Col1.setText(area4c);
+                tvLin5Col2.setText(""+numDias4c);
+                tvLin5Col3.setText(tempoTotal4c+"h");
+                tvLin5Col4.setText(tempoMedio4c+"h");
+                tvLin5Col5.setText(desempSema4c);
+
+                legenda ="Legenda:\n\r" +
+                        "Qtd Dias - É a quantidade de dias em que houve estudo na área correspondente ao longo dos últimos 7(sete) dias.\n\r" +
+                        "Tempo Tot - É a o tempo total dedicado ao estudo por área ao longo dos últimos 7(sete) dias.\n\r" +
+                        "Média /dia - Corresponde a média do tempo de estudo por área por dia nos últimos 7(sete) dias.\n\r" +
+                        "Desemp - Classificação do seu desempenho de estudo nos ultimos 7(sete) dias em relação ao nível de dedicação.";
+
+                tvTabLegend.setText(legenda);
 
                 break;
             case 4:
                 //implantar grafico 4
-                String[] diasCompac = new String[8];
-                if (bundle.containsKey("area1")) {
-                    area1 = bundle.getParcelableArrayList("area1");
-                    String legend = area1.get(0).getAreaNome().toString();
-                    LineGraphSeries<DataPoint> seriesCompac = new LineGraphSeries<DataPoint>(new DataPoint[]{
 
-                    });
-                    int tam = area1.size();
-                    for (int i = 0; i < tam; i++) {
-                        String data = area1.get(i).getDataRealiz().toString();
-                        String[] temp = data.split("-");
-                        diasCompac[i] = temp[0];
-                        int a = area1.get(i).getQtdQuest();
-                        DataPoint dp = new DataPoint(i, a);
-                        seriesCompac.appendData(dp, true, tam);
-                    }
-                    seriesCompac.setTitle(legend);
-                    seriesCompac.setColor(Color.BLACK);
-                    seriesCompac.setDrawDataPoints(true);
-                    seriesCompac.setDataPointsRadius(10);
-                    seriesCompac.setThickness(5);
-                    graph.addSeries(seriesCompac);
-                    if (bundle.containsKey("area2")) {
-                        area2 = bundle.getParcelableArrayList("area2");
-                        String legend2 = area2.get(0).getAreaNome().toString();
-                        LineGraphSeries<DataPoint> seriesCompac2 = new LineGraphSeries<DataPoint>(new DataPoint[]{
 
-                        });
-                        int tam2 = area2.size();
-                        for (int i = 0; i < tam2; i++) {
-                            int b = area2.get(i).getQtdQuest();
-                            DataPoint dp2 = new DataPoint(i, b);
-                            seriesCompac2.appendData(dp2, true, tam2);
-                        }
-                        seriesCompac2.setTitle(legend2);
-                        seriesCompac2.setColor(Color.GREEN);
-                        seriesCompac2.setDrawDataPoints(true);
-                        seriesCompac2.setDataPointsRadius(10);
-                        seriesCompac2.setThickness(5);
-                        graph.addSeries(seriesCompac2);
+                //impressão do gráfico
 
-                        if (bundle.containsKey("area3")) {
-                            area3 = bundle.getParcelableArrayList("area3");
-                            String legend3 = area3.get(0).getAreaNome().toString();
-                            LineGraphSeries<DataPoint> seriesCompac3 = new LineGraphSeries<DataPoint>(new DataPoint[]{
+                tvLin1Col1.setText("Área de Estudos");
+                tvLin1Col2.setText("Simulados");
+                tvLin1Col3.setText("Qtd Quest");
+                tvLin1Col4.setText("Qtd Acerto");
+                tvLin1Col5.setText("% Acerto");
 
-                            });
-                            int tam3 = area3.size();
-                            for (int i = 0; i < tam3; i++) {
-                                int c = area3.get(i).getQtdQuest();
-                                DataPoint dp3 = new DataPoint(i, c);
-                                seriesCompac3.appendData(dp3, true, tam3);
-                            }
-                            seriesCompac3.setTitle(legend3);
-                            seriesCompac3.setColor(Color.BLUE);
-                            seriesCompac3.setDrawDataPoints(true);
-                            seriesCompac3.setDataPointsRadius(10);
-                            seriesCompac3.setThickness(5);
-                            graph.addSeries(seriesCompac3);
+                //tvLin2Col1.setText(area1c);
+                //tvLin2Col2.setText(""+numDias1c);
+                //tvLin2Col3.setText(tempoTotal1c+"h");
+                //tvLin2Col4.setText(tempoMedio1c+"h");
+                //tvLin2Col5.setText(desempSema1c);
 
-                            if (bundle.containsKey("area4")) {
-                                area4 = bundle.getParcelableArrayList("area4");
-                                String legend4 = area4.get(0).getAreaNome().toString();
-                                LineGraphSeries<DataPoint> seriesCompac4 = new LineGraphSeries<DataPoint>(new DataPoint[]{
+                //tvLin3Col1.setText(area2c);
+                //tvLin3Col2.setText(""+numDias2c);
+                //tvLin3Col3.setText(tempoTotal2c+"h");
+                //tvLin3Col4.setText(tempoMedio2c+'h');
+                //tvLin3Col5.setText(desempSema2c);
 
-                                });
-                                int tam4 = area4.size();
-                                for (int i = 0; i < tam4; i++) {
-                                    int d = area4.get(i).getQtdQuest();
-                                    DataPoint dp4 = new DataPoint(i, d);
-                                    seriesCompac4.appendData(dp4, true, tam4);
-                                }
-                                seriesCompac4.setTitle(legend4);
-                                seriesCompac4.setColor(Color.RED);
-                                seriesCompac4.setDrawDataPoints(true);
-                                seriesCompac4.setDataPointsRadius(10);
-                                seriesCompac4.setThickness(5);
-                                graph.addSeries(seriesCompac4);
-                            }
-                        } else {//if do tres
-                            //tem o 1 o 2 e não tem o tres
-                            if (bundle.containsKey("area4")) {
-                                area4 = bundle.getParcelableArrayList("area4");
-                                String legend4 = area4.get(0).getAreaNome().toString();
-                                LineGraphSeries<DataPoint> seriesCompac4 = new LineGraphSeries<DataPoint>(new DataPoint[]{
+                //tvLin4Col1.setText(area3c);
+                //tvLin4Col2.setText(""+numDias3c);
+                //tvLin4Col3.setText(tempoTotal3c+"h");
+                //tvLin4Col4.setText(tempoMedio3c+'h');
+                //tvLin4Col5.setText(desempSema3c);
 
-                                });
-                                int tam4 = area4.size();
-                                for (int i = 0; i < tam4; i++) {
-                                    int d = area4.get(i).getQtdQuest();
-                                    DataPoint dp4 = new DataPoint(i, d);
-                                    seriesCompac4.appendData(dp4, true, tam4);
-                                }
-                                seriesCompac4.setTitle(legend4);
-                                seriesCompac4.setColor(Color.RED);
-                                seriesCompac4.setDrawDataPoints(true);
-                                seriesCompac4.setDataPointsRadius(10);
-                                seriesCompac4.setThickness(5);
-                                graph.addSeries(seriesCompac4);
-                            }
-                        }//fim do if do tres
-                    } else {//else do dois
-                        //tem o 1 mas não tem o dois
-                        if (bundle.containsKey("area3")) {
-                            area3 = bundle.getParcelableArrayList("area3");
-                            String legend3 = area3.get(0).getAreaNome().toString();
-                            LineGraphSeries<DataPoint> seriesCompac3 = new LineGraphSeries<DataPoint>(new DataPoint[]{
+                //tvLin5Col1.setText(area4c);
+                //tvLin5Col2.setText(""+numDias4c);
+                //tvLin5Col3.setText(tempoTotal4c+"h");
+                //tvLin5Col4.setText(tempoMedio4c+"h");
+                //tvLin5Col5.setText(desempSema4c);
 
-                            });
-                            int tam3 = area3.size();
-                            for (int i = 0; i < tam3; i++) {
-                                int c = area3.get(i).getQtdQuest();
-                                DataPoint dp3 = new DataPoint(i, c);
-                                seriesCompac3.appendData(dp3, true, tam3);
-                            }
-                            seriesCompac3.setTitle(legend3);
-                            seriesCompac3.setColor(Color.BLUE);
-                            seriesCompac3.setDrawDataPoints(true);
-                            seriesCompac3.setDataPointsRadius(10);
-                            seriesCompac3.setThickness(5);
-                            graph.addSeries(seriesCompac3);
+                legenda ="Legenda:\n\r" +
+                        "Qtd Dias - É a quantidade de dias em que houve estudo na área correspondente ao longo dos últimos 7(sete) dias.\n\r" +
+                        "Tempo Tot - É a o tempo total dedicado ao estudo por área ao longo dos últimos 7(sete) dias.\n\r" +
+                        "Média /dia - Corresponde a média do tempo de estudo por área por dia nos últimos 7(sete) dias.\n\r" +
+                        "Desemp - Classificação do seu desempenho de estudo nos ultimos 7(sete) dias em relação ao nível de dedicação.";
 
-                            if (bundle.containsKey("area4")) {
-                                area4 = bundle.getParcelableArrayList("area4");
-                                String legend4 = area4.get(0).getAreaNome().toString();
-                                LineGraphSeries<DataPoint> seriesCompac4 = new LineGraphSeries<DataPoint>(new DataPoint[]{
+                tvTabLegend.setText(legenda);
 
-                                });
-                                int tam4 = area4.size();
-                                for (int i = 0; i < tam4; i++) {
-                                    int d = area4.get(i).getQtdQuest();
-                                    DataPoint dp4 = new DataPoint(i, d);
-                                    seriesCompac4.appendData(dp4, true, tam4);
-                                }
-                                seriesCompac4.setTitle(legend4);
-                                seriesCompac4.setColor(Color.RED);
-                                seriesCompac4.setDrawDataPoints(true);
-                                seriesCompac4.setDataPointsRadius(10);
-                                seriesCompac4.setThickness(5);
-                                graph.addSeries(seriesCompac4);
-                            }
-                        } else {
-                            if (bundle.containsKey("area4")) {
-                                area4 = bundle.getParcelableArrayList("area4");
-                                String legend4 = area4.get(0).getAreaNome().toString();
-                                LineGraphSeries<DataPoint> seriesCompac4 = new LineGraphSeries<DataPoint>(new DataPoint[]{
-
-                                });
-                                int tam4 = area4.size();
-                                for (int i = 0; i < tam4; i++) {
-                                    int d = area4.get(i).getQtdQuest();
-                                    DataPoint dp4 = new DataPoint(i, d);
-                                    seriesCompac4.appendData(dp4, true, tam4);
-                                }
-                                seriesCompac4.setTitle(legend4);
-                                seriesCompac4.setColor(Color.RED);
-                                seriesCompac4.setDrawDataPoints(true);
-                                seriesCompac4.setDataPointsRadius(10);
-                                seriesCompac4.setThickness(5);
-                                graph.addSeries(seriesCompac4);
-                            }
-                        }
-
-                    }
-                }
-                else {//inicio do else 1
-                    //else se não tiver o 1
-                    if (bundle.containsKey("area2")) {
-                        area2 = bundle.getParcelableArrayList("area2");
-                        String legend2 = area2.get(0).getAreaNome().toString();
-                        LineGraphSeries<DataPoint> seriesCompac2 = new LineGraphSeries<DataPoint>(new DataPoint[]{
-
-                        });
-                        int tam2 = area2.size();
-                        for (int i = 0; i < tam2; i++) {
-                            String data2 = area2.get(i).getDataRealiz().toString();
-                            String[]temp2 = data2.split("-");
-                            diasCompac[i] = temp2[0];
-                            int b = area2.get(i).getQtdQuest();
-                            DataPoint dp2 = new DataPoint(i, b);
-                            seriesCompac2.appendData(dp2, true, tam2);
-                        }
-                        seriesCompac2.setTitle(legend2);
-                        seriesCompac2.setColor(Color.GREEN);
-                        seriesCompac2.setDrawDataPoints(true);
-                        seriesCompac2.setDataPointsRadius(10);
-                        seriesCompac2.setThickness(5);
-                        graph.addSeries(seriesCompac2);
-
-                        if (bundle.containsKey("area3")) {
-                            area3 = bundle.getParcelableArrayList("area3");
-                            String legend3 = area3.get(0).getAreaNome().toString();
-                            LineGraphSeries<DataPoint> seriesCompac3 = new LineGraphSeries<DataPoint>(new DataPoint[]{
-
-                            });
-                            int tam3 = area3.size();
-                            for (int i = 0; i < tam3; i++) {
-                                int c = area3.get(i).getQtdQuest();
-                                DataPoint dp3 = new DataPoint(i, c);
-                                seriesCompac3.appendData(dp3, true, tam3);
-                            }
-                            seriesCompac3.setTitle(legend3);
-                            seriesCompac3.setColor(Color.BLUE);
-                            seriesCompac3.setDrawDataPoints(true);
-                            seriesCompac3.setDataPointsRadius(10);
-                            seriesCompac3.setThickness(5);
-                            graph.addSeries(seriesCompac3);
-
-                            if (bundle.containsKey("area4")) {
-                                area4 = bundle.getParcelableArrayList("area4");
-                                String legend4 = area4.get(0).getAreaNome().toString();
-                                LineGraphSeries<DataPoint> seriesCompac4 = new LineGraphSeries<DataPoint>(new DataPoint[]{
-
-                                });
-                                int tam4 = area4.size();
-                                for (int i = 0; i < tam4; i++) {
-                                    int d = area4.get(i).getQtdQuest();
-                                    DataPoint dp4 = new DataPoint(i, d);
-                                    seriesCompac4.appendData(dp4, true, tam4);
-                                }
-                                seriesCompac4.setTitle(legend4);
-                                seriesCompac4.setColor(Color.RED);
-                                seriesCompac4.setDrawDataPoints(true);
-                                seriesCompac4.setDataPointsRadius(10);
-                                seriesCompac4.setThickness(5);
-                                graph.addSeries(seriesCompac4);
-                            }
-                        } else {//if do tres
-                            //tem o 1 o 2 e não tem o tres
-                            if (bundle.containsKey("area4")) {
-                                area4 = bundle.getParcelableArrayList("area4");
-                                String legend4 = area4.get(0).getAreaNome().toString();
-                                LineGraphSeries<DataPoint> seriesCompac4 = new LineGraphSeries<DataPoint>(new DataPoint[]{
-
-                                });
-                                int tam4 = area4.size();
-                                for (int i = 0; i < tam4; i++) {
-                                    int d = area4.get(i).getQtdQuest();
-                                    DataPoint dp4 = new DataPoint(i, d);
-                                    seriesCompac4.appendData(dp4, true, tam4);
-                                }
-                                seriesCompac4.setTitle(legend4);
-                                seriesCompac4.setColor(Color.RED);
-                                seriesCompac4.setDrawDataPoints(true);
-                                seriesCompac4.setDataPointsRadius(10);
-                                seriesCompac4.setThickness(5);
-                                graph.addSeries(seriesCompac4);
-                            }
-                        }//fim do if do tres
-                    }
-                    else {//else do dois
-                        //não tem o 1  não tem o dois
-                        if (bundle.containsKey("area3")) {
-                            area3 = bundle.getParcelableArrayList("area3");
-                            String legend3 = area3.get(0).getAreaNome().toString();
-                            LineGraphSeries<DataPoint> seriesCompac3 = new LineGraphSeries<DataPoint>(new DataPoint[]{
-
-                            });
-                            int tam3 = area3.size();
-                            for (int i = 0; i < tam3; i++) {
-                                String data2 = area2.get(i).getDataRealiz().toString();
-                                String[]temp2 = data2.split("-");
-                                diasCompac[i] = temp2[0];
-                                int c = area3.get(i).getQtdQuest();
-                                DataPoint dp3 = new DataPoint(i, c);
-                                seriesCompac3.appendData(dp3, true, tam3);
-                            }
-                            seriesCompac3.setTitle(legend3);
-                            seriesCompac3.setColor(Color.BLUE);
-                            seriesCompac3.setDrawDataPoints(true);
-                            seriesCompac3.setDataPointsRadius(10);
-                            seriesCompac3.setThickness(5);
-                            graph.addSeries(seriesCompac3);
-
-                            if (bundle.containsKey("area4")) {
-                                area4 = bundle.getParcelableArrayList("area4");
-                                String legend4 = area4.get(0).getAreaNome().toString();
-                                LineGraphSeries<DataPoint> seriesCompac4 = new LineGraphSeries<DataPoint>(new DataPoint[]{
-
-                                });
-                                int tam4 = area4.size();
-                                for (int i = 0; i < tam4; i++) {
-                                    int d = area4.get(i).getQtdQuest();
-                                    DataPoint dp4 = new DataPoint(i, d);
-                                    seriesCompac4.appendData(dp4, true, tam4);
-                                }
-                                seriesCompac4.setTitle(legend4);
-                                seriesCompac4.setColor(Color.RED);
-                                seriesCompac4.setDrawDataPoints(true);
-                                seriesCompac4.setDataPointsRadius(10);
-                                seriesCompac4.setThickness(5);
-                                graph.addSeries(seriesCompac4);
-                            }
-                        }
-                        else {
-                            if (bundle.containsKey("area4")) {
-                                area4 = bundle.getParcelableArrayList("area4");
-                                String legend4 = area4.get(0).getAreaNome().toString();
-                                LineGraphSeries<DataPoint> seriesCompac4 = new LineGraphSeries<DataPoint>(new DataPoint[]{
-
-                                });
-                                int tam4 = area4.size();
-                                for (int i = 0; i < tam4; i++) {
-                                    String data2 = area2.get(i).getDataRealiz().toString();
-                                    String[]temp2 = data2.split("-");
-                                    diasCompac[i] = temp2[0];
-                                    int d = area4.get(i).getQtdQuest();
-                                    DataPoint dp4 = new DataPoint(i, d);
-                                    seriesCompac4.appendData(dp4, true, tam4);
-                                }
-                                seriesCompac4.setTitle(legend4);
-                                seriesCompac4.setColor(Color.RED);
-                                seriesCompac4.setDrawDataPoints(true);
-                                seriesCompac4.setDataPointsRadius(10);
-                                seriesCompac4.setThickness(5);
-                                graph.addSeries(seriesCompac4);
-                            }
-                        }
-                    }
-                }//fim do else 1
-                staticLabelsFormatter = new StaticLabelsFormatter(graph);
-                staticLabelsFormatter.setHorizontalLabels(diasCompac);
-                graph.getGridLabelRenderer().setLabelFormatter(staticLabelsFormatter);
-                graph.getGridLabelRenderer().setNumHorizontalLabels(8);
-                graph.getLegendRenderer().setVisible(true);
-                graph.getLegendRenderer().setAlign(LegendRenderer.LegendAlign.BOTTOM);
                 break;
             case 5:
                 //implantar grafico 5
+                Toast.makeText(GrafActivity.this, "Voce clicou no grafico Simulados Completos X Semana"+tipoGraf, Toast.LENGTH_SHORT).show();
                 break;
 
         }

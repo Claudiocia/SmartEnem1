@@ -2,8 +2,9 @@
 <project version="4">
   <component name="ProjectModuleManager">
     <modules>
-      <module fileurl="file://$PROJECT_DIR$/SmartEnem.iml" filepath="$PROJECT_DIR$/SmartEnem.iml" />
+      <module fileurl="file://$PROJECT_DIR$/SmartEnem1.iml" filepath="$PROJECT_DIR$/SmartEnem1.iml" />
       <module fileurl="file://$PROJECT_DIR$/app/app.iml" filepath="$PROJECT_DIR$/app/app.iml" />
+      <module fileurl="file://$PROJECT_DIR$/jsoup-1.11.2/jsoup-1.11.2.iml" filepath="$PROJECT_DIR$/jsoup-1.11.2/jsoup-1.11.2.iml" />
       <module fileurl="file://$PROJECT_DIR$/jsoup-1.8.2/jsoup-1.8.2.iml" filepath="$PROJECT_DIR$/jsoup-1.8.2/jsoup-1.8.2.iml" />
     </modules>
   </component>

@@ -4,10 +4,12 @@ import android.content.ContentValues;
 import android.content.Context;
 import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
+import android.util.Log;
 
 import java.util.ArrayList;
 import java.util.List;
 
+import br.com.ciadeideias.smartenem.GrafActivity;
 import br.com.ciadeideias.smartenem.model.Meta;
 
 /**
@@ -59,18 +61,25 @@ public class BDMeta {
 
         String[] colunas = new String[]{"idmeta", "nome_meta", "valor_meta", "valor_exec", "desemp", "nivel_dedic" };
         String[] args = new String[]{""+id};
-        Cursor cursor = bd.query("metas", colunas, "idmeta = ?", args, null, null, null);
+        try {
+            Cursor cursor = bd.query("metas", colunas, "idmeta = ?", args, null, null, null);
 
-        if(cursor.getCount() > 0){
-            cursor.moveToFirst();
-            meta.setIdMeta(cursor.getInt(0));
-            meta.setNomeMeta(cursor.getString(1));
-            meta.setValorMeta(cursor.getInt(2));
-            meta.setValorExec(cursor.getInt(3));
-            meta.setDesempPerc(cursor.getString(4));
-            meta.setNivelDedic(cursor.getString(5));
+            if (cursor.getCount() > 0) {
+                cursor.moveToFirst();
+                meta.setIdMeta(cursor.getInt(0));
+                meta.setNomeMeta(cursor.getString(1));
+                meta.setValorMeta(cursor.getInt(2));
+                meta.setValorExec(cursor.getInt(3));
+                meta.setDesempPerc(cursor.getString(4));
+                meta.setNivelDedic(cursor.getString(5));
+            }
+            cursor.close();
+        }catch (Exception e) {
+
+            Log.d("banco", e.getMessage());
+            bd.close();
         }
-        bd.close();
+
         return meta;
     }
 
@@ -97,6 +106,7 @@ public class BDMeta {
         }
 
         cursor.close();
+        bd.close();
         return listMeta;
     }
 }

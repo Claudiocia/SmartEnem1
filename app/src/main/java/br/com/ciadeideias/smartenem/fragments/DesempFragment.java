@@ -91,7 +91,7 @@ public class DesempFragment extends Fragment implements RecyclerViewOnClickListe
                     //Toast.makeText(getActivity(), "Achou apenas a lista da area 4", Toast.LENGTH_LONG).show();
                     startActivity(it);
                     break;
-                case 30:
+                case 300:
                     it.putExtra("area3", list3);
                     //Toast.makeText(getActivity(), "Achou apenas a lista da area 3", Toast.LENGTH_LONG).show();
                     startActivity(it);
@@ -275,14 +275,94 @@ public class DesempFragment extends Fragment implements RecyclerViewOnClickListe
         else if (id == 3){
             titulo ="Tempo dedicado aos estudos X Dias / últimos 7 dias";
             it.putExtra("titulo", titulo);
-            list1 = bdGraf.tempoEstudo();
-            if (list1.isEmpty()){
-                Toast.makeText(getActivity(), "Você não realizou nos últimos 7 dias nenhuma " +
-                        "atividade de estudo em qualquer área", Toast.LENGTH_LONG).show();
-            }
-            else {
-                it.putExtra("tempo", list1 );
-                startActivity(it);
+            list1 = bdGraf.estudosDiarios(area1);
+            list2 = bdGraf.estudosDiarios(area2);
+            list3 = bdGraf.estudosDiarios(area3);
+            list4 = bdGraf.estudosDiarios(area4);
+
+            int result = testeListas(list1, list2, list3, list4);
+
+            switch (result){
+                case 0:
+                    Toast.makeText(getActivity(), "Você não realizou nos ultimos 7 dias nenhum " +
+                            "estudo para visualizar gráficos", Toast.LENGTH_LONG).show();
+                    break;
+                case 4:
+                    it.putExtra("area4", list4);
+                    startActivity(it);
+                    break;
+                case 30:
+                    it.putExtra("area3", list3);
+                    startActivity(it);
+                    break;
+                case 200:
+                    it.putExtra("area2", list2);
+                    startActivity(it);
+                    break;
+                case 1000:
+                    it.putExtra("area1", list1);
+                    startActivity(it);
+                    break;
+                case 34:
+                    it.putExtra("area3", list3);
+                    it.putExtra("area4", list4);
+                    startActivity(it);
+                    break;
+                case 230:
+                    it.putExtra("area2", list2);
+                    it.putExtra("area3", list3);
+                    startActivity(it);
+                    break;
+                case 204:
+                    it.putExtra("area2", list2);
+                    it.putExtra("area4", list4);
+                    startActivity(it);
+                    break;
+                case 1200:
+                    it.putExtra("area1", list1);
+                    it.putExtra("area2", list2);
+                    startActivity(it);
+                    break;
+                case 1030:
+                    it.putExtra("area1", list1);
+                    it.putExtra("area3", list3);
+                    startActivity(it);
+                    break;
+                case 1004:
+                    it.putExtra("area1", list1);
+                    it.putExtra("area4", list4);
+                    startActivity(it);
+                    break;
+                case 1230:
+                    it.putExtra("area1", list1);
+                    it.putExtra("area2", list2);
+                    it.putExtra("area3", list3);
+                    startActivity(it);
+                    break;
+                case 1204:
+                    it.putExtra("area1", list1);
+                    it.putExtra("area2", list2);
+                    it.putExtra("area4", list4);
+                    startActivity(it);
+                    break;
+                case 1034:
+                    it.putExtra("area1", list1);
+                    it.putExtra("area3", list3);
+                    it.putExtra("area4", list4);
+                    startActivity(it);
+                    break;
+                case 234:
+                    it.putExtra("area2", list2);
+                    it.putExtra("area3", list3);
+                    it.putExtra("area4", list4);
+                    startActivity(it);
+                    break;
+                default:
+                    it.putExtra("area1", list1);
+                    it.putExtra("area2", list2);
+                    it.putExtra("area3", list3);
+                    it.putExtra("area4", list4);
+                    startActivity(it);
             }
         }
         else if (id == 4){
@@ -377,7 +457,7 @@ public class DesempFragment extends Fragment implements RecyclerViewOnClickListe
                     startActivity(it);
             }
         }else if (id == 5){
-            titulo ="Simulados Completos X Dias / últimos 7 dias";
+            titulo ="Simulados Completos X Desempenho";
             it.putExtra("titulo", titulo);
             list1 = bdGraf.simulComplet();
             if (list1.isEmpty()){
@@ -389,32 +469,7 @@ public class DesempFragment extends Fragment implements RecyclerViewOnClickListe
                 startActivity(it);
             }
         }
-        else if (id == 6){
-            titulo ="Simulados Completos X Tempo usado / últimos 7 dias";
-            it.putExtra("titulo", titulo);
-            list1 = bdGraf.simulComplet();
-            if (list1.isEmpty()){
-                Toast.makeText(getActivity(), "Você não realizou nos últimos 7 dias nenhum " +
-                        "simulado completo", Toast.LENGTH_LONG).show();
-            }
-            else {
-                it.putExtra("tempoComple", list1 );
-                startActivity(it);
-            }
-        }
-        else if (id == 7){
-            titulo ="Pontos Alcançados X Simulados Completos / últimos 7 dias";
-            it.putExtra("titulo", titulo);
-            list1 = bdGraf.simulComplet();
-            if (list1.isEmpty()){
-                Toast.makeText(getActivity(), "Você não realizou nos últimos 7 dias nenhum " +
-                        "simulado completo", Toast.LENGTH_LONG).show();
-            }
-            else {
-                it.putExtra("pontosComple", list1 );
-                startActivity(it);
-            }
-        }
+
     }
 
     public int testeListas(List<Grafico> list1, List<Grafico> list2, List<Grafico> list3, List<Grafico> list4){

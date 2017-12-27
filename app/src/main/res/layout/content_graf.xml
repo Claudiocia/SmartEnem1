@@ -31,11 +31,10 @@
         android:padding="10dp">
     </LinearLayout>
 
-    <com.jjoe64.graphview.GraphView
-        android:layout_width="wrap_content"
-        android:layout_height="400dp"
-        android:layout_below="@+id/tv_tit_grafico_"
-        android:id="@+id/graph" />
-
+    <include
+        layout="@layout/layout_tabela"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_below="@+id/tv_tit_grafico_"/>
 
 </RelativeLayout>
