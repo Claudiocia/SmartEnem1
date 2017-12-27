@@ -737,6 +737,8 @@ public class GrafActivity extends AppCompatActivity
                 //implantar grafico 4
 
 
+
+
                 //impressão do gráfico
 
                 tvLin1Col1.setText("Área de Estudos");
