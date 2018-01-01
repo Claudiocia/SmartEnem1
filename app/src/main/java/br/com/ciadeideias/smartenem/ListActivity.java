@@ -1,9 +1,11 @@
 package br.com.ciadeideias.smartenem;
 
 import android.content.Context;
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.os.Bundle;
 import android.support.design.widget.Snackbar;
+import android.support.v7.app.AlertDialog;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.support.design.widget.NavigationView;
@@ -120,7 +122,19 @@ public class ListActivity extends AppCompatActivity
         }else if (fabMenu.isOpened()){
             fabMenu.close(true);
         } else {
-            super.onBackPressed();
+            new AlertDialog.Builder(this).setTitle("Alerta do sistema")
+                    .setMessage("Você quer encerrar o programa agora?")
+                    .setPositiveButton("Sim", new DialogInterface.OnClickListener() {
+                        @Override
+                        public void onClick(DialogInterface dialog, int which) {
+                            ListActivity.super.onBackPressed();
+                        }
+                    }).setNegativeButton("Não", new DialogInterface.OnClickListener() {
+                @Override
+                public void onClick(DialogInterface dialog, int which) {
+
+                }
+            }).show();
         }
     }
 
@@ -137,7 +151,9 @@ public class ListActivity extends AppCompatActivity
             //Toast.makeText(ListActivity.this, "Voce Clicou no Menu Home", Toast.LENGTH_SHORT).show();
 
         } else if (id == R.id.nav_plan_estud) {
-            Toast.makeText(ListActivity.this, "Voce Clicou no Menu Plano de Estudo", Toast.LENGTH_SHORT).show();
+            Intent it = new Intent(ListActivity.this, PlanEstuActivity.class);
+            startActivity(it);
+            finish();
 
         } else if (id == R.id.nav_meta) {
             Intent it = new Intent(ListActivity.this, MetasActivity.class);

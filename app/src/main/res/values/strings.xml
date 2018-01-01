@@ -57,4 +57,8 @@
     <string name="tit_graficos">Gráficos</string>
     <string name="title_activity_graf">Grafico</string>
 
+    <!-- Strings Plano de Estudos -->
+    <string name="titulo_planestud">Plano de Estudos</string>
+    <string name="titulo_barra">Planejamento</string>
+
 </resources>

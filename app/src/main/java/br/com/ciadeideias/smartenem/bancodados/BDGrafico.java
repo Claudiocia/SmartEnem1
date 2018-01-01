@@ -91,7 +91,8 @@ public class BDGrafico {
                 "resp_errada", "pts_simul_compac",
                 "pts_simul_comple", "temp_ativo"};
 
-        Cursor cursor = bd.rawQuery("SELECT * FROM graficos WHERE area_nome = ? AND data_realiz BETWEEN ? AND ?", args);
+        //Cursor cursor = bd.rawQuery("SELECT * FROM graficos WHERE area_nome = ? AND data_realiz BETWEEN ? AND ?", args);
+        Cursor cursor = bd.query("graficos", colunas, "area_nome = ? AND data_realiz BETWEEN ? AND ?", args, null, null, null);
 
         if (cursor.getCount() > 0){
             cursor.moveToFirst();
@@ -121,15 +122,18 @@ public class BDGrafico {
         ArrayList<Grafico> graficoList = new ArrayList<Grafico>();
 
         Calendar calendar = Calendar.getInstance();
+
         String dIni, dFim;
-        dFim = (new SimpleDateFormat("dd/MM/yyyy").format(calendar.getTime()));
-        calendar.add(DAY_OF_MONTH, -7);
-        dIni = (new SimpleDateFormat("dd/MM/yyyy").format(calendar.getTime()));
+        dFim = (new SimpleDateFormat("yyyy-MM-dd").format(calendar.getTime()));
+        System.out.println("Data final: "+dFim);
+        calendar.add(DAY_OF_MONTH, -6);
+        dIni = (new SimpleDateFormat("yyyy-MM-dd").format(calendar.getTime()));
+        System.out.println("Data Inicial: "+dIni);
 
         String[] args = new String[]{area, dIni, dFim};
 
 
-        Cursor cursor = bd.rawQuery("SELECT * FROM graficos WHERE simul_compac_area = ? AND data_realiz >= ? AND data_realiz <= ? GROUP BY simul_compac_area ORDER BY data_realiz ASC", args);
+        Cursor cursor = bd.rawQuery("SELECT * FROM graficos WHERE simul_compac_area = ? AND data_realiz BETWEEN ? AND ?", args);
 
         if (cursor.getCount() > 0){
             cursor.moveToFirst();
@@ -159,15 +163,10 @@ public class BDGrafico {
         ArrayList<Grafico> graficoList = new ArrayList<Grafico>();
         String arg = "s";
 
-        Calendar calendar = Calendar.getInstance();
-        String dIni, dFim;
-        dFim = (new SimpleDateFormat("dd/MM/yyyy").format(calendar.getTime()));
-        calendar.add(DAY_OF_MONTH, -8);
-        dIni = (new SimpleDateFormat("dd/MM/yyyy").format(calendar.getTime()));
 
-        String[] args = new String[]{arg, dIni, dFim};
+        String[] args = new String[]{arg};
 
-        Cursor cursor = bd.rawQuery("SELECT * FROM graficos WHERE simul_comple = ? AND data_realiz >= ? AND data_realiz <= ?", args);
+        Cursor cursor = bd.rawQuery("SELECT * FROM graficos WHERE simul_comple = ? ORDER BY idgrafico DESC LIMIT 4", args);
 
         if (cursor.getCount() > 0){
             cursor.moveToFirst();

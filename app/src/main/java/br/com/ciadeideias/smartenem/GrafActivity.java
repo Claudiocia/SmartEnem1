@@ -16,7 +16,11 @@ import android.widget.EditText;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
+import java.util.Calendar;
+import java.util.Date;
 
 import br.com.ciadeideias.smartenem.bancodados.BDMeta;
 import br.com.ciadeideias.smartenem.model.Grafico;
@@ -25,7 +29,7 @@ import br.com.ciadeideias.smartenem.utils.Desempenho;
 
 public class GrafActivity extends AppCompatActivity
         implements NavigationView.OnNavigationItemSelectedListener {
-    ArrayList<Grafico> area1, area2, area3, area4;
+    ArrayList<Grafico> area1, area2, area3, area4, mlist;
 
     String titulo, legenda;
     int tipoGraf;
@@ -686,7 +690,7 @@ public class GrafActivity extends AppCompatActivity
                     tempoMedio4c = String.format("%2d:%2d", horasM4, minutosM4);
 
                 }else{
-                    area4c = "Matemática e suas Tecnologias";
+                    area4c = "Linguagens, Códigos e suas Tecnologias";
                     tempoMedio4c = "0:00";
                     tempoTotal4c = "0:00";
                     desempSema4c = "Não avaliado";
@@ -736,7 +740,171 @@ public class GrafActivity extends AppCompatActivity
             case 4:
                 //implantar grafico 4
 
+                String area1d, area2d = null, area3d = null, area4d = null;
+                int numSimul1d, numSimul2d = 0, numSimul3d = 0, numSimul4d = 0;
+                int somaQuest1d = 0, somaQuest2d = 0, somaQuest3d = 0, somaQuest4d = 0;
+                int somaAcert1d = 0, somaAcert2d = 0, somaAcert3d = 0, somaAcert4d = 0;
+                int percAcert1d = 0, percAcert2d = 0, percAcert3d = 0, percAcert4d = 0;
 
+                //Dados área1
+
+                ArrayList<Integer> d1 = new ArrayList<Integer>();
+
+                if (bundle.containsKey("area1")){
+
+                    area1 = bundle.getParcelableArrayList("area1");
+                    area1d = area1.get(0).getAreaNome().toString();
+                    numSimul1d = area1.size();
+
+                    for (int i = 0; i < numSimul1d; i++){
+                        d1.add(area1.get(i).getQtdQuest());
+                    }
+                    for (int i = 0; i < d1.size(); i++){
+                        somaQuest1d += d1.get(i);
+                    }
+                    d1.clear();
+
+                    for (int i = 0; i < numSimul1d; i++){
+                        d1.add(area1.get(i).getRespCerta());
+                    }
+                    for (int i = 0; i < d1.size(); i++){
+                        somaAcert1d += d1.get(i);
+                    }
+
+                    if (somaQuest1d == 0){
+                        percAcert1d = 0;
+                    }
+                    else {
+                        percAcert1d = (somaAcert1d * 100) / somaQuest1d;
+                    }
+
+                }else{
+                    area1d = "Ciências Humanas e suas Tecnologias";
+                    numSimul1d = 0;
+                    somaQuest1d = 0;
+                    somaAcert1d = 0;
+                    percAcert1d = 0;
+                }
+
+                //Dados área2
+
+                ArrayList<Integer> d2 = new ArrayList<Integer>();
+
+                if (bundle.containsKey("area2")){
+
+                    area2 = bundle.getParcelableArrayList("area2");
+                    area2d = area2.get(0).getAreaNome().toString();
+                    numSimul2d = area2.size();
+
+                    for (int i = 0; i < numSimul2d; i++){
+                        d2.add(area2.get(i).getQtdQuest());
+                    }
+                    for (int i = 0; i < d2.size(); i++){
+                        somaQuest2d += d2.get(i);
+                    }
+                    d2.clear();
+
+                    for (int i = 0; i < numSimul2d; i++){
+                        d2.add(area2.get(i).getRespCerta());
+                    }
+                    for (int i = 0; i < d2.size(); i++){
+                        somaAcert2d += d2.get(i);
+                    }
+
+                    if (somaQuest2d == 0){
+                        percAcert2d = 0;
+                    }
+                    else {
+                        percAcert2d = (somaAcert2d * 100) / somaQuest2d;
+                    }
+
+                }else{
+                    area2d = "Ciências Naturais e suas Tecnologias";
+                    numSimul2d = 0;
+                    somaQuest2d = 0;
+                    somaAcert2d = 0;
+                    percAcert2d = 0;
+                }
+
+                //Dados área3
+
+                ArrayList<Integer> d3 = new ArrayList<Integer>();
+
+                if (bundle.containsKey("area3")){
+
+                    area3 = bundle.getParcelableArrayList("area3");
+                    area3d = area3.get(0).getAreaNome().toString();
+                    numSimul3d = area3.size();
+
+                    for (int i = 0; i < numSimul3d; i++){
+                        d3.add(area3.get(i).getQtdQuest());
+                    }
+                    for (int i = 0; i < d3.size(); i++){
+                        somaQuest3d += d3.get(i);
+                    }
+                    d3.clear();
+
+                    for (int i = 0; i < numSimul3d; i++){
+                        d3.add(area3.get(i).getRespCerta());
+                    }
+                    for (int i = 0; i < d3.size(); i++){
+                        somaAcert3d += d3.get(i);
+                    }
+
+                    if (somaQuest3d == 0){
+                        percAcert3d = 0;
+                    }
+                    else {
+                        percAcert3d = (somaAcert3d * 100) / somaQuest3d;
+                    }
+
+                }else{
+                    area3d = "Matemática e suas Tecnologias";
+                    numSimul3d = 0;
+                    somaQuest3d = 0;
+                    somaAcert3d = 0;
+                    percAcert3d = 0;
+                }
+
+                //Dados área4
+
+                ArrayList<Integer> d4 = new ArrayList<Integer>();
+
+                if (bundle.containsKey("area4")){
+
+                    area4 = bundle.getParcelableArrayList("area4");
+                    area4d = area4.get(0).getAreaNome().toString();
+                    numSimul4d = area4.size();
+
+                    for (int i = 0; i < numSimul4d; i++){
+                        d4.add(area4.get(i).getQtdQuest());
+                    }
+                    for (int i = 0; i < d4.size(); i++){
+                        somaQuest4d += d4.get(i);
+                    }
+                    d4.clear();
+
+                    for (int i = 0; i < numSimul4d; i++){
+                        d4.add(area4.get(i).getRespCerta());
+                    }
+                    for (int i = 0; i < d4.size(); i++){
+                        somaAcert4d += d4.get(i);
+                    }
+
+                    if (somaQuest4d == 0){
+                        percAcert4d = 0;
+                    }
+                    else {
+                        percAcert4d = (somaAcert4d * 100) / somaQuest4d;
+                    }
+
+                }else{
+                    area4d = "Linguagens, Códigos e suas Tecnologias";
+                    numSimul4d = 0;
+                    somaQuest4d = 0;
+                    somaAcert4d = 0;
+                    percAcert4d = 0;
+                }
 
 
                 //impressão do gráfico
@@ -747,44 +915,200 @@ public class GrafActivity extends AppCompatActivity
                 tvLin1Col4.setText("Qtd Acerto");
                 tvLin1Col5.setText("% Acerto");
 
-                //tvLin2Col1.setText(area1c);
-                //tvLin2Col2.setText(""+numDias1c);
-                //tvLin2Col3.setText(tempoTotal1c+"h");
-                //tvLin2Col4.setText(tempoMedio1c+"h");
-                //tvLin2Col5.setText(desempSema1c);
+                tvLin2Col1.setText(area1d);
+                tvLin2Col2.setText(""+numSimul1d);
+                tvLin2Col3.setText(somaQuest1d+"");
+                tvLin2Col4.setText(somaAcert1d+"");
+                tvLin2Col5.setText(percAcert1d+"%");
 
-                //tvLin3Col1.setText(area2c);
-                //tvLin3Col2.setText(""+numDias2c);
-                //tvLin3Col3.setText(tempoTotal2c+"h");
-                //tvLin3Col4.setText(tempoMedio2c+'h');
-                //tvLin3Col5.setText(desempSema2c);
+                tvLin3Col1.setText(area2d);
+                tvLin3Col2.setText(""+numSimul2d);
+                tvLin3Col3.setText(somaQuest2d+"");
+                tvLin3Col4.setText(somaAcert2d+"");
+                tvLin3Col5.setText(percAcert2d+"%");
 
-                //tvLin4Col1.setText(area3c);
-                //tvLin4Col2.setText(""+numDias3c);
-                //tvLin4Col3.setText(tempoTotal3c+"h");
-                //tvLin4Col4.setText(tempoMedio3c+'h');
-                //tvLin4Col5.setText(desempSema3c);
+                tvLin4Col1.setText(area3d);
+                tvLin4Col2.setText(""+numSimul3d);
+                tvLin4Col3.setText(somaQuest3d+"");
+                tvLin4Col4.setText(somaAcert3d+"");
+                tvLin4Col5.setText(percAcert3d+"%");
 
-                //tvLin5Col1.setText(area4c);
-                //tvLin5Col2.setText(""+numDias4c);
-                //tvLin5Col3.setText(tempoTotal4c+"h");
-                //tvLin5Col4.setText(tempoMedio4c+"h");
-                //tvLin5Col5.setText(desempSema4c);
+                tvLin5Col1.setText(area4d);
+                tvLin5Col2.setText(""+numSimul4d);
+                tvLin5Col3.setText(""+somaQuest4d);
+                tvLin5Col4.setText(""+somaAcert4d);
+                tvLin5Col5.setText(percAcert4d+"%");
 
                 legenda ="Legenda:\n\r" +
-                        "Qtd Dias - É a quantidade de dias em que houve estudo na área correspondente ao longo dos últimos 7(sete) dias.\n\r" +
-                        "Tempo Tot - É a o tempo total dedicado ao estudo por área ao longo dos últimos 7(sete) dias.\n\r" +
-                        "Média /dia - Corresponde a média do tempo de estudo por área por dia nos últimos 7(sete) dias.\n\r" +
-                        "Desemp - Classificação do seu desempenho de estudo nos ultimos 7(sete) dias em relação ao nível de dedicação.";
+                        "Simulados - É a quantidade total de simulados concluidos por área nos últimos 7(sete) dias.\n\r" +
+                        "Qtd Quest - É a quantidade total de questões respondidas nos simulados nos últimos 7(sete) dias.\n\r" +
+                        "Qtd Acerto - É a quantidade total de respostas certas nos simulados realizados nos últimos 7(sete) dias.\n\r" +
+                        "% Acerto - É o percentual de acerto sobre o total das questões.";
 
                 tvTabLegend.setText(legenda);
 
                 break;
             case 5:
                 //implantar grafico 5
-                Toast.makeText(GrafActivity.this, "Voce clicou no grafico Simulados Completos X Semana"+tipoGraf, Toast.LENGTH_SHORT).show();
-                break;
+                String dataRealiz1 = null, dataRealiz2 = null, dataRealiz3 = null, dataRealiz4 = null, data1, data2, data3, data4;
+                int pontos1 = 0, pontos2 = 0, pontos3 = 0, pontos4 = 0;
+                int tempoProva1a = 0, tempoProva2a = 0, tempoProva3a = 0, tempoProva4a = 0;
+                String tempoSimul1 = null, tempoSimul2 = null, tempoSimul3 = null, tempoSimul4 = null;
+                int qtdAcert1 = 0, qtdAcert2 = 0, qtdAcert3 = 0, qtdAcert4 = 0;
+                int qtdQuest1 = 0, qtdQuest2 = 0, qtdQuest3 = 0, qtdQuest4 = 0;
+                int acertSimul1 = 0, acertSimul2 = 0, acertSimul3 = 0, acertSimul4 = 0;
 
+                mlist = bundle.getParcelableArrayList("simulComple");
+
+
+                if (mlist.isEmpty()) {
+
+                    new AlertDialog.Builder(this).setTitle("Alerta do sistema")
+                            .setMessage("Você ainda não realizou nenhumm simulado Quer fazer agora?")
+                            .setPositiveButton("Sim", new DialogInterface.OnClickListener() {
+                                @Override
+                                public void onClick(DialogInterface dialog, int which) {
+                                    Intent it = new Intent(GrafActivity.this, MetasActivity.class);
+                                    startActivity(it);
+                                    finish();
+                                }
+                            }).setNegativeButton("Não", new DialogInterface.OnClickListener() {
+                        @Override
+                        public void onClick(DialogInterface dialog, int which) {
+                            Intent it = new Intent(GrafActivity.this, DesempenhoActivity.class);
+                            startActivity(it);
+                            finish();
+                        }
+                    }).show();
+
+
+                }else {
+
+                    data1 = mlist.get(0).getDataRealiz().toString();
+                    data2 = mlist.get(1).getDataRealiz().toString();
+                    data3 = mlist.get(2).getDataRealiz().toString();
+                    data4 = mlist.get(3).getDataRealiz().toString();
+
+                    String data1a[] = data1.split("-");
+                    dataRealiz1 = data1a[2]+"/"+data1a[1]+"/"+data1a[0];
+
+                    String data2a[] = data2.split("-");
+                    dataRealiz2 = data2a[2]+"/"+data2a[1]+"/"+data2a[0];
+
+                    String data3a[] = data3.split("-");
+                    dataRealiz3 = data3a[2]+"/"+data3a[1]+"/"+data3a[0];
+
+                    String data4a[] = data4.split("-");
+                    dataRealiz4 = data4a[2]+"/"+data4a[1]+"/"+data4a[0];
+
+
+                    pontos1 = mlist.get(0).getPtsSimulComple();
+                    pontos2 = mlist.get(1).getPtsSimulComple();
+                    pontos3 = mlist.get(2).getPtsSimulComple();
+                    pontos4 = mlist.get(3).getPtsSimulComple();
+
+                    tempoProva1a = (mlist.get(0).getTempAtivo()) * 1000;
+                    long min1 = (tempoProva1a / 60000)%60;
+                    long hor1 = tempoProva1a / 3600000;
+                    tempoSimul1 = String.format("%2d:%2d", hor1, min1);
+
+                    tempoProva2a = (mlist.get(1).getTempAtivo()) * 1000;
+                    long min2 = (tempoProva2a / 60000)%60;
+                    long hor2 = tempoProva2a / 3600000;
+                    tempoSimul2 = String.format("%2d:%2d", hor2, min2);
+
+                    tempoProva3a = (mlist.get(2).getTempAtivo()) * 1000;
+                    long min3 = (tempoProva3a / 60000)%60;
+                    long hor3 = tempoProva3a / 3600000;
+                    tempoSimul3 = String.format("%2d:%2d", hor3, min3);
+
+                    tempoProva4a = (mlist.get(3).getTempAtivo()) * 1000;
+                    long min4 = (tempoProva4a / 60000)%60;
+                    long hor4 = tempoProva4a / 3600000;
+                    tempoSimul4 = String.format("%2d:%2d", hor4, min4);
+
+                    qtdAcert1 = mlist.get(0).getRespCerta();
+                    qtdAcert2 = mlist.get(1).getRespCerta();
+                    qtdAcert3 = mlist.get(2).getRespCerta();
+                    qtdAcert4 = mlist.get(3).getRespCerta();
+
+                    qtdQuest1 = mlist.get(0).getQtdQuest();
+                    qtdQuest2 = mlist.get(1).getQtdQuest();
+                    qtdQuest3 = mlist.get(2).getQtdQuest();
+                    qtdQuest4 = mlist.get(3).getQtdQuest();
+
+                    if (qtdQuest1 == 0){
+                        acertSimul1 = 0;
+                    }
+                    else {
+                        acertSimul1 = (qtdAcert1 * 100) / qtdQuest1;
+                    }
+
+                    if (qtdQuest2 == 0){
+                        acertSimul2 = 0;
+                    }
+                    else {
+                        acertSimul2 = (qtdAcert2 * 100) / qtdQuest2;
+                    }
+
+                    if (qtdQuest3 == 0){
+                        acertSimul3 = 0;
+                    }
+                    else {
+                        acertSimul3 = (qtdAcert3 * 100) / qtdQuest3;
+                    }
+
+                    if (qtdQuest4 == 0){
+                        acertSimul4 = 0;
+                    }
+                    else {
+                        acertSimul4 = (qtdAcert4 * 100) / qtdQuest4;
+                    }
+
+
+                }
+
+                //impressão do gráfico
+
+                tvLin1Col1.setText("Data de Realização do Simulado");
+                tvLin1Col2.setText("Tot Pontos");
+                tvLin1Col3.setText("Tot Tempo");
+                tvLin1Col4.setText("Qtd Acerto");
+                tvLin1Col5.setText("% Acertos");
+
+                tvLin2Col1.setText(dataRealiz1);
+                tvLin2Col2.setText(""+pontos1);
+                tvLin2Col3.setText(tempoSimul1+"h");
+                tvLin2Col4.setText(""+qtdAcert1);
+                tvLin2Col5.setText(acertSimul1+"%");
+
+                tvLin3Col1.setText(dataRealiz2);
+                tvLin3Col2.setText(""+pontos2);
+                tvLin3Col3.setText(tempoSimul2+"h");
+                tvLin3Col4.setText(""+qtdAcert2);
+                tvLin3Col5.setText(acertSimul2+"%");
+
+                tvLin4Col1.setText(dataRealiz3);
+                tvLin4Col2.setText(""+pontos3);
+                tvLin4Col3.setText(tempoSimul3+"h");
+                tvLin4Col4.setText(""+qtdAcert3);
+                tvLin4Col5.setText(acertSimul3+"%");
+
+                tvLin5Col1.setText(dataRealiz4);
+                tvLin5Col2.setText(""+pontos4);
+                tvLin5Col3.setText(tempoSimul4+"h");
+                tvLin5Col4.setText(""+qtdAcert4);
+                tvLin5Col5.setText(acertSimul4+"%");
+
+                legenda ="Legenda:\n\r" +
+                        "Pontos - É o total de pontos alcançados no simulado, levando em  conta o grau de dificuldade de cada questão.\n\r" +
+                        "Qtd Quest - O tempo total gasto para realizar o simulado. Na prova seu tempo será no máximo 4:30h.\n\r" +
+                        "Qtd Acerto - É a quantidade total de respostas certas no simulado realizado.\n\r" +
+                        "% Acerto - É o percentual de acerto sobre o total das questões de cada simulado.";
+
+                tvTabLegend.setText(legenda);
+
+                break;
         }
 
 
@@ -805,7 +1129,9 @@ public class GrafActivity extends AppCompatActivity
         if (drawer.isDrawerOpen(GravityCompat.START)) {
             drawer.closeDrawer(GravityCompat.START);
         } else {
-            super.onBackPressed();
+            Intent it = new Intent(GrafActivity.this, DesempenhoActivity.class);
+            startActivity(it);
+            finish();
         }
     }
 
@@ -845,7 +1171,9 @@ public class GrafActivity extends AppCompatActivity
             finish();
 
         } else if (id == R.id.nav_plan_estud) {
-            Toast.makeText(GrafActivity.this, "Voce Clicou no Menu Plano de estudo", Toast.LENGTH_SHORT).show();
+            Intent it = new Intent(GrafActivity.this, PlanEstuActivity.class);
+            startActivity(it);
+            finish();
 
         } else if (id == R.id.nav_meta) {
             Intent it = new Intent(GrafActivity.this, MetasActivity.class);

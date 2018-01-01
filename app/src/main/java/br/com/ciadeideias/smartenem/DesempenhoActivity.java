@@ -1,5 +1,6 @@
 package br.com.ciadeideias.smartenem;
 
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.support.annotation.NonNull;
 import android.support.design.widget.NavigationView;
@@ -7,6 +8,7 @@ import android.support.v4.app.FragmentTransaction;
 import android.support.v4.view.GravityCompat;
 import android.support.v4.widget.DrawerLayout;
 import android.support.v7.app.ActionBarDrawerToggle;
+import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.support.v7.widget.Toolbar;
@@ -20,6 +22,7 @@ import java.util.List;
 
 import br.com.ciadeideias.smartenem.fragments.DesempFragment;
 import br.com.ciadeideias.smartenem.model.NomeGrafico;
+import br.com.ciadeideias.smartenem.utils.Desempenho;
 
 public class DesempenhoActivity extends AppCompatActivity
             implements NavigationView.OnNavigationItemSelectedListener, View.OnClickListener{
@@ -64,7 +67,21 @@ public class DesempenhoActivity extends AppCompatActivity
         if (drawer.isDrawerOpen(GravityCompat.START)){
             drawer.closeDrawer(GravityCompat.START);
         }else {
-            super.onBackPressed();
+            new AlertDialog.Builder(this).setTitle("Alerta do sistema")
+                    .setMessage("Você quer encerrar o programa agora?")
+                    .setPositiveButton("Sim", new DialogInterface.OnClickListener() {
+                        @Override
+                        public void onClick(DialogInterface dialog, int which) {
+                            DesempenhoActivity.super.onBackPressed();
+                        }
+                    }).setNegativeButton("Não", new DialogInterface.OnClickListener() {
+                @Override
+                public void onClick(DialogInterface dialog, int which) {
+                    Intent it = new Intent(DesempenhoActivity.this, DesempenhoActivity.class);
+                    startActivity(it);
+                    finish();
+                }
+            }).show();
         }
     }
 
@@ -81,7 +98,9 @@ public class DesempenhoActivity extends AppCompatActivity
             finish();
 
         } else if (id == R.id.nav_plan_estud) {
-            Toast.makeText(DesempenhoActivity.this, "Voce Clicou no Menu Plano de estudo", Toast.LENGTH_SHORT).show();
+            Intent it = new Intent(DesempenhoActivity.this, PlanEstuActivity.class);
+            startActivity(it);
+            finish();
 
         } else if (id == R.id.nav_meta) {
             Intent it = new Intent(DesempenhoActivity.this, MetasActivity.class);
@@ -89,7 +108,9 @@ public class DesempenhoActivity extends AppCompatActivity
             finish();
 
         } else if (id == R.id.nav_desemp) {
-            Toast.makeText(DesempenhoActivity.this, "Voce Clicou no Menu Desempenho", Toast.LENGTH_SHORT).show();
+            Intent it = new Intent(DesempenhoActivity.this, DesempenhoActivity.class);
+            startActivity(it);
+            finish();
 
         } else if (id == R.id.nav_compart){
             Toast.makeText(DesempenhoActivity.this, "Voce Clicou no Menu Compartilhar", Toast.LENGTH_SHORT).show();
@@ -116,8 +137,8 @@ public class DesempenhoActivity extends AppCompatActivity
 
     public List<NomeGrafico> getListaNome(){
         List<NomeGrafico> mList = new ArrayList<>();
-        String[] nomes = new String[]{"Estudos de Áreas X Questões Respondidas", "Questões Certas/Erradas X Área de Estudo",
-                "Tempo de Estudo X Dias", "Quantidade de Simulados Compactos X Dia", "Simulados Completos x Semana"};
+        String[] nomes = new String[]{"Estudos Diários X Questões Respondidas", "Questões Certas/Erradas X Área de Estudo",
+                "Tempo de Estudo X Dias", "Quantidade de Simulados Compactos X Dia", "Simulados Completos x Resultados"};
         for(int i=0; i<=4; i++){
             NomeGrafico nome = new NomeGrafico();
             nome.setNome(nomes[i]);

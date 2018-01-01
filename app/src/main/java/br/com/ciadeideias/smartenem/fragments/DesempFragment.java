@@ -72,7 +72,7 @@ public class DesempFragment extends Fragment implements RecyclerViewOnClickListe
         it.putExtra("tipoGraf", tipoGraf);
 
         if (id == 1){
-            titulo = "Quantidade de Questões X Dias de Estudo / últimos 7 dias";
+            titulo = "Quantidade de Questões por Dia de Estudo nos últimos 7 dias";
             it.putExtra("titulo", titulo);
             list1 = bdGraf.estudosDiarios(area1);
             list2 = bdGraf.estudosDiarios(area2);
@@ -273,7 +273,7 @@ public class DesempFragment extends Fragment implements RecyclerViewOnClickListe
             }
         }
         else if (id == 3){
-            titulo ="Tempo dedicado aos estudos X Dias / últimos 7 dias";
+            titulo ="Tempo dedicado aos estudos por área nos últimos 7 dias";
             it.putExtra("titulo", titulo);
             list1 = bdGraf.estudosDiarios(area1);
             list2 = bdGraf.estudosDiarios(area2);
@@ -366,7 +366,7 @@ public class DesempFragment extends Fragment implements RecyclerViewOnClickListe
             }
         }
         else if (id == 4){
-            titulo = "Quantidade de Simulados compactos X Dias de Estudos  / últimos 7 dias";
+            titulo = "Quantidade de Simulados compactos nos últimos 7 dias";
             it.putExtra("titulo", titulo);
             list1 = bdGraf.simulCompac(area1);
             list2 = bdGraf.simulCompac(area2);
@@ -457,7 +457,7 @@ public class DesempFragment extends Fragment implements RecyclerViewOnClickListe
                     startActivity(it);
             }
         }else if (id == 5){
-            titulo ="Simulados Completos X Desempenho";
+            titulo ="Últimos Simulados Completos";
             it.putExtra("titulo", titulo);
             list1 = bdGraf.simulComplet();
             if (list1.isEmpty()){

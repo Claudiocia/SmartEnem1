@@ -1,6 +1,7 @@
 package br.com.ciadeideias.smartenem;
 
 import android.app.Dialog;
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.os.Bundle;
 import android.support.design.widget.NavigationView;
@@ -8,6 +9,7 @@ import android.support.v4.app.FragmentTransaction;
 import android.support.v4.view.GravityCompat;
 import android.support.v4.widget.DrawerLayout;
 import android.support.v7.app.ActionBarDrawerToggle;
+import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
 import android.view.MenuItem;
@@ -26,6 +28,7 @@ import java.util.List;
 import br.com.ciadeideias.smartenem.bancodados.BDMeta;
 import br.com.ciadeideias.smartenem.fragments.MetaFragment;
 import br.com.ciadeideias.smartenem.model.Meta;
+import br.com.ciadeideias.smartenem.utils.Desempenho;
 
 public class MetasActivity extends AppCompatActivity
         implements NavigationView.OnNavigationItemSelectedListener, View.OnClickListener {
@@ -94,13 +97,32 @@ public class MetasActivity extends AppCompatActivity
     @Override
     public void onBackPressed() {
         DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout_metas);
+        dialogDedic = new Dialog(this, R.style.FullHeightDialog);
+        long lastBackPressTime = 0;
+        Toast toast = null;
         if (drawer.isDrawerOpen(GravityCompat.START)) {
             drawer.closeDrawer(GravityCompat.START);
         }else if (dialogDedic.isShowing()){
             dialogDedic.dismiss();
         }
         else {
-            super.onBackPressed();
+
+            new AlertDialog.Builder(this).setTitle("Alerta do sistema")
+                    .setMessage("Você quer encerrar o programa agora?")
+                    .setPositiveButton("Sim", new DialogInterface.OnClickListener() {
+                        @Override
+                        public void onClick(DialogInterface dialog, int which) {
+                            MetasActivity.super.onBackPressed();
+                        }
+                    }).setNegativeButton("Não", new DialogInterface.OnClickListener() {
+                @Override
+                public void onClick(DialogInterface dialog, int which) {
+                    Intent it = new Intent(MetasActivity.this, MetasActivity.class);
+                    startActivity(it);
+                    finish();
+                }
+            }).show();
+
         }
     }
 
@@ -118,7 +140,9 @@ public class MetasActivity extends AppCompatActivity
             finish();
 
         } else if (id == R.id.nav_plan_estud) {
-            Toast.makeText(MetasActivity.this, "Voce Clicou no Menu Plano de estudo", Toast.LENGTH_SHORT).show();
+            Intent it = new Intent(MetasActivity.this, PlanEstuActivity.class);
+            startActivity(it);
+            finish();
 
         } else if (id == R.id.nav_meta) {
             Intent it = new Intent(MetasActivity.this, MetasActivity.class);
