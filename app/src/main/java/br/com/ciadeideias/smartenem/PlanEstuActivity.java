@@ -96,7 +96,10 @@ public class PlanEstuActivity extends AppCompatActivity
                         Toast.makeText(PlanEstuActivity.this, "Voce Clicou no dia: "+diaSemana, Toast.LENGTH_SHORT).show();
                         break;
                     case 7:
-                        Toast.makeText(PlanEstuActivity.this, "Voce Clicou na configuração semanal", Toast.LENGTH_SHORT).show();
+                        Intent it = new Intent(PlanEstuActivity.this, ConfigPlanestudActivity.class);
+                        startActivity(it);
+                        finish();
+                        //Toast.makeText(PlanEstuActivity.this, "Voce Clicou na configuração semanal", Toast.LENGTH_SHORT).show();
                         break;
                 }
             }

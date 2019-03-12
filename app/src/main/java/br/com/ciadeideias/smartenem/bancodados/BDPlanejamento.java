@@ -128,6 +128,17 @@ public class BDPlanejamento {
         bd.close();
     }
 
+    public void atualizeItem(String dia, String hora, String valor){
+
+        ContentValues valores = new ContentValues();
+
+        String[] args = new String[]{dia};
+        valores.put(hora, valor);
+
+        bd.update("planestud", valores, "dia_semana = ?", args);
+        bd.close();
+    }
+
 
 
 

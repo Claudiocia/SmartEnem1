@@ -52,10 +52,10 @@
     <string name="apoio_comple">Simulados completos buscam reproduzir a prova do Enem como ela é. na Quantidade de questões e no tempo disponível para a realização. \nÉ uma prática que busca preparar o estudante para o ambiente do dia da prova</string>
 
     <!-- Strings gráficos de desempenho -->
-    <string name="nome_graf_item">Nome do Grafico</string>
-    <string name="titulo_graficos">Selecione um Gráfico</string>
-    <string name="tit_graficos">Gráficos</string>
-    <string name="title_activity_graf">Grafico</string>
+    <string name="nome_graf_item1">Estudos Diários</string>
+    <string name="titulo_graficos">Selecione um Item</string>
+    <string name="tit_graficos">Desempenhos</string>
+    <string name="title_activity_graf">Desempenho</string>
 
     <!-- Strings Plano de Estudos -->
     <string name="titulo_planestud">Plano de Estudos</string>

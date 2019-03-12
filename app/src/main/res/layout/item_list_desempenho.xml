@@ -22,7 +22,7 @@
             android:maxLines="1"
             android:layout_marginTop="3dp"
             android:layout_marginBottom="3dp"
-            android:text="@string/nome_graf_item"
+            android:text="Nome que tava errado"
             android:textSize="16sp"
             android:textStyle="bold"
             android:textColor="#000000"/>

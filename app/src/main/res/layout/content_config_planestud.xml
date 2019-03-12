@@ -9,17 +9,26 @@
     android:paddingRight="@dimen/activity_horizontal_margin"
     android:paddingTop="@dimen/activity_vertical_margin"
     app:layout_behavior="@string/appbar_scrolling_view_behavior"
-    tools:context="br.com.ciadeideias.smartenem.GrafActivity"
-    tools:showIn="@layout/app_bar_graf">
+    tools:context="br.com.ciadeideias.smartenem.ConfigPlanestudActivity"
+    tools:showIn="@layout/app_bar_confpla_estud">
 
     <TextView
-        android:id="@+id/tv_tit_grafico_"
+        android:id="@+id/tv_tit_confplan_estud_"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:textStyle="bold"
         android:gravity="center_horizontal"
         android:textSize="16dp"
-        android:text="@string/tit_graficos"/>
+        android:text="@string/titulo_planestud"/>
+    <Button
+        android:layout_width="80dp"
+        android:layout_height="30dp"
+        android:id="@+id/btn_tab_planeja"
+        android:layout_toRightOf="@+id/tv_tit_confplan_estud_"
+        android:layout_marginLeft="30dp"
+        android:text="Salvar"
+        android:textSize="9dp"
+        android:textColor="@color/red"/>
 
     <LinearLayout
         android:id="@+id/graf_"
@@ -32,9 +41,9 @@
     </LinearLayout>
 
     <include
-        layout="@layout/layout_tabela"
+        layout="@layout/layout_tab_planestud"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:layout_below="@+id/tv_tit_grafico_"/>
+        android:layout_below="@+id/tv_tit_confplan_estud_"/>
 
 </RelativeLayout>
