@@ -40,15 +40,15 @@ public class EstuDiarioActivity extends AppCompatActivity
 
     Dialog myDialog;
 
-    private Questao questao1;
+    private Questao questao1, questao2;
     private BDQuestao bdQuestao;
     private BDEstudo bdEstudo;
-    private DocumentView documentView;
+    private DocumentView documentView, dvComent;
     private TextView tvDados;
     private RadioGroup selectOpcoes;
     private RadioButton opcaoA, opcaoB, opcaoC, opcaoD, opcaoE, respUser;
     InputStream stream;
-    int idEstudoAtivo, selectedId;
+    int idEstudoAtivo, selectedId, idQuestao;
     String resposta, respostaUser, dados, disciplina, totQuest, totAcert, totErros;
 
     PhotoView imagemR, imagemPop, imagemPopRes;
@@ -130,6 +130,9 @@ public class EstuDiarioActivity extends AppCompatActivity
             bdQuestao = new BDQuestao(this);
 
             questao1 = bdQuestao.buscaQuestaoPorIdDisc(idDisciplina);
+            idQuestao = questao1.getIdQuestao();
+
+            Log.d("claudio", "O id da questão é: "+idQuestao);
 
             dados = "Questão do enem ano " + questao1.getAnoAplic() + " id " + questao1.getIdQuestao();
 
@@ -183,6 +186,8 @@ public class EstuDiarioActivity extends AppCompatActivity
                     Toast.makeText(EstuDiarioActivity.this, "Selecione uma opção", Toast.LENGTH_SHORT).show();
                 }
                 else {
+                    int idTransf = idQuestao;
+                    Log.d("claudio", "O id da questão é "+idTransf+" chegou no botão da resposta");
                     ShowPopup(v.findViewById(R.layout.custom_popup));
                 }
 
@@ -268,6 +273,10 @@ public class EstuDiarioActivity extends AppCompatActivity
 
         Log.d("claudio", "começou o popup da resposta");
 
+        final int idQuestaoPopup = idQuestao;
+
+        Log.d("claudio", "o id da questão no popup é "+ idQuestaoPopup);
+
         myDialog = new Dialog(this);
         TextView txtclose;
         Button btnComent, btnProxima;
@@ -348,9 +357,10 @@ public class EstuDiarioActivity extends AppCompatActivity
         });
 
         btnComent.setOnClickListener(new View.OnClickListener() {
+            @SuppressLint("ResourceType")
             @Override
             public void onClick(View view) {
-
+                ShowPopupComent(view.findViewById(R.layout.custom_popup_comentario_estudo));
             }
         });
 
@@ -527,6 +537,68 @@ public class EstuDiarioActivity extends AppCompatActivity
 
         }
 
+    }
+
+    public void ShowPopupComent(View v) {
+
+        Log.d("claudio", "começou o popup do comentario");
+        Log.d("claudio", "o id da questão no popcoment é: "+ idQuestao);
+
+        myDialog = new Dialog(this);
+        TextView txtcomentTitle;
+        Button btnVoltar;
+        myDialog.setContentView(R.layout.custom_popup_comentario_estudo);
+        txtcomentTitle =(TextView) myDialog.findViewById(R.id.txtcoment_title);
+        txtcomentTitle.setText("APRENDENDO UM POUCO MAIS");
+
+        BDQuestao bdBuscaComentario = new BDQuestao(EstuDiarioActivity.this);
+
+        questao2 = bdBuscaComentario.buscaQuestaoPorId(idQuestao);
+
+        Log.d("claudio", " a questão que vem do banco é "+ questao2.getComentQuest());
+
+        dvComent = (DocumentView)myDialog.findViewById(R.id.texto_coment_questao);
+
+        dvComent.setText(questao2.getComentQuest());
+        dvComent.getDocumentLayoutParams().setHyphenator(DefaultHyphenator.getInstance(DefaultHyphenator.HyphenPattern.PT));
+        dvComent.getDocumentLayoutParams().setHyphenated(false);
+
+        String inforComent = "Resolução da questão Enem do ano "+questao2.getAnoAplic();
+        TextView tvInforComent;
+
+        tvInforComent = (TextView)myDialog.findViewById(R.id.texto_coment_infor);
+        tvInforComent.setText(inforComent);
+
+        btnVoltar = (Button) myDialog.findViewById(R.id.btn_voltar);
+
+        btnVoltar.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+
+                String aux = disciplina;
+                String horaEstudo = null;
+
+                BDEstudo bdEstudoAtualiza = new BDEstudo(EstuDiarioActivity.this);
+
+                Estudo estudoAtualiza = new Estudo();
+                estudoAtualiza.setIdEstudo(idEstudoAtivo);
+                estudoAtualiza.setQtdQuest(totalQuestoesN);
+                estudoAtualiza.setRespCerta(totalAcertosN);
+                estudoAtualiza.setRespErrada(totalErrosN);
+
+                bdEstudoAtualiza.atualizarQuestEstudo(estudoAtualiza);
+
+                Intent it = new Intent(EstuDiarioActivity.this, EstuDiarioActivity.class);
+                it.putExtra("disciplina", aux);
+                it.putExtra("hora_estudo", horaEstudo);
+                startActivity(it);
+                myDialog.dismiss();
+
+            }
+        });
+
+        myDialog.getWindow().setBackgroundDrawable(new ColorDrawable(Color.TRANSPARENT));
+        myDialog.show();
     }
 
 
