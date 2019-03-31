@@ -1,12 +1,11 @@
 package br.com.ciadeideias.smartenem.fragments;
 
-import android.content.Intent;
 import android.os.Bundle;
-import android.os.Parcelable;
-import android.support.annotation.Nullable;
-import android.support.v4.app.Fragment;
-import android.support.v7.widget.LinearLayoutManager;
-import android.support.v7.widget.RecyclerView;
+
+import androidx.annotation.Nullable;
+import androidx.fragment.app.Fragment;
+import androidx.recyclerview.widget.LinearLayoutManager;
+import androidx.recyclerview.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -17,13 +16,8 @@ import java.util.List;
 
 import br.com.ciadeideias.smartenem.DesempenhoActivity;
 
-import br.com.ciadeideias.smartenem.EstuDiarioActivity;
-import br.com.ciadeideias.smartenem.ListActivity;
-import br.com.ciadeideias.smartenem.MetasActivity;
 import br.com.ciadeideias.smartenem.R;
-import br.com.ciadeideias.smartenem.SplashActivity;
 import br.com.ciadeideias.smartenem.adapter.DesempAdapter;
-import br.com.ciadeideias.smartenem.bancodados.BDGrafico;
 import br.com.ciadeideias.smartenem.interfaces.RecyclerViewOnClickListenerHack;
 import br.com.ciadeideias.smartenem.model.Grafico;
 import br.com.ciadeideias.smartenem.model.NomeGrafico;
@@ -67,9 +61,8 @@ public class DesempFragment extends Fragment implements RecyclerViewOnClickListe
 
         switch (id){
             case 1:
-                Intent it = new Intent(getContext(), EstuDiarioActivity.class);
-                startActivity(it);
-            break;
+                aux = "Estudos Diarios";
+                Toast.makeText(getContext(), "Menu clicado é "+ aux, Toast.LENGTH_SHORT).show();
 
             case 2:
                 aux = "Questões Respondidas";

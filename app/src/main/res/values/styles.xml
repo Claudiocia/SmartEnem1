@@ -27,4 +27,43 @@
         <item name="android:ellipsize">end</item>
     </style>
 
+    <!-- estilos para a pagina sobre -->
+    <style name="TextViewContentTitle">
+        <item name="android:layout_width">match_parent</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:layout_marginBottom">8dp</item>
+        <item name="android:textColor">@color/blue</item>
+        <item name="android:textSize">15sp</item>
+        <item name="android:textStyle">bold</item>
+        <item name="android:textAllCaps">true</item>
+        <!-- <item name="android:fontFamily">@font/pathway_gothic_one_regular</item> -->
+    </style>
+
+    <style name="AboutFragTextViewContent">
+        <item name="android:layout_width">match_parent</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:layout_marginBottom">28dp</item>
+        <item name="android:padding">12dp</item>
+        <item name="android:textColor">@android:color/white</item>
+        <item name="android:background">@color/colorLightBlueBox</item>
+    </style>
+
+    <style name="ImageViewLink">
+        <item name="android:layout_width">17dp</item>
+        <item name="android:layout_height">17dp</item>
+        <item name="android:layout_marginBottom">8dp</item>
+        <item name="android:layout_marginRight">4dp</item>
+        <item name="android:layout_marginEnd">4dp</item>
+        <item name="android:scaleType">centerInside</item>
+        <item name="android:tint">@color/gray</item>
+    </style>
+
+    <style name="TextViewLink">
+        <item name="android:layout_width">wrap_content</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:textColor">@color/colorLightBlue</item>
+        <item name="android:layout_marginTop">-2dp</item>
+    </style>
+
+
 </resources>

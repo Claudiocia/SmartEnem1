@@ -4,14 +4,14 @@ import android.app.Dialog;
 import android.content.DialogInterface;
 import android.content.Intent;
 import android.os.Bundle;
-import android.support.design.widget.NavigationView;
-import android.support.v4.app.FragmentTransaction;
-import android.support.v4.view.GravityCompat;
-import android.support.v4.widget.DrawerLayout;
-import android.support.v7.app.ActionBarDrawerToggle;
-import android.support.v7.app.AlertDialog;
-import android.support.v7.app.AppCompatActivity;
-import android.support.v7.widget.Toolbar;
+import com.google.android.material.navigation.NavigationView;
+import androidx.fragment.app.FragmentTransaction;
+import androidx.core.view.GravityCompat;
+import androidx.drawerlayout.widget.DrawerLayout;
+import androidx.appcompat.app.ActionBarDrawerToggle;
+import androidx.appcompat.app.AlertDialog;
+import androidx.appcompat.app.AppCompatActivity;
+import androidx.appcompat.widget.Toolbar;
 import android.view.MenuItem;
 import android.view.View;
 import android.view.Window;
@@ -28,7 +28,6 @@ import java.util.List;
 import br.com.ciadeideias.smartenem.bancodados.BDMeta;
 import br.com.ciadeideias.smartenem.fragments.MetaFragment;
 import br.com.ciadeideias.smartenem.model.Meta;
-import br.com.ciadeideias.smartenem.utils.Desempenho;
 
 public class MetasActivity extends AppCompatActivity
         implements NavigationView.OnNavigationItemSelectedListener, View.OnClickListener {
@@ -133,7 +132,9 @@ public class MetasActivity extends AppCompatActivity
         int id = item.getItemId();
 
         if (id == R.id.nav_premium) {
-            Toast.makeText(MetasActivity.this, "Voce Clicou no Menu premium", Toast.LENGTH_SHORT).show();
+            Intent it = new Intent(MetasActivity.this, PremiumActivity.class);
+            startActivity(it);
+            finish();
         } else if (id == R.id.nav_home) {
             Intent it = new Intent(MetasActivity.this, SplashActivity.class);
             startActivity(it);
@@ -155,16 +156,15 @@ public class MetasActivity extends AppCompatActivity
             finish();
 
         } else if (id == R.id.nav_compart){
-            Toast.makeText(MetasActivity.this, "Voce Clicou no Menu Compartilhar", Toast.LENGTH_SHORT).show();
-
-        } else if (id == R.id.nav_config){
-            Toast.makeText(MetasActivity.this, "Voce Clicou no Menu Configurações", Toast.LENGTH_SHORT).show();
+            Toast.makeText(MetasActivity.this, "Voce Clicou no Menu Videos", Toast.LENGTH_SHORT).show();
 
         } else if (id == R.id.nav_ajuda) {
             Toast.makeText(MetasActivity.this, "Voce Clicou no Menu Ajuda", Toast.LENGTH_SHORT).show();
 
         } else if (id == R.id.nav_sobre) {
-            Toast.makeText(MetasActivity.this, "Voce Clicou no Menu Sobre", Toast.LENGTH_SHORT).show();
+            Intent it = new Intent(MetasActivity.this, AboutActivity.class);
+            startActivity(it);
+            finish();
 
         }
         DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout_metas);

@@ -19,7 +19,7 @@ public class ArraySemRepet {
 
         lista.add(0, string1);
 
-        itens1 = "Livre";
+        itens1 = "livre";
         itens2 = "C.Hum.Tec";
         itens3 = "C.Nat.Tec";
         itens4 = "Mat.Tec";

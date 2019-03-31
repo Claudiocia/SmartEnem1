@@ -4,10 +4,20 @@
     <color name="black">#000</color>
     <color name="white">#FFF</color>
     <color name="red">#FF4084</color>
+    <color name="blue">#303F9F</color>
+    <color name="grayesc">#353333</color>
 
+    <!-- Cores dos botoes de menu -->
     <color name="colorPrimary">#3F51B5</color>
     <color name="colorPrimaryDark">#303F9F</color>
     <color name="colorAccent">#FF4081</color>
+    
+    <!-- Cores da tela Sobre -->
+    
+    <color name="colorLightBlueBox">#BB22629B</color>
+    <color name="colorOrangeInfo">#FF9052</color>
+    <color name="colorLightBlue">#499AE9</color>
 
-    <!-- Cores dos botoes de menu -->
+    <color name="green">#37A249</color>
+
 </resources>

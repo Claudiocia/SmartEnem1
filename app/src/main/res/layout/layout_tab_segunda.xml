@@ -1,0 +1,462 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:focusable="false"
+    android:focusableInTouchMode="true"
+    android:layout_weight="1">
+
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_marginTop="5dp"
+        android:fillViewport="true"
+        android:scrollbarStyle="outsideInset"
+        android:scrollbars="horizontal|vertical">
+
+        <HorizontalScrollView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="5dp"
+            android:scrollbars="horizontal|vertical">
+
+            <TableLayout
+                android:id="@+id/tab_planest_seg"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:minWidth="300dp"
+                android:padding="25dp">
+
+                <View
+                    android:layout_width="match_parent"
+                    android:layout_height="2dp"
+                    android:background="@color/black" />
+
+                <TableRow android:background="@color/gray"
+                    android:minWidth="300dp">
+
+                    <TextView
+                        android:id="@+id/tv_tabplan_lin1_col1_seg"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:gravity="center"
+                        android:text="Hora" />
+
+                    <TextView
+                        android:id="@+id/tv_tabplan_lin1_col2_seg"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:minWidth="310dp"
+                        android:gravity="center"
+                        android:padding="2dp"
+                        android:text="Dia" />
+
+                </TableRow>
+
+                <View
+                    android:layout_width="match_parent"
+                    android:layout_height="2dp"
+                    android:background="@color/black" />
+
+                <TableRow android:layout_weight="1">
+
+                    <TextView
+                        android:id="@+id/tv_tabplan_lin2_col1"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:gravity="center"
+                        android:text="6:00" />
+
+                    <Spinner
+                        android:id="@+id/sp_tabplan_lin2_col2"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:gravity="center"
+                        android:padding="2dp" />
+
+                </TableRow>
+
+                <View
+                    android:layout_width="match_parent"
+                    android:layout_height="2dp"
+                    android:background="@color/black" />
+
+                <TableRow android:background="@color/gray"
+                    android:layout_weight="1">
+
+                    <TextView
+                        android:id="@+id/tv_tabplan_lin3_col1"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:gravity="center"
+                        android:text="7:00" />
+
+                    <Spinner
+                        android:id="@+id/sp_tabplan_lin3_col2"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:gravity="center"
+                        android:padding="2dp" />
+
+                </TableRow>
+
+                <View
+                    android:layout_width="match_parent"
+                    android:layout_height="2dp"
+                    android:background="@color/black" />
+
+                <TableRow android:layout_weight="1">
+
+                    <TextView
+                        android:id="@+id/tv_tabplan_lin4_col1"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:gravity="center"
+                        android:text="8:00" />
+
+                    <Spinner
+                        android:id="@+id/sp_tabplan_lin4_col2"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:gravity="center"
+                        android:padding="2dp" />
+
+                </TableRow>
+
+                <View
+                    android:layout_width="match_parent"
+                    android:layout_height="2dp"
+                    android:background="@color/black" />
+
+                <TableRow android:background="@color/gray"
+                    android:layout_weight="1">
+
+                    <TextView
+                        android:id="@+id/tv_tabplan_lin5_col1"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:gravity="center"
+                        android:text="9:00" />
+
+                    <Spinner
+                        android:id="@+id/sp_tabplan_lin5_col2"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:gravity="center"
+                        android:padding="2dp" />
+
+                </TableRow>
+
+                <View
+                    android:layout_width="match_parent"
+                    android:layout_height="2dp"
+                    android:background="@color/black" />
+
+                <TableRow android:layout_weight="1">
+
+                    <TextView
+                        android:id="@+id/tv_tabplan_lin6_col1"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:gravity="center"
+                        android:text="10:00" />
+
+                    <Spinner
+                        android:id="@+id/sp_tabplan_lin6_col2"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:gravity="center"
+                        android:padding="2dp" />
+
+                </TableRow>
+
+                <View
+                    android:layout_width="match_parent"
+                    android:layout_height="2dp"
+                    android:background="@color/black" />
+
+                <TableRow android:background="@color/gray"
+                    android:layout_weight="1">
+
+                    <TextView
+                        android:id="@+id/tv_tabplan_lin7_col1"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:gravity="center"
+                        android:text="11:00" />
+
+                    <Spinner
+                        android:id="@+id/sp_tabplan_lin7_col2"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:gravity="center"
+                        android:padding="2dp" />
+
+                </TableRow>
+
+                <View
+                    android:layout_width="match_parent"
+                    android:layout_height="2dp"
+                    android:background="@color/black" />
+
+                <TableRow android:layout_weight="1">
+
+                    <TextView
+                        android:id="@+id/tv_tabplan_lin8_col1"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:gravity="center"
+                        android:text="12:00" />
+
+                    <Spinner
+                        android:id="@+id/sp_tabplan_lin8_col2"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:gravity="center"
+                        android:padding="2dp" />
+
+                </TableRow>
+
+                <View
+                    android:layout_width="match_parent"
+                    android:layout_height="2dp"
+                    android:background="@color/black" />
+
+                <TableRow android:background="@color/gray" android:layout_weight="1">
+
+                    <TextView
+                        android:id="@+id/tv_tabplan_lin9_col1"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:gravity="center"
+                        android:text="13:00" />
+
+                    <Spinner
+                        android:id="@+id/sp_tabplan_lin9_col2"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:gravity="center"
+                        android:padding="2dp" />
+
+                </TableRow>
+
+                <View
+                    android:layout_width="match_parent"
+                    android:layout_height="2dp"
+                    android:background="@color/black" />
+
+                <TableRow android:layout_weight="1">
+
+                    <TextView
+                        android:id="@+id/tv_tabplan_lin10_col1"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:gravity="center"
+                        android:text="14:00" />
+
+                    <Spinner
+                        android:id="@+id/sp_tabplan_lin10_col2"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:gravity="center"
+                        android:padding="2dp" />
+
+                </TableRow>
+
+                <View
+                    android:layout_width="match_parent"
+                    android:layout_height="2dp"
+                    android:background="@color/black" />
+
+                <TableRow android:background="@color/gray" android:layout_weight="1">
+
+                    <TextView
+                        android:id="@+id/tv_tabplan_lin11_col1"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:gravity="center"
+                        android:text="15:00" />
+
+                    <Spinner
+                        android:id="@+id/sp_tabplan_lin11_col2"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:gravity="center"
+                        android:padding="2dp" />
+
+                </TableRow>
+
+                <View
+                    android:layout_width="match_parent"
+                    android:layout_height="2dp"
+                    android:background="@color/black" />
+
+                <TableRow android:layout_weight="1">
+
+                    <TextView
+                        android:id="@+id/tv_tabplan_lin12_col1"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:gravity="center"
+                        android:text="16:00" />
+
+                    <Spinner
+                        android:id="@+id/sp_tabplan_lin12_col2"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:gravity="center"
+                        android:padding="2dp" />
+
+                </TableRow>
+
+                <View
+                    android:layout_width="match_parent"
+                    android:layout_height="2dp"
+                    android:background="@color/black" />
+
+                <TableRow android:background="@color/gray" android:layout_weight="1">
+
+                    <TextView
+                        android:id="@+id/tv_tabplan_lin13_col1"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:gravity="center"
+                        android:text="17:00" />
+
+                    <Spinner
+                        android:id="@+id/sp_tabplan_lin13_col2"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:gravity="center"
+                        android:padding="2dp" />
+
+                </TableRow>
+
+                <View
+                    android:layout_width="match_parent"
+                    android:layout_height="2dp"
+                    android:background="@color/black" />
+
+                <TableRow android:layout_weight="1">
+
+                    <TextView
+                        android:id="@+id/tv_tabplan_lin14_col1"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:gravity="center"
+                        android:text="18:00" />
+
+                    <Spinner
+                        android:id="@+id/sp_tabplan_lin14_col2"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:gravity="center"
+                        android:padding="2dp" />
+
+                </TableRow>
+
+                <View
+                    android:layout_width="match_parent"
+                    android:layout_height="2dp"
+                    android:background="@color/black" />
+
+                <TableRow android:background="@color/gray" android:layout_weight="1">
+
+                    <TextView
+                        android:id="@+id/tv_tabplan_lin15_col1"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:gravity="center"
+                        android:text="19:00" />
+
+                    <Spinner
+                        android:id="@+id/sp_tabplan_lin15_col2"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:gravity="center"
+                        android:padding="2dp" />
+
+                </TableRow>
+
+                <View
+                    android:layout_width="match_parent"
+                    android:layout_height="2dp"
+                    android:background="@color/black" />
+
+                <TableRow android:layout_weight="1">
+
+                    <TextView
+                        android:id="@+id/tv_tabplan_lin16_col1"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:gravity="center"
+                        android:text="20:00" />
+
+                    <Spinner
+                        android:id="@+id/sp_tabplan_lin16_col2"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:gravity="center"
+                        android:padding="2dp" />
+
+                </TableRow>
+
+                <View
+                    android:layout_width="match_parent"
+                    android:layout_height="2dp"
+                    android:background="@color/black" />
+
+                <TableRow android:background="@color/gray" android:layout_weight="1">
+
+                    <TextView
+                        android:id="@+id/tv_tabplan_lin17_col1"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:gravity="center"
+                        android:text="21:00" />
+
+                    <Spinner
+                        android:id="@+id/sp_tabplan_lin17_col2"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:gravity="center"
+                        android:padding="2dp" />
+
+                </TableRow>
+
+                <View
+                    android:layout_width="match_parent"
+                    android:layout_height="2dp"
+                    android:background="@color/black" />
+
+                <TableRow android:layout_weight="1">
+
+                    <TextView
+                        android:id="@+id/tv_tabplan_lin18_col1"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:gravity="center"
+                        android:text="22:00" />
+
+                    <Spinner
+                        android:id="@+id/sp_tabplan_lin18_col2"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:gravity="center"
+                        android:padding="2dp" />
+
+                </TableRow>
+
+                <View
+                    android:layout_width="match_parent"
+                    android:layout_height="2dp"
+                    android:background="@color/black" />
+
+            </TableLayout>
+
+        </HorizontalScrollView>
+
+    </ScrollView>
+
+</LinearLayout>

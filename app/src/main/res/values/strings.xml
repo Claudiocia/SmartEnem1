@@ -16,9 +16,11 @@
     <string name="metas">Metas</string>
     <string name="progresso">Desempenhos</string>
     <string name="indica">Compartilhar</string>
+    <string name="videos">Vídeos</string>
     <string name="action_settings">Configurações</string>
     <string name="ajuda">Ajuda</string>
     <string name="sobre">Sobre</string>
+    <string name="disciplinas">Disciplinas</string>
 
     <string name="cad_quest">Cadastrar Questão</string>
     <string name="title_activity_metas">Metas</string>
@@ -60,5 +62,72 @@
     <!-- Strings Plano de Estudos -->
     <string name="titulo_planestud">Plano de Estudos</string>
     <string name="titulo_barra">Planejamento</string>
+
+    <!-- Strings pagina Sobre -->
+    <string name="about_frag_title">Sobre o SmartEnem</string>
+
+    <string name="about_frag_mission_title">Missão</string>
+    <string name="about_frag_mission_desc">
+        Inspirar e transformar a vida das pessoas com a possibilidade
+        de acesso ao ensino superior através do ENEM.
+    </string>
+
+    <string name="about_frag_vision_title">Visão</string>
+    <string name="about_frag_vision_desc">
+        A melhor e mais inovadora experiência de estudo e conhecimento
+        para um melhor desempenho no ENEM.
+    </string>
+
+    <string name="about_frag_values_title">Valores</string>
+    <string name="about_frag_values_desc">
+        Ética, responsabilidade, espírito de equipe, inspiração e
+        foco.
+    </string>
+
+    <string name="about_frag_ethic_title">Ética e integridade</string>
+    <string name="about_frag_ethic_desc">
+        A ética e a integridade fazem parte da nossa cultura e são
+        essenciais para o nosso projeto.
+    </string>
+
+    <string name="about_frag_social_networks_title">
+        Nos acompanhe nas redes sociais e não perca as promoções
+    </string>
+
+    <string name="ic_instagram_desc">Ícone do Instagram SmartEnem</string>
+    <string name="label_instagram">/SmartEnem</string>
+
+    <string name="ic_facebook_desc">Ícone do Facebook SmartEnem</string>
+    <string name="label_facebook">/SmartEnemFace</string>
+
+    <string name="ic_twitter_desc">Ícone do Twitter SmartEnem</string>
+    <string name="label_twitter">/SmartEnemTwitter</string>
+
+    <string name="ic_youtube_desc">Ícone do YouTube SmartEnem</string>
+    <string name="label_youtube">/SmartEnemYT</string>
+
+    <string name="ic_linkedin_desc">Ícone do LinkedIn SmartEnem</string>
+    <string name="label_linkedin">/SmartEnemLkIn</string>
+    <string name="info_linkedin">Para oportunidades de emprego!</string>
+
+    <string name="ic_cnpj_desc">Ícone do CNPJ SmartEnem</string>
+    <string name="label_cnpj">CNPJ 25.002.230/0001&#8211;10</string>
+
+    <!-- Strings pagina Versão Premium -->
+    <string name="title_version_premium">Adquira a Versão Premium</string>
+
+    <string name="premium_title">Versão Premium</string>
+    <string name="premium_desc">
+        Ao adquirir a versão premium do APP SmartEnem você terá acesso
+        a todo conteúdo disponível, sem propagandas. A licença de uso
+        livre vale por um ano. Quando for renovar você pode pagar de
+        novo ou voltar para a versão gratuita.
+    </string>
+
+
+    <string name="hello_blank_fragment">Hello blank fragment</string>
+
+    <string name="estudo_title">Disciplinas para Estudo</string>
+    <string name="estudo_activity">Hora do Estudo</string>
 
 </resources>

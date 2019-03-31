@@ -23,6 +23,7 @@ public class Questao implements Parcelable {
     private String comentQuest;
     private String anoAplic;
     private int valorQuest;
+    private int idDisciplina;
 
     public Questao(){}
 
@@ -43,6 +44,7 @@ public class Questao implements Parcelable {
         comentQuest = in.readString();
         anoAplic = in.readString();
         valorQuest = in.readInt();
+        idDisciplina = in.readInt();
     }
 
     @Override
@@ -68,6 +70,7 @@ public class Questao implements Parcelable {
         dest.writeString(comentQuest);
         dest.writeString(anoAplic);
         dest.writeInt(valorQuest);
+        dest.writeInt(idDisciplina);
     }
 
     @SuppressWarnings("unused")
@@ -209,5 +212,13 @@ public class Questao implements Parcelable {
 
     public void setValorQuest(int valorQuest) {
         this.valorQuest = valorQuest;
+    }
+
+    public int getIdDisciplina() {
+        return idDisciplina;
+    }
+
+    public void setIdDisciplina(int idDisciplina) {
+        this.idDisciplina = idDisciplina;
     }
 }

@@ -13,11 +13,11 @@
     tools:context="br.com.ciadeideias.smartenem.DetailActivity"
     tools:showIn="@layout/app_bar_detail">
 
-    <android.support.v4.view.ViewPager
+    <androidx.viewpager.widget.ViewPager
         android:id="@+id/pager"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:layerType="hardware" >
-    </android.support.v4.view.ViewPager>
+    </androidx.viewpager.widget.ViewPager>
 
 </RelativeLayout>

@@ -135,7 +135,8 @@ public class BDPlanejamento {
         String[] args = new String[]{dia};
         valores.put(hora, valor);
 
-        bd.update("planestud", valores, "dia_semana = ?", args);
+        bd.update("planestud", valores, "dia_semana = ?",  args);
+
         bd.close();
     }
 

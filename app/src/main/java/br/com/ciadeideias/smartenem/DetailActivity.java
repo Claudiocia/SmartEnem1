@@ -2,16 +2,16 @@ package br.com.ciadeideias.smartenem;
 
 import android.content.Intent;
 import android.os.Bundle;
-import android.support.design.widget.NavigationView;
-import android.support.v4.app.Fragment;
-import android.support.v4.app.FragmentActivity;
-import android.support.v4.app.FragmentManager;
-import android.support.v4.app.FragmentStatePagerAdapter;
-import android.support.v4.view.GravityCompat;
-import android.support.v4.view.ViewPager;
-import android.support.v4.widget.DrawerLayout;
-import android.support.v7.app.ActionBarDrawerToggle;
-import android.support.v7.widget.Toolbar;
+import com.google.android.material.navigation.NavigationView;
+import androidx.fragment.app.Fragment;
+import androidx.fragment.app.FragmentActivity;
+import androidx.fragment.app.FragmentManager;
+import androidx.fragment.app.FragmentStatePagerAdapter;
+import androidx.core.view.GravityCompat;
+import androidx.viewpager.widget.ViewPager;
+import androidx.drawerlayout.widget.DrawerLayout;
+import androidx.appcompat.app.ActionBarDrawerToggle;
+import androidx.appcompat.widget.Toolbar;
 import android.view.MenuItem;
 import android.widget.Toast;
 
@@ -75,7 +75,9 @@ public class DetailActivity extends FragmentActivity implements NavigationView.O
         int id = item.getItemId();
 
         if (id == R.id.nav_premium) {
-            Toast.makeText(DetailActivity.this, "Voce Clicou no Menu Premium", Toast.LENGTH_SHORT).show();
+            Intent it = new Intent(DetailActivity.this, PremiumActivity.class);
+            startActivity(it);
+            finish();
         } else if (id == R.id.nav_home) {
             Intent it = new Intent(DetailActivity.this, SplashActivity.class);
             startActivity(it);
@@ -94,16 +96,15 @@ public class DetailActivity extends FragmentActivity implements NavigationView.O
             finish();
 
         } else if (id == R.id.nav_compart){
-            Toast.makeText(DetailActivity.this, "Voce Clicou no Menu Compartilhar", Toast.LENGTH_SHORT).show();
-
-        } else if (id == R.id.nav_config){
-            Toast.makeText(DetailActivity.this, "Voce Clicou no Menu Configurações", Toast.LENGTH_SHORT).show();
+            Toast.makeText(DetailActivity.this, "Voce Clicou no Menu Videos", Toast.LENGTH_SHORT).show();
 
         } else if (id == R.id.nav_ajuda) {
             Toast.makeText(DetailActivity.this, "Voce Clicou no Menu Ajuda", Toast.LENGTH_SHORT).show();
 
         } else if (id == R.id.nav_sobre) {
-            Toast.makeText(DetailActivity.this, "Voce Clicou no Menu Sobre", Toast.LENGTH_SHORT).show();
+            Intent it = new Intent(DetailActivity.this, AboutActivity.class);
+            startActivity(it);
+            finish();
 
         }
         DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout);

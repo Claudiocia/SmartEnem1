@@ -2,16 +2,16 @@ package br.com.ciadeideias.smartenem;
 
 import android.content.DialogInterface;
 import android.content.Intent;
-import android.support.annotation.NonNull;
-import android.support.design.widget.NavigationView;
-import android.support.v4.app.FragmentTransaction;
-import android.support.v4.view.GravityCompat;
-import android.support.v4.widget.DrawerLayout;
-import android.support.v7.app.ActionBarDrawerToggle;
-import android.support.v7.app.AlertDialog;
-import android.support.v7.app.AppCompatActivity;
+
+import com.google.android.material.navigation.NavigationView;
+import androidx.fragment.app.FragmentTransaction;
+import androidx.core.view.GravityCompat;
+import androidx.drawerlayout.widget.DrawerLayout;
+import androidx.appcompat.app.ActionBarDrawerToggle;
+import androidx.appcompat.app.AlertDialog;
+import androidx.appcompat.app.AppCompatActivity;
 import android.os.Bundle;
-import android.support.v7.widget.Toolbar;
+import androidx.appcompat.widget.Toolbar;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.TextView;
@@ -22,7 +22,6 @@ import java.util.List;
 
 import br.com.ciadeideias.smartenem.fragments.DesempFragment;
 import br.com.ciadeideias.smartenem.model.NomeGrafico;
-import br.com.ciadeideias.smartenem.utils.Desempenho;
 
 public class DesempenhoActivity extends AppCompatActivity
             implements NavigationView.OnNavigationItemSelectedListener, View.OnClickListener{
@@ -91,7 +90,9 @@ public class DesempenhoActivity extends AppCompatActivity
         int id = item.getItemId();
 
         if (id == R.id.nav_premium) {
-            Toast.makeText(DesempenhoActivity.this, "Voce Clicou no Menu premium", Toast.LENGTH_SHORT).show();
+            Intent it = new Intent(DesempenhoActivity.this, PremiumActivity.class);
+            startActivity(it);
+            finish();
         } else if (id == R.id.nav_home) {
             Intent it = new Intent(DesempenhoActivity.this, SplashActivity.class);
             startActivity(it);
@@ -113,16 +114,15 @@ public class DesempenhoActivity extends AppCompatActivity
             finish();
 
         } else if (id == R.id.nav_compart){
-            Toast.makeText(DesempenhoActivity.this, "Voce Clicou no Menu Compartilhar", Toast.LENGTH_SHORT).show();
-
-        } else if (id == R.id.nav_config){
-            Toast.makeText(DesempenhoActivity.this, "Voce Clicou no Menu Configurações", Toast.LENGTH_SHORT).show();
+            Toast.makeText(DesempenhoActivity.this, "Voce Clicou no Menu Videos", Toast.LENGTH_SHORT).show();
 
         } else if (id == R.id.nav_ajuda) {
             Toast.makeText(DesempenhoActivity.this, "Voce Clicou no Menu Ajuda", Toast.LENGTH_SHORT).show();
 
         } else if (id == R.id.nav_sobre) {
-            Toast.makeText(DesempenhoActivity.this, "Voce Clicou no Menu Sobre", Toast.LENGTH_SHORT).show();
+            Intent it = new Intent(DesempenhoActivity.this, AboutActivity.class);
+            startActivity(it);
+            finish();
 
         }
         DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout_desempenho);

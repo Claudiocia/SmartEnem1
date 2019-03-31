@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
     package="br.com.ciadeideias.smartenem">
 
     <!-- To auto-complete the email text field in the login form with the user's emails -->
@@ -29,16 +30,6 @@
             </intent-filter>
         </activity>
         <activity
-            android:name=".MainActivity"
-            android:label="@string/app_name"
-            android:noHistory="false"
-            android:theme="@style/AppTheme.NoActionBar" />
-        <activity
-            android:name=".CadQuestaoActivity"
-            android:label="@string/cad_quest"
-            android:theme="@style/AppTheme.NoActionBar"
-            android:uiOptions="splitActionBarWhenNarrow" />
-        <activity
             android:name=".MetasActivity"
             android:label="@string/title_activity_metas"
             android:parentActivityName=".ListActivity"
@@ -57,7 +48,7 @@
             android:theme="@style/AppTheme.NoActionBar" />
         <activity
             android:name=".EstuDiarioActivity"
-            android:label="@string/title_activity_graf"
+            android:label="@string/estudo_activity"
             android:theme="@style/AppTheme.NoActionBar" />
         <activity
             android:name=".PlanEstuActivity"
@@ -66,6 +57,46 @@
         <activity
             android:name=".ConfigPlanestudActivity"
             android:label="@string/titulo_planestud"
+            android:theme="@style/AppTheme.NoActionBar"/>
+        <activity
+            android:name=".ConfigPlanestudSegActivity"
+            android:label="@string/titulo_planestud"
+            android:theme="@style/AppTheme.NoActionBar"/>
+        <activity
+            android:name=".ConfigPlanestudTerActivity"
+            android:label="@string/titulo_planestud"
+            android:theme="@style/AppTheme.NoActionBar"/>
+        <activity
+            android:name=".ConfigPlanestudQuaActivity"
+            android:label="@string/titulo_planestud"
+            android:theme="@style/AppTheme.NoActionBar"/>
+        <activity
+            android:name=".ConfigPlanestudQuiActivity"
+            android:label="@string/titulo_planestud"
+            android:theme="@style/AppTheme.NoActionBar"/>
+        <activity
+            android:name=".ConfigPlanestudSexActivity"
+            android:label="@string/titulo_planestud"
+            android:theme="@style/AppTheme.NoActionBar"/>
+        <activity
+            android:name=".ConfigPlanestudSabActivity"
+            android:label="@string/titulo_planestud"
+            android:theme="@style/AppTheme.NoActionBar"/>
+        <activity
+            android:name=".ConfigPlanestudDomActivity"
+            android:label="@string/titulo_planestud"
+            android:theme="@style/AppTheme.NoActionBar"/>
+        <activity
+            android:name=".AboutActivity"
+            android:label="@string/about_frag_title"
+            android:theme="@style/AppTheme.NoActionBar"/>
+        <activity
+            android:name=".PremiumActivity"
+            android:label="@string/premium_title"
+            android:theme="@style/AppTheme.NoActionBar"/>
+        <activity
+            android:name=".EstudoListaActivity"
+            android:label="@string/estudo_title"
             android:theme="@style/AppTheme.NoActionBar"/>
 
     </application>

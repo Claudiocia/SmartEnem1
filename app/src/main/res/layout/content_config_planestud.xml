@@ -20,15 +20,29 @@
         android:gravity="center_horizontal"
         android:textSize="16dp"
         android:text="@string/titulo_planestud"/>
-    <Button
-        android:layout_width="80dp"
-        android:layout_height="30dp"
-        android:id="@+id/btn_tab_planeja"
+    <TextView
+        android:layout_width="70dp"
+        android:layout_height="20dp"
+        android:layout_marginLeft="10dp"
+        android:id="@+id/legenda_livre"
         android:layout_toRightOf="@+id/tv_tit_confplan_estud_"
-        android:layout_marginLeft="30dp"
-        android:text="Salvar"
-        android:textSize="9dp"
-        android:textColor="@color/red"/>
+        android:textColor="@color/white"
+        android:background="@color/blue"
+        android:text="Livre"
+        android:textStyle="bold"
+        android:gravity="center_horizontal"
+        android:textSize="12dp"/>
+    <TextView
+        android:layout_width="70dp"
+        android:layout_height="20dp"
+        android:layout_marginLeft="10dp"
+        android:layout_toRightOf="@+id/legenda_livre"
+        android:textColor="@color/white"
+        android:background="@color/red"
+        android:text="Ocupado"
+        android:textStyle="bold"
+        android:gravity="center_horizontal"
+        android:textSize="12dp"/>
 
     <LinearLayout
         android:id="@+id/graf_"

@@ -1,19 +1,18 @@
 package br.com.ciadeideias.smartenem;
 
 import android.app.Dialog;
-import android.content.Context;
 import android.content.DialogInterface;
 import android.content.Intent;
 import android.os.Bundle;
-import android.support.annotation.NonNull;
-import android.support.annotation.Nullable;
-import android.support.design.widget.NavigationView;
-import android.support.v4.view.GravityCompat;
-import android.support.v4.widget.DrawerLayout;
-import android.support.v7.app.ActionBarDrawerToggle;
-import android.support.v7.app.AlertDialog;
-import android.support.v7.app.AppCompatActivity;
-import android.support.v7.widget.Toolbar;
+import androidx.annotation.NonNull;
+import androidx.annotation.Nullable;
+import com.google.android.material.navigation.NavigationView;
+import androidx.core.view.GravityCompat;
+import androidx.drawerlayout.widget.DrawerLayout;
+import androidx.appcompat.app.ActionBarDrawerToggle;
+import androidx.appcompat.app.AlertDialog;
+import androidx.appcompat.app.AppCompatActivity;
+import androidx.appcompat.widget.Toolbar;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.AdapterView;
@@ -26,7 +25,6 @@ import java.util.ArrayList;
 import br.com.ciadeideias.smartenem.adapter.PlanEstudAdapter;
 import br.com.ciadeideias.smartenem.bancodados.BDPlanejamento;
 import br.com.ciadeideias.smartenem.model.Planejamento;
-import br.com.ciadeideias.smartenem.utils.Desempenho;
 
 /**
  * Created by ClaudioSouza on 29/12/2017.
@@ -68,32 +66,53 @@ public class PlanEstuActivity extends AppCompatActivity
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
                 switch (position){
                     case 0:
-                        diaSemana = planList.get(0).getDiaSemana();
-                        Toast.makeText(PlanEstuActivity.this, "Voce Clicou no dia: "+diaSemana, Toast.LENGTH_SHORT).show();
+                        //diaSemana = planList.get(0).getDiaSemana();
+                        Intent itSeg = new Intent(PlanEstuActivity.this, ConfigPlanestudSegActivity.class);
+                        startActivity(itSeg);
+                        finish();
+                        //Toast.makeText(PlanEstuActivity.this, "Voce Clicou no dia: "+diaSemana, Toast.LENGTH_SHORT).show();
                         break;
                     case 1:
-                        diaSemana = planList.get(1).getDiaSemana();
-                        Toast.makeText(PlanEstuActivity.this, "Voce Clicou no dia: "+diaSemana, Toast.LENGTH_SHORT).show();
+                        //diaSemana = planList.get(1).getDiaSemana();
+                        Intent itTer = new Intent(PlanEstuActivity.this, ConfigPlanestudTerActivity.class);
+                        startActivity(itTer);
+                        finish();
+                        //Toast.makeText(PlanEstuActivity.this, "Voce Clicou no dia: "+diaSemana, Toast.LENGTH_SHORT).show();
                         break;
                     case 2:
-                        diaSemana = planList.get(2).getDiaSemana();
-                        Toast.makeText(PlanEstuActivity.this, "Voce Clicou no dia: "+diaSemana, Toast.LENGTH_SHORT).show();
+                        //diaSemana = planList.get(2).getDiaSemana();
+                        Intent itQua = new Intent(PlanEstuActivity.this, ConfigPlanestudQuaActivity.class);
+                        startActivity(itQua);
+                        finish();
+                        //Toast.makeText(PlanEstuActivity.this, "Voce Clicou no dia: "+diaSemana, Toast.LENGTH_SHORT).show();
                         break;
                     case 3:
-                        diaSemana = planList.get(3).getDiaSemana();
-                        Toast.makeText(PlanEstuActivity.this, "Voce Clicou no dia: "+diaSemana, Toast.LENGTH_SHORT).show();
+                        //diaSemana = planList.get(3).getDiaSemana();
+                        Intent itQui = new Intent(PlanEstuActivity.this, ConfigPlanestudQuiActivity.class);
+                        startActivity(itQui);
+                        finish();
+                        //Toast.makeText(PlanEstuActivity.this, "Voce Clicou no dia: "+diaSemana, Toast.LENGTH_SHORT).show();
                         break;
                     case 4:
-                        diaSemana = planList.get(4).getDiaSemana();
-                        Toast.makeText(PlanEstuActivity.this, "Voce Clicou no dia: "+diaSemana, Toast.LENGTH_SHORT).show();
+                        //diaSemana = planList.get(4).getDiaSemana();
+                        Intent itSex = new Intent(PlanEstuActivity.this, ConfigPlanestudSexActivity.class);
+                        startActivity(itSex);
+                        finish();
+                        //Toast.makeText(PlanEstuActivity.this, "Voce Clicou no dia: "+diaSemana, Toast.LENGTH_SHORT).show();
                         break;
                     case 5:
-                        diaSemana = planList.get(5).getDiaSemana();
-                        Toast.makeText(PlanEstuActivity.this, "Voce Clicou no dia: "+diaSemana, Toast.LENGTH_SHORT).show();
+                        //diaSemana = planList.get(5).getDiaSemana();
+                        Intent itSab = new Intent(PlanEstuActivity.this, ConfigPlanestudSabActivity.class);
+                        startActivity(itSab);
+                        finish();
+                        //Toast.makeText(PlanEstuActivity.this, "Voce Clicou no dia: "+diaSemana, Toast.LENGTH_SHORT).show();
                         break;
                     case 6:
-                        diaSemana = planList.get(6).getDiaSemana();
-                        Toast.makeText(PlanEstuActivity.this, "Voce Clicou no dia: "+diaSemana, Toast.LENGTH_SHORT).show();
+                        //diaSemana = planList.get(6).getDiaSemana();
+                        Intent itDom = new Intent(PlanEstuActivity.this, ConfigPlanestudDomActivity.class);
+                        startActivity(itDom);
+                        finish();
+                        //Toast.makeText(PlanEstuActivity.this, "Voce Clicou no dia: "+diaSemana, Toast.LENGTH_SHORT).show();
                         break;
                     case 7:
                         Intent it = new Intent(PlanEstuActivity.this, ConfigPlanestudActivity.class);
@@ -124,7 +143,9 @@ public class PlanEstuActivity extends AppCompatActivity
         int id = item.getItemId();
 
         if (id == R.id.nav_premium) {
-            Toast.makeText(PlanEstuActivity.this, "Voce Clicou no Menu premium", Toast.LENGTH_SHORT).show();
+            Intent it = new Intent(PlanEstuActivity.this, PremiumActivity.class);
+            startActivity(it);
+            finish();
         } else if (id == R.id.nav_home) {
             Intent it = new Intent(PlanEstuActivity.this, SplashActivity.class);
             startActivity(it);
@@ -146,16 +167,15 @@ public class PlanEstuActivity extends AppCompatActivity
             finish();
 
         } else if (id == R.id.nav_compart){
-            Toast.makeText(PlanEstuActivity.this, "Voce Clicou no Menu Compartilhar", Toast.LENGTH_SHORT).show();
-
-        } else if (id == R.id.nav_config){
-            Toast.makeText(PlanEstuActivity.this, "Voce Clicou no Menu Configurações", Toast.LENGTH_SHORT).show();
+            Toast.makeText(PlanEstuActivity.this, "Voce Clicou no Menu Videos", Toast.LENGTH_SHORT).show();
 
         } else if (id == R.id.nav_ajuda) {
             Toast.makeText(PlanEstuActivity.this, "Voce Clicou no Menu Ajuda", Toast.LENGTH_SHORT).show();
 
         } else if (id == R.id.nav_sobre) {
-            Toast.makeText(PlanEstuActivity.this, "Voce Clicou no Menu Sobre", Toast.LENGTH_SHORT).show();
+            Intent it = new Intent(PlanEstuActivity.this, AboutActivity.class);
+            startActivity(it);
+            finish();
 
         }
         DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout_plano_estudo);

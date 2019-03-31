@@ -3,17 +3,19 @@ package br.com.ciadeideias.smartenem;
 import android.content.Context;
 import android.content.DialogInterface;
 import android.content.Intent;
+import android.os.Build;
 import android.os.Bundle;
-import android.support.design.widget.Snackbar;
-import android.support.v7.app.AlertDialog;
+
+import androidx.annotation.RequiresApi;
+import androidx.appcompat.app.AlertDialog;
 import android.view.LayoutInflater;
 import android.view.View;
-import android.support.design.widget.NavigationView;
-import android.support.v4.view.GravityCompat;
-import android.support.v4.widget.DrawerLayout;
-import android.support.v7.app.ActionBarDrawerToggle;
-import android.support.v7.app.AppCompatActivity;
-import android.support.v7.widget.Toolbar;
+import com.google.android.material.navigation.NavigationView;
+import androidx.core.view.GravityCompat;
+import androidx.drawerlayout.widget.DrawerLayout;
+import androidx.appcompat.app.ActionBarDrawerToggle;
+import androidx.appcompat.app.AppCompatActivity;
+import androidx.appcompat.widget.Toolbar;
 import android.view.MenuItem;
 import android.view.ViewGroup;
 import android.widget.AdapterView;
@@ -125,9 +127,11 @@ public class ListActivity extends AppCompatActivity
             new AlertDialog.Builder(this).setTitle("Alerta do sistema")
                     .setMessage("Você quer encerrar o programa agora?")
                     .setPositiveButton("Sim", new DialogInterface.OnClickListener() {
+                        @RequiresApi(api = Build.VERSION_CODES.JELLY_BEAN)
                         @Override
                         public void onClick(DialogInterface dialog, int which) {
-                            ListActivity.super.onBackPressed();
+                            finishAffinity();
+
                         }
                     }).setNegativeButton("Não", new DialogInterface.OnClickListener() {
                 @Override
@@ -146,7 +150,9 @@ public class ListActivity extends AppCompatActivity
         int id = item.getItemId();
 
         if (id == R.id.nav_premium) {
-            Toast.makeText(ListActivity.this, "Voce Clicou no Menu Premium", Toast.LENGTH_SHORT).show();
+            Intent it = new Intent(ListActivity.this, PremiumActivity.class);
+            startActivity(it);
+            finish();
         } else if (id == R.id.nav_home) {
             //Toast.makeText(ListActivity.this, "Voce Clicou no Menu Home", Toast.LENGTH_SHORT).show();
 
@@ -166,19 +172,15 @@ public class ListActivity extends AppCompatActivity
             finish();
 
         } else if (id == R.id.nav_compart){
-            Toast.makeText(ListActivity.this, "Voce Clicou no Menu Compartilhar", Toast.LENGTH_SHORT).show();
-
-        } else if (id == R.id.nav_config){
-            Toast.makeText(ListActivity.this, "Voce Clicou no Menu Configurações", Toast.LENGTH_SHORT).show();
+            Toast.makeText(ListActivity.this, "Voce Clicou no Menu Videos", Toast.LENGTH_SHORT).show();
 
         } else if (id == R.id.nav_ajuda) {
-            Intent it = new Intent(ListActivity.this, MainActivity.class);
-            startActivity(it);
-            finish();
             Toast.makeText(ListActivity.this, "Voce Clicou no Menu Ajuda", Toast.LENGTH_SHORT).show();
 
         } else if (id == R.id.nav_sobre) {
-            Toast.makeText(ListActivity.this, "Voce Clicou no Menu Sobre", Toast.LENGTH_SHORT).show();
+            Intent it = new Intent(ListActivity.this, AboutActivity.class);
+            startActivity(it);
+            finish();
 
         }
 
@@ -196,7 +198,10 @@ public class ListActivity extends AppCompatActivity
                 aux = "Fab 1";
                 break;
             case R.id.fab2:
-                aux = "Fab 2";
+                //aux = "Fab 2";
+                Intent it = new Intent(ListActivity.this, EstudoListaActivity.class);
+                startActivity(it);
+                finish();
                 break;
             case R.id.fab3:
                 aux = "Fab 3";
@@ -208,7 +213,7 @@ public class ListActivity extends AppCompatActivity
                 aux = "Fab 5";
                 break;
         }
-        Toast.makeText(ListActivity.this, "Menu clicado é "+aux, Toast.LENGTH_SHORT).show();
+        //Toast.makeText(ListActivity.this, "Menu clicado é "+aux, Toast.LENGTH_SHORT).show();
     }
 
     public class CustomListAdapter extends BaseAdapter {
