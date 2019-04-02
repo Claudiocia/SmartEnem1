@@ -210,7 +210,10 @@ public class ListActivity extends AppCompatActivity
                 aux = "Fab 4";
                 break;
             case R.id.fab5:
-                aux = "Fab 5";
+                //aux = "Fab 5";
+                Intent it5 = new Intent(ListActivity.this, DicasListaActivity.class);
+                startActivity(it5);
+                finish();
                 break;
         }
         //Toast.makeText(ListActivity.this, "Menu clicado é "+aux, Toast.LENGTH_SHORT).show();

@@ -55,9 +55,10 @@
 
     <!-- Strings gráficos de desempenho -->
     <string name="nome_graf_item1">Estudos Diários</string>
-    <string name="titulo_graficos">Selecione um Item</string>
+    <string name="titulo_graficos">Selecione uma Disciplina</string>
     <string name="tit_graficos">Desempenhos</string>
     <string name="title_activity_graf">Desempenho</string>
+    <string name="tit_dicas">Dicas Úteis</string>
 
     <!-- Strings Plano de Estudos -->
     <string name="titulo_planestud">Plano de Estudos</string>

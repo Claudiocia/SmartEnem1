@@ -27,7 +27,7 @@ public class BDDica {
     public Dica buscaAleatoria(){
         Dica dica = new Dica();
 
-        String[] colunas = new String[]{"iddica", "dica_tit", "dica", "ultima_data", "qtd_apres"};
+        String[] colunas = new String[]{"iddica", "dica_tit", "dica", "ultima_data", "qtd_apres", "descri"};
 
         Cursor cursor = bd.rawQuery("SELECT * FROM dicas ORDER BY RANDOM() LIMIT 1", null);
 
@@ -38,6 +38,7 @@ public class BDDica {
             dica.setTextoDica(cursor.getString(2));
             dica.setDataApres(cursor.getString(3));
             dica.setQtdApres(cursor.getInt(4));
+            dica.setDescri(cursor.getString(5));
 
         }
         return dica;
@@ -46,7 +47,7 @@ public class BDDica {
     public Dica buscaPorId(int id){
         Dica dica = new Dica();
 
-        String[] colunas = new String[]{"iddica", "dica_tit", "dica", "ultima_data", "qtd_apres"};
+        String[] colunas = new String[]{"iddica", "dica_tit", "dica", "ultima_data", "qtd_apres", "descri"};
         String[] args = new String[]{""+id};
 
         Cursor cursor = bd.query("dicas", colunas, "iddica = ?", args, null, null, null);
@@ -58,6 +59,7 @@ public class BDDica {
             dica.setTextoDica(cursor.getString(2));
             dica.setDataApres(cursor.getString(3));
             dica.setQtdApres(cursor.getInt(4));
+            dica.setDescri(cursor.getString(5));
 
         }
         cursor.close();
@@ -67,7 +69,7 @@ public class BDDica {
     public List<Dica> buscarTodas(){
         List<Dica> listDica = new ArrayList<Dica>();
 
-        String[] colunas = new String[]{"iddica", "dica_tit", "dica", "ultima_data", "qtd_apres"};
+        String[] colunas = new String[]{"iddica", "dica_tit", "dica", "ultima_data", "qtd_apres", "descri"};
         Cursor cursor = bd.query("dicas", colunas, null, null, null, null, null);
 
         if (cursor.getCount() > 0){
@@ -79,6 +81,7 @@ public class BDDica {
                 dica.setTextoDica(cursor.getString(2));
                 dica.setDataApres(cursor.getString(3));
                 dica.setQtdApres(cursor.getInt(4));
+                dica.setDescri(cursor.getString(5));
                 listDica.add(dica);
             }while (cursor.moveToNext());
         }

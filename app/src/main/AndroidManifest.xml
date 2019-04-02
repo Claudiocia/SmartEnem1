@@ -98,6 +98,10 @@
             android:name=".EstudoListaActivity"
             android:label="@string/estudo_title"
             android:theme="@style/AppTheme.NoActionBar"/>
+        <activity
+            android:name=".DicasListaActivity"
+            android:label="@string/tit_dicas"
+            android:theme="@style/AppTheme.NoActionBar"/>
 
     </application>
 
