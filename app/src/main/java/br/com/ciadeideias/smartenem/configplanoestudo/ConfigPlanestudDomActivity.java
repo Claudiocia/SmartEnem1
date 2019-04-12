@@ -1,6 +1,7 @@
-package br.com.ciadeideias.smartenem;
+package br.com.ciadeideias.smartenem.configplanoestudo;
 
 import android.content.Intent;
+import android.graphics.Color;
 import android.os.Bundle;
 import androidx.annotation.NonNull;
 import com.google.android.material.navigation.NavigationView;
@@ -19,11 +20,19 @@ import android.widget.Toast;
 
 import java.util.ArrayList;
 
+import br.com.ciadeideias.smartenem.AboutActivity;
+import br.com.ciadeideias.smartenem.DesempenhoActivity;
+import br.com.ciadeideias.smartenem.MetasActivity;
+import br.com.ciadeideias.smartenem.PlanEstuActivity;
+import br.com.ciadeideias.smartenem.PremiumActivity;
+import br.com.ciadeideias.smartenem.R;
+import br.com.ciadeideias.smartenem.SplashActivity;
 import br.com.ciadeideias.smartenem.bancodados.BDPlanejamento;
 import br.com.ciadeideias.smartenem.model.Planejamento;
 import br.com.ciadeideias.smartenem.utils.ArraySemRepet;
 
-public class ConfigPlanestudTerActivity extends AppCompatActivity
+
+public class ConfigPlanestudDomActivity extends AppCompatActivity
         implements NavigationView.OnNavigationItemSelectedListener, View.OnClickListener{
 
     Planejamento planDia = new Planejamento();
@@ -38,7 +47,7 @@ public class ConfigPlanestudTerActivity extends AppCompatActivity
     String nome72, nome82, nome92, nome102, nome112;
     String nome122, nome132, nome142, nome152, nome162, nome172, nome182;
 
-    String dia = "Terça-Feira";
+    String dia = "Domingo";
     String hora6, hora7, hora8, hora9, hora10, hora11;
     String hora12, hora13, hora14, hora15, hora16;
     String hora17, hora18, hora19, hora20, hora21, hora22;
@@ -56,6 +65,8 @@ public class ConfigPlanestudTerActivity extends AppCompatActivity
 
         tvVolta.setText("Quadro de Horário");
         tvDia.setText(dia);
+        tvDia.setTextColor(Color.RED);
+
 
         DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout_confplano_estudo_seg);
         ActionBarDrawerToggle toggle = new ActionBarDrawerToggle(
@@ -457,7 +468,7 @@ public class ConfigPlanestudTerActivity extends AppCompatActivity
         if (drawer.isDrawerOpen(GravityCompat.START)){
             drawer.closeDrawer(GravityCompat.START);
         }else {
-            Intent it = new Intent(ConfigPlanestudTerActivity.this, PlanEstuActivity.class);
+            Intent it = new Intent(ConfigPlanestudDomActivity.this, PlanEstuActivity.class);
             startActivity(it);
             finish();
         }
@@ -468,37 +479,37 @@ public class ConfigPlanestudTerActivity extends AppCompatActivity
         int id = item.getItemId();
 
         if (id == R.id.nav_premium) {
-            Intent it = new Intent(ConfigPlanestudTerActivity.this, PremiumActivity.class);
+            Intent it = new Intent(ConfigPlanestudDomActivity.this, PremiumActivity.class);
             startActivity(it);
             finish();
         } else if (id == R.id.nav_home) {
-            Intent it = new Intent(ConfigPlanestudTerActivity.this, SplashActivity.class);
+            Intent it = new Intent(ConfigPlanestudDomActivity.this, SplashActivity.class);
             startActivity(it);
             finish();
 
         } else if (id == R.id.nav_plan_estud) {
-            Intent it = new Intent(ConfigPlanestudTerActivity.this, PlanEstuActivity.class);
+            Intent it = new Intent(ConfigPlanestudDomActivity.this, PlanEstuActivity.class);
             startActivity(it);
             finish();
 
         } else if (id == R.id.nav_meta) {
-            Intent it = new Intent(ConfigPlanestudTerActivity.this, MetasActivity.class);
+            Intent it = new Intent(ConfigPlanestudDomActivity.this, MetasActivity.class);
             startActivity(it);
             finish();
 
         } else if (id == R.id.nav_desemp) {
-            Intent it = new Intent(ConfigPlanestudTerActivity.this, DesempenhoActivity.class);
+            Intent it = new Intent(ConfigPlanestudDomActivity.this, DesempenhoActivity.class);
             startActivity(it);
             finish();
 
         } else if (id == R.id.nav_compart){
-            Toast.makeText(ConfigPlanestudTerActivity.this, "Voce Clicou no Menu Videos", Toast.LENGTH_SHORT).show();
+            Toast.makeText(ConfigPlanestudDomActivity.this, "Voce Clicou no Menu Videos", Toast.LENGTH_SHORT).show();
 
         } else if (id == R.id.nav_ajuda) {
-            Toast.makeText(ConfigPlanestudTerActivity.this, "Voce Clicou no Menu Ajuda", Toast.LENGTH_SHORT).show();
+            Toast.makeText(ConfigPlanestudDomActivity.this, "Voce Clicou no Menu Ajuda", Toast.LENGTH_SHORT).show();
 
         } else if (id == R.id.nav_sobre) {
-            Intent it = new Intent(ConfigPlanestudTerActivity.this, AboutActivity.class);
+            Intent it = new Intent(ConfigPlanestudDomActivity.this, AboutActivity.class);
             startActivity(it);
             finish();
 

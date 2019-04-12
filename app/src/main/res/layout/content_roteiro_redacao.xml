@@ -1,0 +1,321 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:paddingLeft="@dimen/activity_horizontal_margin"
+    android:paddingRight="@dimen/activity_horizontal_margin"
+    android:paddingTop="@dimen/activity_vertical_margin"
+    android:paddingBottom="@dimen/activity_vertical_margin"
+    app:layout_behavior="@string/appbar_scrolling_view_behavior"
+    tools:showIn="@layout/app_bar_roteiro_redacao"
+    tools:context=".redacao.RoteiroRedacaoActivity"
+    android:orientation="vertical">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:id="@+id/titulo2"
+        android:gravity="center_horizontal"
+        android:orientation="vertical"
+        android:background="@drawable/fundo_text_view">
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:id="@+id/tv_tit_roteiro"
+        android:layout_marginTop="5dp"
+        android:layout_weight="1"
+        android:textStyle="bold"
+        android:textAllCaps="true"
+        android:gravity="center"
+        android:textSize="18dp"/>
+    </LinearLayout>
+    <ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="10dp"
+        android:layout_below="@+id/titulo2">
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:id="@+id/textos_redacao"
+            android:orientation="vertical"
+            android:layout_marginTop="10dp"
+            android:gravity="center_horizontal">
+
+            <ImageView
+                android:id="@+id/imagem_roteiro"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:src="@drawable/aboa_redacao1"/>
+
+            <com.bluejamesbond.text.DocumentView
+                xmlns:ext="http://schemas.android.com/apk/res-auto"
+                android:id="@+id/texto_boa1"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                ext:documentView_hyphen="-"
+                ext:documentView_insetPaddingLeft="15dp"
+                ext:documentView_insetPaddingRight="15dp"
+                ext:documentView_insetPaddingTop="10dp"
+                ext:documentView_text="@string/texto_boa1"
+                ext:documentView_textAlignment="justified"
+                ext:documentView_textColor="@color/colorPrimaryDark"
+                ext:documentView_textFormat="plain"
+                ext:documentView_textSize="16sp"
+                ext:documentView_textStyle="bold" />
+
+            <com.bluejamesbond.text.DocumentView
+                xmlns:ext="http://schemas.android.com/apk/res-auto"
+                android:id="@+id/texto_boa2"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                ext:documentView_hyphen="-"
+                ext:documentView_insetPaddingLeft="15dp"
+                ext:documentView_insetPaddingRight="15dp"
+                ext:documentView_insetPaddingTop="10dp"
+                ext:documentView_text="@string/texto_boa2"
+                ext:documentView_textAlignment="justified"
+                ext:documentView_textColor="@color/colorPrimaryDark"
+                ext:documentView_textFormat="plain"
+                ext:documentView_textSize="16sp"
+                ext:documentView_textStyle="bold" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="10dp"
+                android:text="@string/intertitulo_boa1"
+                android:layout_gravity="left"
+                android:textSize="20sp"
+                android:textStyle="bold"/>
+
+            <com.bluejamesbond.text.DocumentView
+                xmlns:ext="http://schemas.android.com/apk/res-auto"
+                android:id="@+id/texto_boa3"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                ext:documentView_hyphen="-"
+                ext:documentView_insetPaddingLeft="15dp"
+                ext:documentView_insetPaddingRight="15dp"
+                ext:documentView_insetPaddingTop="10dp"
+                ext:documentView_text="@string/texto_boa3"
+                ext:documentView_textAlignment="justified"
+                ext:documentView_textColor="@color/colorPrimaryDark"
+                ext:documentView_textFormat="plain"
+                ext:documentView_textSize="16sp"
+                ext:documentView_textStyle="bold" />
+
+            <com.bluejamesbond.text.DocumentView
+                xmlns:ext="http://schemas.android.com/apk/res-auto"
+                android:id="@+id/texto_boa4"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                ext:documentView_hyphen="-"
+                ext:documentView_insetPaddingLeft="15dp"
+                ext:documentView_insetPaddingRight="15dp"
+                ext:documentView_insetPaddingTop="10dp"
+                ext:documentView_text="@string/texto_boa4"
+                ext:documentView_textAlignment="justified"
+                ext:documentView_textColor="@color/colorPrimaryDark"
+                ext:documentView_textFormat="plain"
+                ext:documentView_textSize="16sp"
+                ext:documentView_textStyle="bold" />
+
+            <com.bluejamesbond.text.DocumentView
+                xmlns:ext="http://schemas.android.com/apk/res-auto"
+                android:id="@+id/texto_boa5"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                ext:documentView_hyphen="-"
+                ext:documentView_insetPaddingLeft="15dp"
+                ext:documentView_insetPaddingRight="15dp"
+                ext:documentView_insetPaddingTop="10dp"
+                ext:documentView_text="@string/texto_boa5"
+                ext:documentView_textAlignment="justified"
+                ext:documentView_textColor="@color/colorPrimaryDark"
+                ext:documentView_textFormat="plain"
+                ext:documentView_textSize="16sp"
+                ext:documentView_textStyle="bold" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="10dp"
+                android:text="@string/intertitulo_boa2"
+                android:layout_gravity="left"
+                android:textSize="20sp"
+                android:textStyle="bold"/>
+
+            <com.bluejamesbond.text.DocumentView
+                xmlns:ext="http://schemas.android.com/apk/res-auto"
+                android:id="@+id/texto_boa6"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                ext:documentView_hyphen="-"
+                ext:documentView_insetPaddingLeft="15dp"
+                ext:documentView_insetPaddingRight="15dp"
+                ext:documentView_insetPaddingTop="10dp"
+                ext:documentView_text="@string/texto_boa6"
+                ext:documentView_textAlignment="justified"
+                ext:documentView_textColor="@color/colorPrimaryDark"
+                ext:documentView_textFormat="plain"
+                ext:documentView_textSize="16sp"
+                ext:documentView_textStyle="bold" />
+
+            <com.bluejamesbond.text.DocumentView
+                xmlns:ext="http://schemas.android.com/apk/res-auto"
+                android:id="@+id/texto_boa7"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                ext:documentView_hyphen="-"
+                ext:documentView_insetPaddingLeft="15dp"
+                ext:documentView_insetPaddingRight="15dp"
+                ext:documentView_insetPaddingTop="10dp"
+                ext:documentView_text="@string/texto_boa7"
+                ext:documentView_textAlignment="justified"
+                ext:documentView_textColor="@color/colorPrimaryDark"
+                ext:documentView_textFormat="plain"
+                ext:documentView_textSize="16sp"
+                ext:documentView_textStyle="bold" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="10dp"
+                android:text="@string/intertitulo_boa3"
+                android:layout_gravity="left"
+                android:textSize="20sp"
+                android:textStyle="bold"/>
+
+            <com.bluejamesbond.text.DocumentView
+                xmlns:ext="http://schemas.android.com/apk/res-auto"
+                android:id="@+id/texto_boa8"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                ext:documentView_hyphen="-"
+                ext:documentView_insetPaddingLeft="15dp"
+                ext:documentView_insetPaddingRight="15dp"
+                ext:documentView_insetPaddingTop="10dp"
+                ext:documentView_text="@string/texto_boa8"
+                ext:documentView_textAlignment="justified"
+                ext:documentView_textColor="@color/colorPrimaryDark"
+                ext:documentView_textFormat="plain"
+                ext:documentView_textSize="16sp"
+                ext:documentView_textStyle="bold" />
+
+            <com.bluejamesbond.text.DocumentView
+                xmlns:ext="http://schemas.android.com/apk/res-auto"
+                android:id="@+id/texto_boa9"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                ext:documentView_hyphen="-"
+                ext:documentView_insetPaddingLeft="15dp"
+                ext:documentView_insetPaddingRight="15dp"
+                ext:documentView_insetPaddingTop="10dp"
+                ext:documentView_text="@string/texto_boa9"
+                ext:documentView_textAlignment="justified"
+                ext:documentView_textColor="@color/colorPrimaryDark"
+                ext:documentView_textFormat="plain"
+                ext:documentView_textSize="16sp"
+                ext:documentView_textStyle="bold" />
+
+            <com.bluejamesbond.text.DocumentView
+                xmlns:ext="http://schemas.android.com/apk/res-auto"
+                android:id="@+id/texto_boa10"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                ext:documentView_hyphen="-"
+                ext:documentView_insetPaddingLeft="15dp"
+                ext:documentView_insetPaddingRight="15dp"
+                ext:documentView_insetPaddingTop="10dp"
+                ext:documentView_text="@string/texto_boa10"
+                ext:documentView_textAlignment="justified"
+                ext:documentView_textColor="@color/colorPrimaryDark"
+                ext:documentView_textFormat="plain"
+                ext:documentView_textSize="16sp"
+                ext:documentView_textStyle="bold" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="10dp"
+                android:text="@string/intertitulo_boa4"
+                android:layout_gravity="left"
+                android:textSize="20sp"
+                android:textStyle="bold"/>
+
+            <com.bluejamesbond.text.DocumentView
+                xmlns:ext="http://schemas.android.com/apk/res-auto"
+                android:id="@+id/texto_boa11"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                ext:documentView_hyphen="-"
+                ext:documentView_insetPaddingLeft="15dp"
+                ext:documentView_insetPaddingRight="15dp"
+                ext:documentView_insetPaddingTop="10dp"
+                ext:documentView_text="@string/texto_boa11"
+                ext:documentView_textAlignment="justified"
+                ext:documentView_textColor="@color/colorPrimaryDark"
+                ext:documentView_textFormat="plain"
+                ext:documentView_textSize="16sp"
+                ext:documentView_textStyle="bold" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="10dp"
+                android:text="@string/intertitulo_boa5"
+                android:layout_gravity="left"
+                android:textSize="20sp"
+                android:textStyle="bold"/>
+
+            <com.bluejamesbond.text.DocumentView
+                xmlns:ext="http://schemas.android.com/apk/res-auto"
+                android:id="@+id/texto_boa12"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                ext:documentView_hyphen="-"
+                ext:documentView_insetPaddingLeft="15dp"
+                ext:documentView_insetPaddingRight="15dp"
+                ext:documentView_insetPaddingTop="10dp"
+                ext:documentView_text="@string/texto_boa12"
+                ext:documentView_textAlignment="justified"
+                ext:documentView_textColor="@color/colorPrimaryDark"
+                ext:documentView_textFormat="plain"
+                ext:documentView_textSize="16sp"
+                ext:documentView_textStyle="bold" />
+
+            <com.bluejamesbond.text.DocumentView
+                xmlns:ext="http://schemas.android.com/apk/res-auto"
+                android:id="@+id/texto_boa13"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                ext:documentView_hyphen="-"
+                ext:documentView_insetPaddingLeft="15dp"
+                ext:documentView_insetPaddingRight="15dp"
+                ext:documentView_insetPaddingTop="10dp"
+                ext:documentView_text="@string/texto_boa13"
+                ext:documentView_textAlignment="justified"
+                ext:documentView_textColor="@color/colorPrimaryDark"
+                ext:documentView_textFormat="plain"
+                ext:documentView_textSize="16sp"
+                ext:documentView_textStyle="bold" />
+
+            <Button
+                android:id="@+id/btn_sair_roteiro"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="20dp"
+                android:layout_marginBottom="10dp"
+                android:background="#91abaf"
+                android:text="Sair"
+                android:textSize="18sp"
+                android:textColor="@color/black"
+                android:textStyle="bold"/>
+
+        </LinearLayout>
+    </ScrollView>
+</RelativeLayout>

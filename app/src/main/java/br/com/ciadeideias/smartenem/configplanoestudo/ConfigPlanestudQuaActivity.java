@@ -1,4 +1,4 @@
-package br.com.ciadeideias.smartenem;
+package br.com.ciadeideias.smartenem.configplanoestudo;
 
 import android.content.Intent;
 import android.os.Bundle;
@@ -19,6 +19,13 @@ import android.widget.Toast;
 
 import java.util.ArrayList;
 
+import br.com.ciadeideias.smartenem.AboutActivity;
+import br.com.ciadeideias.smartenem.DesempenhoActivity;
+import br.com.ciadeideias.smartenem.MetasActivity;
+import br.com.ciadeideias.smartenem.PlanEstuActivity;
+import br.com.ciadeideias.smartenem.PremiumActivity;
+import br.com.ciadeideias.smartenem.R;
+import br.com.ciadeideias.smartenem.SplashActivity;
 import br.com.ciadeideias.smartenem.bancodados.BDPlanejamento;
 import br.com.ciadeideias.smartenem.model.Planejamento;
 import br.com.ciadeideias.smartenem.utils.ArraySemRepet;

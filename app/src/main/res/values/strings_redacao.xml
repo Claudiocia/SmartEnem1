@@ -1,0 +1,560 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <string name="texto_abertura1">A redação é uma das fases mais importantes de qualquer processo
+        seletivo. Quantas vezes em uma seleção para uma vaga de emprego nos solicitam a elaboração
+        de uma redação sobre os mais variados temas? Através do texto os avaliadores são capazes de
+        analisar uma série de situações, englobando inclusive a personalidade do autor.</string>
+    <string name="texto_abertura2">A importância desta etapa do exame fica mais evidente no seu
+        caráter eliminatório. Não apresentar a redação, ou faze-la fora das especificações
+        pré-estabelecidas no caderno de questões, tais como tema, contextualização e estilo,
+        são motivos de eliminação do certame.</string>
+    <string name="texto_abertura3">No caso específico do ENEM a redação exigida é no estilo
+        dissertiva-argumentativa. Sendo assim, vamos focar todas as orientações dentro deste
+        modelo de estilo. Os demais serão citados apenas para conhecimento geral.</string>
+
+
+    <!-- /////////////////  INICIO DA PAGINA DE REDAÇÃO  ///////////////// -->
+
+    <string name="titulo_tecnica">Técnicas de Redação</string>
+    <string name="texto_tecnica1">As técnicas de redação variam conforme os tipos de textos,
+        que podem ser argumentativo, descritivo, dissertativo e narrativo.
+        O raciocínio deve ser previamente organizado. Antes de começar a escrever tudo o que
+        vem na mente é preciso delimitar o tema dando prioridade para as ideias que são
+        realmente importantes na relação com o tema.  Compreendido o tema, estabelecer o ponto
+        de vista central e dessa ideia tirar a apresentação do tema e os argumentos de defesa
+        do seu ponto de vista.</string>
+
+    <string name="texto_tecnica2">Isto feito, deve se partir para a criação do texto, estruturando
+        o mesmo em 3 partes, <b>Introdução</b>, <b>Desenvolvimento</b> e <b>Conclusão</b>, isso
+        independente do tipo de texto. De uma forma geral, o conteúdo será desenvolvido ao longo
+        do texto da seguinte forma:</string>
+
+    <string name="intertitulo_tec1">Introdução</string>
+    <string name="texto_tecnica3">Nesta parte você deve delimitar o tema, dentro do que indica o enunciado
+        e já apresentar o seu ponto de vista sobre o mesmo. Nesta parte você deve dedicar entre 5 e 7
+        linhas usando um único parágrafo.</string>
+
+    <string name="intertitulo_tec2">Desenvolvimento</string>
+    <string name="texto_tecnica4">Nela você vai apresentar a sua argumentação. Para isso você vai
+        desenvolver ideias sempre em consonância com o seu ponto de vista já apresentado. Nesta
+        parte o tema será desenvolvido na sua maior abrangência possível. Para esta fase você
+        pode dedicar dois parágrafos entre 5 e 7 linhas cada.</string>
+
+    <string name="intertitulo_tec3">Conclusão</string>
+    <string name="texto_tecnica5">Aqui você apresenta o desfecho dos argumentos apresentados no
+        desenvolvimento e corrobora ou reafirma o seu ponto de vista apresentado na introdução.
+        Esta conclusão, elaborada em apenas um parágrafo, deve ter entre 5 e 7 linhas, prestando-se
+        atenção especial ao número máximo e mínimo de linhas permitido no enunciado.</string>
+
+
+
+    <!-- /////////////////  INICIO DA PAGINA TIPOS DE TEXTOS  ///////////////// -->
+
+    <string name="titulo_tipotxt">Tipos de Textos</string>
+    <string name="intertitulo_tipotxt1">Descrição</string>
+    <string name="texto_tipotxt1">O texto descritivo, segue o exato sentido da palavra. Descrever
+        é relatar o fato de forma detalhada. Isso é feito a partir das minúcias de detalhes, dos
+        sentimentos, sensações, qualidades e impressões de quem escreve. O desenvolvimento do tema
+        segue mais ou menos o modelo da apresentação do problema, seguido da descrição e
+        caracterização e encerrando com o resumo do que foi apresentado.</string>
+
+    <string name="intertitulo_tipotxt2">Dissertação</string>
+    <string name="texto_tipotxt2">A dissertação será sempre um texto opinativo. Deve conter um ou
+        mais argumentos que sustentem a opinião estabelecida na introdução. O texto deve estar bem
+        estruturado de forma que a sua progressão temática, ou seja, o desenvolvimento do tema,
+        traga coerência com o ponto de vista.</string>
+
+    <string name="intertitulo_tipotxt3">Narração</string>
+    <string name="texto_tipotxt3">O autor da redação que usa o estilo narrativo precisa ter uma
+        atenção especial com todos os fatos, informações e detalhes da história para que a mesma
+        seja entendida na sua plenitude. A narração conta uma história, ou um fato acontecido.
+        Para saber se uma narrativa está completa a redação precisa responder cinco perguntas
+        básicas: O que? Onde? Quando? Com quem? e Como?</string>
+
+
+    <!-- /////////////////  INICIO DA PAGINA TEXTO DISSERTATIVO-ARGUMENTATIVO  ///////////////// -->
+
+    <string name="titulo_tipoenem">Dissertativo-Argumentativo</string>
+    <string name="subtitulo_tipoenem">Estilo exigido no Enem</string>
+    <string name="texto_tipoenem1">O estilo de texto aplicado na redação do Enem é o
+        Dissertativo-Argumentativo. Os temas giram, normalmente, sobre questões de ordem
+        cultural, cientifica, política ou social. Sendo assim vamos dar um destaque e
+        uma atenção especial.</string>
+
+    <string name="texto_tipoenem2">O texto Dissertativo-Argumentativo é um tipo de gênero textual
+        que consiste na defesa de uma ideia por meio de argumentos e explicações, à medida que é
+        relatado. Tem como objetivo a formação de opinião do leitor de acordo com o seu ponto de
+        vista. Para isso usa argumentos para tentar convencer o interlocutor da mensagem.</string>
+
+    <string name="intertitulo_tipoenem1">Planejamento</string>
+    <string name="texto_tipoenem3">Escrever uma redação requer planejamento. Ler e reler o enunciado,
+        anotando os principais aspectos, facilita o entendimento e ajuda a <b>interpretação do texto</b>.
+        Antes de iniciar o texto, mesmo no rascunho deve-se elaborar um plano do que será abordado
+        e de que forma.</string>
+
+    <string name="texto_tipoenem4">O planejamento será importante, principalmente se nele constar
+        o eixo central da ideia e os seus argumentos, levando em consideração os fatores de <b>coesão</b>
+        e <b>coerência</b> que são fundamentais nesse estilo de texto. Podemos dividir esse planejamento
+        da seguinte forma:</string>
+
+    <string name="intertitulo_tipoenem2">Problema</string>
+    <string name="texto_tipoenem5">Isole e delimite o tema. Identifique qual o conceito é apresentado
+        e qual a problemática a respeito dele está no enunciado.</string>
+
+    <string name="intertitulo_tipoenem3">Opinião</string>
+    <string name="texto_tipoenem6">Aqui você dará a sua opinião pessoal sobre o tema. É sempre bom
+        fazer uma análise sobre o tema e chegar a sua conclusão. Lembre-se você pode concordar ou
+        discordar, mas em qualquer situação deve ter argumentos que convençam o leitor de que a
+        sua opinião é a correta.</string>
+
+    <string name="intertitulo_tipoenem4">Argumentos</string>
+    <string name="texto_tipoenem7">Assim chegamos a próxima fase. Elaborar os argumentos que
+        alidarão a sua opinião. Nesta fase é fundamental a coerência entre a opinião e os
+        argumentos. Eles serão complementares e interligados.</string>
+
+    <string name="intertitulo_tipoenem5">Conclusão</string>
+    <string name="texto_tipoenem8">Aqui se busca o fechamento do problema apresentado. Nesse
+        sentido ele busca encerrar a discussão com um juízo de valor, fechando o tema de forma
+        estruturada e convincente. Em alguns casos inclusive apresentando uma solução
+        para o problema.</string>
+
+    <string name="intertitulo_tipoenem6">Estrutura</string>
+    <string name="texto_tipoenem9">A estrutura do texto dissertativo-argumentativo é idêntica a de
+        todas as redações. Ou seja, Introdução, Desenvolvimento e Conclusão.</string>
+
+    <string name="texto_tipoenem10">Na Introdução devem ser abordados os temas que norteiam o texto,
+        delimitando o tema e preparando o leitor para a apresentação do seu ponto de vista. Esta
+        parte do texto deve corresponder a aproximadamente 25% do tamanho total da redação.
+        Tratando-se de Enem em tordo de 5 a 7 linhas.</string>
+
+    <string name="texto_tipoenem11">No desenvolvimento a opinião mencionada na introdução deve ser
+        desenvolvida de forma opinativa e com argumentos coerentes e dentro da contextualização
+        proposta. Essa será a maior parte do texto podendo se dividir em dois parágrafos de
+        aproximadamente 5 a 7 linhas cada, compreendendo algo em torno de 50% do
+        tamanho total o texto.</string>
+
+    <string name="texto_tipoenem12">A conclusão é a parte final da estrutura do texto. Nela será
+        apresentada uma síntese do problema e considerações que demonstrem o resultado do que foi
+        proposto ao longo do desenvolvimento. Corresponde aos 25% complementares do texto. Mais
+        ou menos o mesmo tamanho da introdução.</string>
+
+
+    <!-- /////////////////  INICIO DA PAGINA COERENCIA TEXTUAL ///////////////// -->
+
+    //Pagina coerencia textual
+    <string name="titulo_coerencia">Coerência Textual</string>
+    <string name="texto_coerencia1">A elaboração de um texto precisa levar em consideração a
+        necessidade de total compreensão da mensagem pelo leitor. Para alcançar este objetivo é que
+        existe a coerência textual. Instrumento que o autor do texto vai lançar mão para conseguir
+        unir as partes do texto e assim apresentar um sentido completo. Ou seja, através da
+        coerência é que se chega a concatenação das ideias do texto.</string>
+
+    <string name="texto_coerencia2">Individualmente, cada palavra tem seu sentido próprio. No
+        entanto quando elas se relacionam conseguem expressar um novo sentido. Isso vale para as
+        frases, parágrafos e até mesmo para textos completos. Quando essas relações ocorrem da
+        maneira correta, obtemos uma mensagem compreensível. A falta da coerência atinge o
+        significado do texto, alterando a mensagem, prejudicando a relação de interlocução com o
+        leitor, a estrutura dos sentidos e por fim a compreensão do texto.</string>
+
+    <string name="texto_coerencia3">Em uma redação, dizemos que ocorreu uma quebra de coerência
+        textual, quando as ideias não se completam, as frases não estão concatenas, e os argumentos
+        se contradizem. Portanto a coerência é um resultado da não contradição entre os trechos do
+        texto e do próprio texto em relação ao mundo. Na oportunidade em que o entendimento da
+        redação está comprometido, podemos assegurar que ele está incoerente.</string>
+
+    <string name="texto_coerencia4">Um texto coerente faz com que o leitor apreenda o sentido do
+        texto na sua plenitude. Transmite uma relação lógica de ideias que não se contradizem e
+        fortalecem o significado da mensagem. Quando o ordenamento das ideias está incorreto, ainda
+        que as mensagens isoladas tenham um significado, o entendimento é prejudicado.</string>
+
+    <string name="texto_coerencia5">Para entendermos melhor a coerência vamos conhecer os seus
+        três princípios básicos:</string>
+
+    <string name="intertitulo_coerencia1">1.	Princípio da Não Contradição</string>
+    <string name="texto_coerencia6">Em um texto não se pode ter ideias ou fatos que se contradizem
+        entre si. Não podemos quebrar a lógica do tema. Por exemplo,
+        “A rua está molhada, porque não choveu”.</string>
+
+    <string name="intertitulo_coerencia2">2.	Princípio da Não Tautologia</string>
+    <string name="texto_coerencia7">Tautologia é um vício de linguagem que consiste na repetição de
+        alguma ideia, utilizando diferentes palavras. Uma construção textual coerente precisa passar
+        alguma informação. Quando o autor repete excessivamente palavras ou termos, a informação
+        corre o risco de não estar completa. Neste caso o texto será incoerente.</string>
+
+    <string name="intertitulo_coerencia3">3.	Princípio da Relevância</string>
+    <string name="texto_coerencia8">A representação de ideias ou fatos não relacionados entre si,
+        fere o principio da relevância e trazem incoerência ao texto.  Isto ocorre quando levamos
+        para o texto conteúdo que não tem nenhuma relevância no contexto do problema central
+        abordado. Mesmo que isoladamente esse fragmento de texto tenha coerência, ele não
+        se encaixa no todo.</string>
+
+
+
+    <!-- /////////////////  INICIO DA PAGINA COESÃO TEXTUAL ///////////////// -->
+
+    <string name="titulo_coesao">Coesão Textual</string>
+    <string name="texto_coesao1">A coesão textual é a perfeita ligação entre as diversas partes de
+        um texto, sejam elas palavras, frases ou parágrafos. A coesão é estruturada através de
+        mecanismos linguísticos que formam uma sequência lógico-semântica das ideias e afirmações
+        contidas no texto como um todo.</string>
+
+    <string name="texto_coesao2">Bem utilizada, a coesão amplia a eficiência na comunicação da
+        mensagem ao leitor, melhorando o entendimento. Podemos dizer que a coesão são as relações
+        linguísticas existente entre as partes do texto. Para isso usamos advérbios, pronomes,
+        conectivos, sinônimos e outros recursos.</string>
+
+    <string name="texto_coesao3">Entre esses recursos, que garantem a coesão da construção textual,
+        podemos citar:</string>
+
+    <string name="intertitulo_coesao1">1.	As referências e reiterações</string>
+    <string name="texto_coesao4">Este tipo de coesão ocorre quando uma frase ou termo faz referência
+        a outro dentro do próprio texto, com o objetivo de ampliar o seu entendimento. Ou quando
+        reitera uma ideia já expressada ou ainda quando uma palavra é substituída por outra que
+        possui com ela alguma relação semântica.</string>
+
+    <string name="intertitulo_coesao2">2.	As substituições lexicais</string>
+    <string name="texto_coesao5">Este tipo de coesão acontece quando há a repetição da mesma palavra
+        ou quando um termo é substituído por outro estabelecendo uma relação de sinonímia (relação
+        de sentido entre dois vocábulos que tem significação muito próxima. P.ex.: parlamentar
+        tem uma relação sinonímia com a palavra deputado), antonímia (relação de sentido que opõe
+        dois termos. P.ex.: “ele não é casado, é solteiro”), hiponímia (relação entre uma palavra
+        de sentido mais específico e outra genérica. P.ex.: mamífero tem uma relação hiponímia com
+        animal) ou hiperonímia (relação entre um vocábulo mais genérico e outro mais específico.
+        P.ex.: animal tem relação hiperonímia com leão).</string>
+
+    <string name="intertitulo_coesao3">3.	Os conectores</string>
+    <string name="texto_coesao6">Elementos coesivos que estabelecem as relações de dependência e
+        ligação entre os termos ou frases que compõem o texto. São representados pelas conjunções,
+        preposições e advérbios.</string>
+
+    <string name="intertitulo_coesao4">4.	A correlação dos verbos</string>
+    <string name="texto_coesao7">Esta coesão consiste no emprego correto dos tempos verbais,
+        ordenando assim os acontecimentos de uma forma lógica e linear, facilitando a compreensão
+        da sequência dos fatos.</string>
+
+
+
+    <!-- /////////////////  INICIO DA PAGINA INTERPRETAÇÃO DE TEXTOS  ///////////////// -->
+
+    <string name="titulo_interp">Interpretação de texto</string>
+    <string name="texto_interp1">Saber interpretar um texto de forma correta e coerente é um passo
+        importante não apenas para desenvolver bem um tema de redação, mas também para saber
+        responder de forma correta as outras questões que compõe as provas do Enem. Muitas vezes
+        erramos a resposta da questão, porque não conseguimos interpretar de forma
+        correta o enunciado.</string>
+
+    <string name="texto_interp2">Sendo assim precisamos dominar as técnicas de interpretação de
+        texto, que nos ajudarão com eficiência na solução de exercícios e na compreensão dos
+        enunciados. Compreender corretamente o conteúdo de um texto demonstra o domínio da língua.
+        A seguir vamos falar destas técnicas.</string>
+
+    <string name="intertitulo_interp1">&#10147;	Leia todo o texto</string>
+    <string name="texto_interp3">A leitura inicial é muito importante, por isso deve ser feita de
+        forma pausada. Nessa etapa você vai saber qual o assunto tratado e qual a posição do autor
+        em relação ao tema.</string>
+
+    <string name="intertitulo_interp2">&#10147;	Releia o Texto</string>
+    <string name="texto_interp4">Agora você deve reler o texto completo, desta vez fazendo anotações
+        sobre o tema, sobre os argumentos do autor e sobre os questionamentos feitos. Se tiver
+        acesso a um dicionário, anote também as palavras cujo significado seja desconhecido.</string>
+
+    <string name="intertitulo_interp3">&#10147;	Separação das ideias</string>
+    <string name="texto_interp5">Agora separe o texto em parágrafos, faça um resumo de cada um deles
+        anotando a ideia central e seus argumentos. Isso além de fazer você compreender melhor o
+        texto, vai aumentar o seu vocabulário.</string>
+
+    <string name="intertitulo_interp4">&#10147;	Questione o texto</string>
+    <string name="texto_interp6">Cada parágrafo, normalmente encerra uma ideia ou um conceito.
+        Elabore perguntas sobre cada trecho do texto e responda usando o mesmo trecho. Desta forma
+        você vai compreender melhor a mensagem transmitida no texto.</string>
+
+    <string name="intertitulo_interp5">&#10147;	Identifique o estilo textual</string>
+    <string name="texto_interp7">Procure analisar porque o autor escolheu aquele determinado estilo
+        para a elaboração do texto. As palavras utilizadas têm algum significado especial? São
+        questionamentos que lhe ajudarão a entender melhor o texto.</string>
+
+    <string name="intertitulo_interp6">&#10147;	Se inspire</string>
+    <string name="texto_interp8">Usando as ideias e conceitos do autor, elabore um novo texto com
+        outras palavras. Você vai ver como você efetivamente entendeu o texto e o interpretou.</string>
+
+
+
+    <!-- /////////////////  INICIO DA PAGINA ROTEIRO DE REDAÇÃO  ///////////////// -->
+
+    <string name="titulo_boa">Roteiro da boa redação</string>
+    <string name="texto_boa1">Para fazer uma boa redação não precisa ser um escritor, mas é
+        fundamental seguir um roteiro que lhe permita organizar as ideias e definir como elas serão
+        entabuladas em uma sequência lógica. Para isso existem técnicas que vão lhe permitir
+        atingir a excelência no texto.</string>
+
+    <string name="texto_boa2">Para redigir uma redação você terá de refletir sobre o tema, planejar
+        como será apresentado e de que maneira as informações deverão ser expressas para que as
+        pessoas que irão ler compreendam as suas ideias e opiniões sobre o assunto. Sendo assim
+        vamos às etapas que devem ser executadas para que façamos uma boa redação.</string>
+
+    <string name="intertitulo_boa1">1.	Tema da Redação</string>
+    <string name="texto_boa3">O primeiro passo é focar no tema que está sendo proposto no enunciado.
+        Ler e interpretar os textos de base e identificar o problema proposto na redação são
+        fundamentais. Além disso, identificado o tema, deve-se refletir sobre ele e estabelecer um
+        conceito baseado em seu ponto de vista a respeito do assunto. Aqui aplica-se bem o proposto
+        no tópico <b>“interpretação de texto”</b> onde você vai aprender a refletir e
+        definir a sua opinião.</string>
+
+    <string name="texto_boa4">É necessário compreender o tema proposto e aplicar os conhecimentos
+        sobre o assunto. Para isso é fundamental que ao longo do ano de preparação para o Enem você
+        leia e acompanhe o noticiário diário, leia artigos com opiniões sobre os mais diversos
+        assuntos, para ir formando pensamento critico sobre os mais variados temas.</string>
+
+    <string name="texto_boa5">Definida a sua opinião sobre o tema, você deve escrever na folha de
+        rascunho, o tema, o seu conceito e os principais argumentos que fortalecem seu conceito.
+        Essa é a estrutura que você vai usar na próxima fase.</string>
+
+    <string name="intertitulo_boa2">2.	Produção do texto</string>
+    <string name="texto_boa6">Agora, ainda na folha de rascunho, você vai iniciar a produção do
+        texto propriamente dita. A partir das ideias vamos começar a construir os parágrafos que
+        vão compor o texto final. As ideias iniciais, expressas normalmente em uma frase, devem
+        ser desenvolvidas, com exemplos e argumentos que justifiquem
+        o foco central estabelecido.</string>
+
+    <string name="texto_boa7">Nessa etapa é fundamental manter a coerência dos relatos,
+        transformando em parágrafos as frases que definiam as ideias de tal forma que o texto
+        começa a ser formado. A ideia pode ser expandida usando exemplos, dados, fatos ou uma
+        nova ideia que contemple a solução do problema enunciado.</string>
+
+    <string name="intertitulo_boa3">3.	Organização do Texto</string>
+    <string name="texto_boa8">Você já analisou o tema, desenvolveu ideias, argumentos e proposições
+        sobre ele. Agora precisa organizar tudo isso em uma sequência lógica e consistente. Neste
+        momento você vai usar os seus conhecimentos sobre coesão.</string>
+
+    <string name="texto_boa9">Para que as ideias e conceitos não fiquem soltas lançaremos mão dos
+        conectivos dos mais variados tipos. Aqui também deve se reforçar a questão da coerência.
+        De novo observar se uma ideia lançada e desenvolvida não está contradizendo outra de forma
+        incisiva. A menos que seja um reforço literal da sua ideia central.</string>
+
+    <string name="texto_boa10">O importante é não ser contraditório. Tenha cuidado também com a
+        redundância, para não ficar repetindo a mesma ideia, dando voltas sem conseguir avançar no
+        propósito. Outro cuidado que deve ter nessa organização é em relação a ambiguidade, você
+        criar situações que permitam ao interlocutor ter duas ou mais interpretações do que você
+        está colocando. Seja direto e objetivo.</string>
+
+    <string name="intertitulo_boa4">4.	Estrutura</string>
+    <string name="texto_boa11">Organizada as ideias, os parágrafos. Agora é analisar o texto do
+        ponto de vista estrutural. A introdução onde deve constar a delimitação do tema e o
+        lançamento do seu conceito. Em seguida o desenvolvimento, onde você desenvolve o seu
+        conceito e argumenta a sua colocação. Finalmente a conclusão onde você fechará o tema
+        e encerrará a sua redação.</string>
+
+    <string name="intertitulo_boa5">5.	Leitura Final</string>
+    <string name="texto_boa12">Agora você está com o seu rascunho pronto. Faça uma leitura final,
+        compreenda o que você escreveu. Entenda na lógica toda a sequência. Observe pontuação,
+        ortografia e concordância. Outro aspecto que deve ser analisado nesta leitura final é se o
+        texto foi escrito usando a mesma pessoa verbal. Estando tudo certo, transcreva a redação
+        para a folha oficial que será corrigida.</string>
+
+    <string name="texto_boa13">Atenção, nesta fase não é recomendado promover mais alterações no
+        texto, justamente para evitar a ocorrência de desconexão ou incoerência textual. Na dúvida,
+        leia novamente o rascunho e corrija no rascunho!</string>
+
+
+
+    <!-- /////////////////  INICIO DA PAGINA DICAS DE REDAÇÃO  ///////////////// -->
+
+    <string name="titulo_dicas_red">Dicas de redação</string>
+    <string name="texto_dicas1">Escrever bem é um dom que pode ser desenvolvido. Para isso é
+        necessário praticar. A prática da boa escrita, exige também um tempo dedicado à leitura.
+        Quem lê, tem muito mais facilidade de desenvolver o raciocínio e aprende a escrever de
+        forma correta. A boa escrita, além de pedir boas ideias e argumentos, exige o respeito as
+        regras gramaticais e ortográficas.</string>
+
+    <string name="texto_dicas2">A redação é uma das fases mais importantes do Enem. Tanto assim,
+        que é desclassificatória. Vamos às dicas:</string>
+
+    <string name="intertitulo_dicasred1">&#10687;	Adquira conhecimento</string>
+    <string name="texto_dicas3">&#9677;	A preparação para o Enem não se limita apenas ao estudo do
+        conteúdo programático. É necessário que o estudante adquira ao longo do ano conhecimento
+        sobre temas da atualidade nas áreas sociais, econômicas, políticas do Brasil e do mundo.
+        Os temas de redação abrangem sempre assuntos da atualidade.</string>
+
+    <string name="intertitulo_dicasred2">&#10687;	Comece pela redação</string>
+    <string name="texto_dicas4">&#9677;	Fazer a redação no início da prova pode lhe dar uma vantagem.
+        Sua mente estará descansada e tranquila para pensar no tema e desenvolver as ideias.
+        Além do mais não terá a pressão do fim do tempo.</string>
+
+    <string name="intertitulo_dicasred3">&#10687;	Interprete o tema</string>
+    <string name="texto_dicas5">&#9677;	Vá além da leitura do tema proposto. Aplique as técnicas de
+        <b>interpretação</b>. Assim você vai garantir o entendimento pleno da questão.</string>
+
+    <string name="intertitulo_dicasred4">&#10687;	Delimite o tema</string>
+    <string name="texto_dicas6">&#9677;	Quando você analisa o tema de forma correta, você identifica
+        uma série de aspectos referentes a proposição. Está na hora de delimitar o tema. Escolher
+        sobre qual aspecto você irá desenvolver. Isso facilita a construção das ideias e evita que a
+        redação exceda o limite de linhas determinado.</string>
+
+    <string name="intertitulo_dicasred5">&#10687;	Esquematize seu raciocínio</string>
+    <string name="texto_dicas7">&#9677;	Quando você começa a esquematizar o seu raciocínio você
+        começa a dar forma a sua redação. Ela começa a surgir. É um esquema que será desenvolvido
+        e resultará na sua redação final.</string>
+
+    <string name="intertitulo_dicasred6">&#10687;	Use linguagem formal</string>
+    <string name="texto_dicas8">&#9677;	Evite o uso de gírias e termos coloquiais. A linguagem
+        coloquial é a que usamos no dia a dia em conversas com amigos. A redação deve ser feita
+        com o uso da linguagem forma, que segue as regras gramaticais e ortográficas.</string>
+
+    <string name="intertitulo_dicasred7">&#10687;	Seja coerente</string>
+    <string name="texto_dicas9">&#9677;	Ao desenvolver suas ideias, conceitos e argumentos sobre o
+        tema seja coerente entre elas. Não desenvolva duas ideias que se contraponham, pois isto
+        caracterizará uma incoerência textual. Opte por uma delas e siga esta linha. Da mesma forma
+        os argumentos que reforçam suas afirmativas não podem contestá-las.</string>
+
+    <string name="intertitulo_dicasred8">&#10687;	Uso de citações</string>
+    <string name="texto_dicas10">&#9677;	O uso de citações de especialistas no tema pode ser uma
+        boa estratégia, mas use apenas se tiver certeza da autoria da citação. Além disse, deve ser
+        usada com bastante moderação e nunca uma citação que contradiz o seu ponto de vista.</string>
+
+    <string name="intertitulo_dicasred9">&#10687;	Não fuja do tema</string>
+    <string name="texto_dicas11">&#9677;	Um cuidado especial que se deve ter, principalmente se
+        você for usar citações, é não fugir do tema. Tergiversar sobre outros aspectos que não
+        fazem parte da delimitação do tema que foi estabelecido por você, fará com que você perca
+        pontos preciosos na redação.</string>
+
+    <string name="intertitulo_dicasred10">&#10687;	Ler e reler</string>
+    <string name="texto_dicas12">&#9677;	Após a finalização do rascunho, antes de passar a limpo
+        para a folha de redação, leia e releia o seu texto. Se possível em voz alta. Leia com calma
+        para verificar a existência de erros de ortografia, pontuação e concordância. No rascunho
+        é que você finaliza a sua redação.</string>
+
+    <string name="intertitulo_dicasred11">&#10687;	Seja fiel a sua ideia</string>
+    <string name="texto_dicas13"> &#9677;	Quando você for passar a limpo o seu rascunho, evite
+        promover novas alterações. O que você escreveu foi lido e relido, assim não deve haver
+        nenhuma necessidade de mudança.</string>
+
+
+
+    <!-- /////////////////  INICIO DA PAGINA ERROS COMUNS  ///////////////// -->
+
+    <string name="titulo_errosred">Erros comuns</string>
+    <string name="texto_errosred1">Existem diversos erros cometidos pelos concorrentes. Alguns
+        erros chegam a zerar os pontos da redação levando a desclassificação no exame. Portanto é
+        essencial tomar cuidados extras para não incorrer nos erros mais comuns. A seguir vamos
+        listar os erros mais cometidos pelos concorrentes do Enem.</string>
+
+    <string name="intertitulo_errosred1">1.	Fuga do tema</string>
+    <string name="texto_errosred2">Leia com atenção os textos de apoio e introdução ao tema da
+        redação. Ao delimitar o seu tema elabore perguntas cujas respostas tenham relação com o
+        tema proposto. Assim você vai garantir não fugir do tema.</string>
+
+    <string name="intertitulo_errosred2">2.	Não fazer um rascunho</string>
+    <string name="texto_errosred3">Apesar deste não ser um erro que te leve a desclassificação,
+        mas pode lhe causar prejuízo perdendo pontos importantes. Por mais que você domine as
+        técnicas de redação e esteja convicto do que vai escrever sobre o tema, vale a pena
+        colocar tudo no rascunho antes de passar a limpo para a folha final. Esse erro é uma
+        das principais causas de rasuras nas provas de redação.</string>
+
+    <string name="intertitulo_errosred3">3.	Redação com letra ilegível</string>
+    <string name="texto_errosred4">Todo o seu esforço de pensar em uma boa ideia e desenvolver um
+        bom texto será em vão, se a sua letra for ilegível para o avaliador. Sendo assim, se sua
+        letra não é das melhores, tente, no momento de passar a limpo a redação, do rascunho para
+        a folha final, ter o máximo de cuidado para melhorar a letra, lembrando que a regra do
+        nem proíbe letras de forma. Para melhorar a sua caligrafia, você pode praticar também
+        durante o período de preparação usando os cadernos de caligrafia. Lembre-se que, se o
+        texto estiver ilegível para os avaliadores, sua redação pode ser cancelada.</string>
+
+    <string name="intertitulo_errosred4">4.	Falta de Coerência</string>
+    <string name="texto_errosred5">A coerência é fundamental em um texto. Ela está intimamente
+        ligada ao contexto da ideia central e converge com o trabalho de construção do sentido
+        para o interlocutor. Argumentos que contradizem as ideias e conceitos estabelecidos na
+        introdução vão levar ao não entendimento do texto, demonstrando desconhecimento
+        do autor.</string>
+
+    <string name="intertitulo_errosred5">5.	Falta de coesão textual</string>
+    <string name="texto_errosred6">Você conseguiu delimitar bem o tema, estabeleceu boas ideias e
+        argumentos consistentes que garantem suas ideias. No entanto não conseguiu encaixar tudo
+        isso em uma sequência lógica, porque faltou coesão no texto. Acontecendo isso, a sua
+        redação será um emaranhado de frases e parágrafos soltas sem qualquer conexão. A coesão
+        é o elemento que permite o correto encadeamento das ideias, proporcionando
+        o pleno entendimento.</string>
+
+    <string name="intertitulo_errosred6">6.	Erros de português</string>
+    <string name="texto_errosred7">O uso da língua padrão formal é regra na composição da redação.
+        Portanto é preciso evitar erros gramaticais e ortográficos como falta de acentuação,
+        pontuação e erros de concordância verbal. Esses erros, são mais comuns do que se pensa.
+        É primordial revisar o texto final para corrigir o máximo esses erros.</string>
+
+    <string name="intertitulo_errosred7">7.	Desequilíbrio no texto</string>
+    <string name="texto_errosred8">Procurar produzir um texto equilibrado com os parágrafos mais ou
+        menos do mesmo tamanho é uma boa prática. Isto ajuda no controle do numero de linhas. Além
+        disto é preciso também ter cuidado especial com o tamanho dos períodos. Períodos muito l
+        ongos são mais suscetíveis de terem erros de pontuação. Em frases longas a possibilidade
+        de errar a concordância é bem maior. Além disso dificultam o entendimento do texto. Não se
+        importe de quebrar o período se for necessário, afinal o mais importante é a compreensão
+        por parte do interlocutor.</string>
+
+    <string name="intertitulo_errosred8">8.	Linguagem coloquial</string>
+    <string name="texto_errosred9">O bom texto deve usar a linguagem formal. Isto já até foi dito.
+        No entanto ainda temos muitos estudantes que se valem de termos informais e terminam
+        contaminando uma ideia bem estruturada. O uso de gírias e expressões populares devem ser
+        banidos do seu texto. Este é um recurso que só deve ser utilizado se fizer parte do tema,
+        mesmo assim sem exagero.</string>
+
+    <string name="intertitulo_errosred9">9.	Usar a primeira pessoa do singular</string>
+    <string name="texto_errosred10">Está certo que o estilo de redação solicitado no Enem é
+        <b>dissertativo-argumentativo,</b> o que exige uma opinião, ideia ou conceito pessoal
+        sobre o problema. Mas nunca escreva a redação na primeira pessoa do singular. Este é um
+        erro muito grande e que com certeza impactará negativamente em sua nota. Procure redigir
+        sempre na terceira pessoa do singular ou plural. Mesmo quando você for defender
+        seu ponto de vista.</string>
+
+    <string name="intertitulo_errosred10">10.	Emprego de ideias ambíguas</string>
+    <string name="texto_errosred11">A ambiguidade é quando a ideia, o conceito, ou mesmo a frase
+        construída permite ao leitor mais de uma interpretação. Quando ocorre a ambiguidade o texto
+        fica confuso e, desta maneira, dificulta o entendimento.</string>
+
+    <string name="intertitulo_errosred11">11.	Tipo do texto empregado</string>
+    <string name="texto_errosred12">No Enem o tipo de texto solicitado na redação é
+        dissertativo-argumentativo. Muito cuidado quando começar a estruturar o texto para não
+        fugir desta tipologia e terminar entregando um texto narrativo, dissertativo, descritivo,
+        entre outros. O texto dissertativo-argumentativo reúne o tema, a tese, argumentos e
+        proposta de ação sobre o problema. Fugir disto será um erro crasso.</string>
+
+    <string name="intertitulo_errosred12">12.	Não defender a sua opinião</string>
+    <string name="texto_errosred13">Você teve uma boa ideia sobre o tema, criou um conceito muito
+        bom. Então defenda-o. Use argumentos convincentes de que essa sua ideia vai dar certo,
+        que a sua opinião está correta. A parte da argumentação é uma das mais importantes do
+        texto, justamente porque ela dará respaldo à sua opinião e seu ponto de vista.</string>
+
+    <string name="intertitulo_errosred13">13.	Não concluir o texto</string>
+    <string name="texto_errosred14">Tem muito estudante que não conclui o texto por falta de tempo.
+        Finalizar a redação é tão importante quanto a introdução. Nela você deverá apresentar
+        uma proposta de intervenção que resolva a problemática levantada pelo tema. Para não sofrer
+        com a questão do tempo siga a dica de fazer a redação logo no início da prova. Mas não
+        deixe nunca de finalizar.</string>
+
+    <string name="intertitulo_errosred14">14.	Não fazer a revisão final</string>
+    <string name="texto_errosred15">Você precisa fazer duas revisões finais no texto. A primeira
+        ainda na folha de rascunho. Nesta você pode alterar estruturas completas do texto. A
+        segunda, depois que passar a limpo na folha final. Nesta você deve observar pontuação e
+        erros ortográficos. Pequenos concertos na folha final são toleráveis.
+        Rasuras não.</string>
+
+    <string name="intertitulo_errosred15">15.	Ultrapassar o limite de linhas</string>
+    <string name="texto_errosred16">Ao redigir seu texto na folha de rascunho faça com sua letra
+        normal. Assim você terá sempre uma noção muito próxima da real de quantas linhas
+        escreverá na versão final. Não ultrapasse o numero máximo de linhas, nem fique abaixo do
+        numero mínimo. Esses são erros que podem lhe custar um ano inteiro de estudos.</string>
+
+
+    <!-- /////////////////  INICIO DA PAGINA PRATICA  ///////////////// -->
+
+    <string name="titulo_praticared">Temas para prática</string>
+    <string name="texto_praticared1">A melhor maneira de aprender a fazer boas redações é através
+        da prática. Nesta secção vamos apresentar diversos temas que já foram objeto de edições
+        passadas do Enem. Praticando você vai treinar o tempo de produção do texto, o número de
+        linhas da redação, a linguagem utilizada e o estilo de texto empregado.</string>
+
+    <string name="texto_praticared2">Faça pelo menos uma redação por semana. Isto vai lhe ajudar a
+        condicionar a sua mente a pensar nos temas. Lembre-se leitura é importante. Além de ajudar
+        a enriquecer o seu vocabulário, vai lhe ensinar a escrever certo. A seguir uma lista de
+        temas já aplicados nos exames anteriores. Pratique! Boa Redação.</string>
+
+</resources>

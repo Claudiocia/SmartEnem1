@@ -9,7 +9,7 @@
     android:paddingRight="@dimen/activity_horizontal_margin"
     android:paddingTop="@dimen/activity_vertical_margin"
     app:layout_behavior="@string/appbar_scrolling_view_behavior"
-    tools:context="br.com.ciadeideias.smartenem.ConfigPlanestudSegActivity"
+    tools:context="br.com.ciadeideias.smartenem.configplanoestudo.ConfigPlanestudSegActivity"
     tools:showIn="@layout/app_bar_confpla_estud_seg">
 
     <TextView

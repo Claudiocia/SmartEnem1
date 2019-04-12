@@ -24,6 +24,13 @@ import java.util.ArrayList;
 
 import br.com.ciadeideias.smartenem.adapter.PlanEstudAdapter;
 import br.com.ciadeideias.smartenem.bancodados.BDPlanejamento;
+import br.com.ciadeideias.smartenem.configplanoestudo.ConfigPlanestudDomActivity;
+import br.com.ciadeideias.smartenem.configplanoestudo.ConfigPlanestudQuaActivity;
+import br.com.ciadeideias.smartenem.configplanoestudo.ConfigPlanestudQuiActivity;
+import br.com.ciadeideias.smartenem.configplanoestudo.ConfigPlanestudSabActivity;
+import br.com.ciadeideias.smartenem.configplanoestudo.ConfigPlanestudSegActivity;
+import br.com.ciadeideias.smartenem.configplanoestudo.ConfigPlanestudSexActivity;
+import br.com.ciadeideias.smartenem.configplanoestudo.ConfigPlanestudTerActivity;
 import br.com.ciadeideias.smartenem.model.Planejamento;
 
 /**

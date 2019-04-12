@@ -119,7 +119,7 @@
 
     <string name="premium_title">Versão Premium</string>
     <string name="premium_desc">
-        Ao adquirir a versão premium do APP SmartEnem você terá acesso
+        Ao adquirir a versão <i>premium</i> do APP <b>SmartEnem</b> você terá acesso
         a todo conteúdo disponível, sem propagandas. A licença de uso
         livre vale por um ano. Quando for renovar você pode pagar de
         novo ou voltar para a versão gratuita.
@@ -130,5 +130,6 @@
 
     <string name="estudo_title">Disciplinas para Estudo</string>
     <string name="estudo_activity">Hora do Estudo</string>
+    <string name="exporeda_activity">Proposta de Redação</string>
 
 </resources>

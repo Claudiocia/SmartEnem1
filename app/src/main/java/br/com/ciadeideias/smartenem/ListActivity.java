@@ -5,18 +5,9 @@ import android.content.DialogInterface;
 import android.content.Intent;
 import android.os.Build;
 import android.os.Bundle;
-
-import androidx.annotation.RequiresApi;
-import androidx.appcompat.app.AlertDialog;
 import android.view.LayoutInflater;
-import android.view.View;
-import com.google.android.material.navigation.NavigationView;
-import androidx.core.view.GravityCompat;
-import androidx.drawerlayout.widget.DrawerLayout;
-import androidx.appcompat.app.ActionBarDrawerToggle;
-import androidx.appcompat.app.AppCompatActivity;
-import androidx.appcompat.widget.Toolbar;
 import android.view.MenuItem;
+import android.view.View;
 import android.view.ViewGroup;
 import android.widget.AdapterView;
 import android.widget.BaseAdapter;
@@ -26,7 +17,15 @@ import android.widget.Toast;
 
 import com.github.clans.fab.FloatingActionButton;
 import com.github.clans.fab.FloatingActionMenu;
+import com.google.android.material.navigation.NavigationView;
 
+import androidx.annotation.RequiresApi;
+import androidx.appcompat.app.ActionBarDrawerToggle;
+import androidx.appcompat.app.AlertDialog;
+import androidx.appcompat.app.AppCompatActivity;
+import androidx.appcompat.widget.Toolbar;
+import androidx.core.view.GravityCompat;
+import androidx.drawerlayout.widget.DrawerLayout;
 import br.com.ciadeideias.smartenem.imagem.ImageLoader;
 import br.com.ciadeideias.smartenem.parse.RSSFeed;
 
@@ -69,7 +68,7 @@ public class ListActivity extends AppCompatActivity
                 }else {
                     fabMenu.setBackgroundResource(R.drawable.bg2);
                 }
-                Toast.makeText(ListActivity.this, "Menu aberto?"+(b ? "true" : "false"), Toast.LENGTH_SHORT).show();
+                //Toast.makeText(ListActivity.this, "Menu aberto?"+(b ? "true" : "false"), Toast.LENGTH_SHORT).show();
 
             }
         });
@@ -204,7 +203,10 @@ public class ListActivity extends AppCompatActivity
                 finish();
                 break;
             case R.id.fab3:
-                aux = "Fab 3";
+                //aux = "Fab 3";
+                Intent it3 = new Intent(ListActivity.this, RedacaoActivity.class);
+                startActivity(it3);
+                finish();
                 break;
             case R.id.fab4:
                 aux = "Fab 4";

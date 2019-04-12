@@ -59,31 +59,31 @@
             android:label="@string/titulo_planestud"
             android:theme="@style/AppTheme.NoActionBar"/>
         <activity
-            android:name=".ConfigPlanestudSegActivity"
+            android:name=".configplanoestudo.ConfigPlanestudSegActivity"
             android:label="@string/titulo_planestud"
             android:theme="@style/AppTheme.NoActionBar"/>
         <activity
-            android:name=".ConfigPlanestudTerActivity"
+            android:name=".configplanoestudo.ConfigPlanestudTerActivity"
             android:label="@string/titulo_planestud"
             android:theme="@style/AppTheme.NoActionBar"/>
         <activity
-            android:name=".ConfigPlanestudQuaActivity"
+            android:name=".configplanoestudo.ConfigPlanestudQuaActivity"
             android:label="@string/titulo_planestud"
             android:theme="@style/AppTheme.NoActionBar"/>
         <activity
-            android:name=".ConfigPlanestudQuiActivity"
+            android:name=".configplanoestudo.ConfigPlanestudQuiActivity"
             android:label="@string/titulo_planestud"
             android:theme="@style/AppTheme.NoActionBar"/>
         <activity
-            android:name=".ConfigPlanestudSexActivity"
+            android:name=".configplanoestudo.ConfigPlanestudSexActivity"
             android:label="@string/titulo_planestud"
             android:theme="@style/AppTheme.NoActionBar"/>
         <activity
-            android:name=".ConfigPlanestudSabActivity"
+            android:name=".configplanoestudo.ConfigPlanestudSabActivity"
             android:label="@string/titulo_planestud"
             android:theme="@style/AppTheme.NoActionBar"/>
         <activity
-            android:name=".ConfigPlanestudDomActivity"
+            android:name=".configplanoestudo.ConfigPlanestudDomActivity"
             android:label="@string/titulo_planestud"
             android:theme="@style/AppTheme.NoActionBar"/>
         <activity
@@ -101,6 +101,54 @@
         <activity
             android:name=".DicasListaActivity"
             android:label="@string/tit_dicas"
+            android:theme="@style/AppTheme.NoActionBar"/>
+        <activity
+            android:name=".RedacaoActivity"
+            android:label="@string/redacao"
+            android:theme="@style/AppTheme.NoActionBar"/>
+        <activity
+            android:name=".redacao.TecnicasActivity"
+            android:label="@string/redacao"
+            android:theme="@style/AppTheme.NoActionBar"/>
+        <activity
+            android:name=".redacao.TipoTextosActivity"
+            android:label="@string/titulo_tipotxt"
+            android:theme="@style/AppTheme.NoActionBar"/>
+        <activity
+            android:name=".redacao.TipoEnemActivity"
+            android:label="@string/titulo_tipoenem"
+            android:theme="@style/AppTheme.NoActionBar"/>
+        <activity
+            android:name=".redacao.CoerenciaTextualActivity"
+            android:label="@string/titulo_coerencia"
+            android:theme="@style/AppTheme.NoActionBar"/>
+        <activity
+            android:name=".redacao.CoesaoTextualActivity"
+            android:label="@string/titulo_coesao"
+            android:theme="@style/AppTheme.NoActionBar"/>
+        <activity
+            android:name=".redacao.InterpretacaoTextoActivity"
+            android:label="@string/titulo_interp"
+            android:theme="@style/AppTheme.NoActionBar"/>
+        <activity
+            android:name=".redacao.RoteiroRedacaoActivity"
+            android:label="@string/titulo_boa"
+            android:theme="@style/AppTheme.NoActionBar"/>
+        <activity
+            android:name=".redacao.DicasRedacaoActivity"
+            android:label="@string/titulo_dicas_red"
+            android:theme="@style/AppTheme.NoActionBar"/>
+        <activity
+            android:name=".redacao.ErrosComunsActivity"
+            android:label="@string/titulo_errosred"
+            android:theme="@style/AppTheme.NoActionBar"/>
+        <activity
+            android:name=".redacao.PraticaRedacaoActivity"
+            android:label="@string/titulo_praticared"
+            android:theme="@style/AppTheme.NoActionBar"/>
+        <activity
+            android:name=".redacao.ExpoRedacaoActivity"
+            android:label="@string/exporeda_activity"
             android:theme="@style/AppTheme.NoActionBar"/>
 
     </application>
