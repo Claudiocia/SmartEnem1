@@ -130,9 +130,14 @@ public class EstuDiarioActivity extends AppCompatActivity
             bdQuestao = new BDQuestao(this);
 
             questao1 = bdQuestao.buscaQuestaoPorIdDisc(idDisciplina);
+
+            Log.d("claudio", "A questão que vem do banco  é: "+ questao1.getEnunciado());
+
             idQuestao = questao1.getIdQuestao();
 
             Log.d("claudio", "O id da questão é: "+idQuestao);
+
+
 
             dados = "Questão do enem ano " + questao1.getAnoAplic() + " id " + questao1.getIdQuestao();
 
@@ -399,6 +404,8 @@ public class EstuDiarioActivity extends AppCompatActivity
         int questoesRes = estudoResumo.getQtdQuest();
         int acertosRes = estudoResumo.getRespCerta();
         int errosRes   = estudoResumo.getRespErrada();
+        float resultadoAcert;
+        float resultadoErros;
 
         String tempoAtivoN = estudoResumo.getTempAtivo();
 
@@ -413,8 +420,15 @@ public class EstuDiarioActivity extends AppCompatActivity
 
         String tempodeEstudoRes =  String.format( "%02d:%02d:%02d", horas, minutos,segundos);
 
-        float resultadoAcert = (acertosRes * 100) /  questoesRes;
-        float resultadoErros = (errosRes * 100) / questoesRes;
+        if (questoesRes == 0) {
+
+            resultadoAcert = 0;
+            resultadoErros = 0;
+
+        }else {
+            resultadoAcert = (acertosRes * 100) / questoesRes;
+            resultadoErros = (errosRes * 100) / questoesRes;
+        }
 
 
 

@@ -6,9 +6,6 @@ import android.content.Intent;
 import android.net.ConnectivityManager;
 import android.os.AsyncTask;
 import android.os.Bundle;
-
-import androidx.appcompat.app.AlertDialog;
-import androidx.appcompat.app.AppCompatActivity;
 import android.widget.Toast;
 
 import java.io.File;
@@ -18,6 +15,8 @@ import java.io.IOException;
 import java.io.ObjectInputStream;
 import java.io.ObjectOutputStream;
 
+import androidx.appcompat.app.AlertDialog;
+import androidx.appcompat.app.AppCompatActivity;
 import br.com.ciadeideias.smartenem.bancodados.BDPlunge;
 import br.com.ciadeideias.smartenem.parse.DOMParseHtml;
 import br.com.ciadeideias.smartenem.parse.RSSFeed;
@@ -26,7 +25,7 @@ import br.com.ciadeideias.smartenem.parse.RSSFeed;
  * Created by ClaudioSouza on 01/11/2016.
  */
 public class SplashActivity extends AppCompatActivity {
-    String RSSFEEDURL = "http://www.tessatironi.com.br/agenda/listagenda.php";  //"http://192.168.25.3/agenda/listagenda.php";
+    String RSSFEEDURL = "http://www.smartenem.com.br/noticias/index";  //"http://192.168.25.3/agenda/listagenda.php";
     RSSFeed feed;
     String fileName;
 

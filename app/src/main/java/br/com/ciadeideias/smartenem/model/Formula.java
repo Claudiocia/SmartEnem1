@@ -9,6 +9,7 @@ import android.os.Parcelable;
 public class Formula implements Parcelable {
     private int idFormula;
     private int idAreaConhec;
+    private int idDisciplina;
     private String nomeFormula;
     private String aplicacaoFormula;
     private String descricaoFormula;
@@ -21,6 +22,7 @@ public class Formula implements Parcelable {
     public Formula(Parcel in) {
         idFormula = in.readInt();
         idAreaConhec = in.readInt();
+        idDisciplina = in.readInt();
         nomeFormula = in.readString();
         aplicacaoFormula = in.readString();
         descricaoFormula = in.readString();
@@ -36,6 +38,7 @@ public class Formula implements Parcelable {
     public void writeToParcel(Parcel dest, int flags) {
         dest.writeInt(idFormula);
         dest.writeInt(idAreaConhec);
+        dest.writeInt(idDisciplina);
         dest.writeString(nomeFormula);
         dest.writeString(aplicacaoFormula);
         dest.writeString(descricaoFormula);
@@ -69,6 +72,14 @@ public class Formula implements Parcelable {
 
     public void setIdAreaConhec(int idAreaConhec) {
         this.idAreaConhec = idAreaConhec;
+    }
+
+    public int getIdDisciplina() {
+        return idDisciplina;
+    }
+
+    public void setIdDisciplina(int idDisciplina) {
+        this.idDisciplina = idDisciplina;
     }
 
     public String getNomeFormula() {

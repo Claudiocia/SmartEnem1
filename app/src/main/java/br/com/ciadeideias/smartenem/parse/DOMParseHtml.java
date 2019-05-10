@@ -1,6 +1,8 @@
 package br.com.ciadeideias.smartenem.parse;
 
 
+import android.util.Log;
+
 import org.jsoup.Jsoup;
 import org.jsoup.nodes.Document;
 import org.jsoup.select.Elements;
@@ -22,32 +24,28 @@ public class DOMParseHtml {
 
             ArrayList<Elements> listaElem = new ArrayList<Elements>();
 
-            Elements novoDoc = doc.getElementsByClass("item");
+            Elements novoDoc = doc.select("li.media");
             int length2 = novoDoc.size();
+            Log.d("claudio", "o doc recebido é: /n"+ novoDoc.html());
 
             for (int i = 0; i < length2; i++){
-                listaElem.add(novoDoc.get(i).getElementsByClass("item"));
+                listaElem.add(novoDoc.get(i).getElementsByClass("media"));
             }
 
             int length = listaElem.size();
 
             for (int i = 0; i < length; i++){
                 RSSItem item = new RSSItem();
-                String imagem, titulo, link, resumo, local, data, texto, img;
+                String imagem, titulo, link, resumo, data, img;
 
-                titulo  = listaElem.get(i).select(".titulo").text().toString();
+                titulo  = listaElem.get(i).select("h5").text().toString();
                 item.setTitulo(titulo);
-                resumo  = listaElem.get(i).select(".resumo").text().toString();
+                resumo  = listaElem.get(i).select("p").text().toString();
                 item.setResumo(resumo);
-                link    = listaElem.get(i).select(".link").attr("href").toString();
+                link    = listaElem.get(i).select("a").attr("href").toString();
                 item.setLink(link);
-                local   = listaElem.get(i).select(".local").text().toString();
-                item.setLocal(local);
-                data    = listaElem.get(i).select(".datas").text().toString();
+                data    = listaElem.get(i).select("cite").text().toString();
                 item.setData(data);
-                texto   = listaElem.get(i).select(".conteudo").text().toString();
-                item.setTexto(texto);
-
                 img     = listaElem.get(i).select("img").attr("src").toString();
                 if (!img.isEmpty()){
                     imagem = img;

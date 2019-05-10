@@ -2,22 +2,22 @@ package br.com.ciadeideias.smartenem;
 
 import android.content.Intent;
 import android.os.Bundle;
-
-import com.google.android.material.navigation.NavigationView;
-import androidx.fragment.app.FragmentTransaction;
-import androidx.core.view.GravityCompat;
-import androidx.drawerlayout.widget.DrawerLayout;
-import androidx.appcompat.app.ActionBarDrawerToggle;
-import androidx.appcompat.app.AppCompatActivity;
-import androidx.appcompat.widget.Toolbar;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.google.android.material.navigation.NavigationView;
+
 import java.util.ArrayList;
 import java.util.List;
 
+import androidx.appcompat.app.ActionBarDrawerToggle;
+import androidx.appcompat.app.AppCompatActivity;
+import androidx.appcompat.widget.Toolbar;
+import androidx.core.view.GravityCompat;
+import androidx.drawerlayout.widget.DrawerLayout;
+import androidx.fragment.app.FragmentTransaction;
 import br.com.ciadeideias.smartenem.bancodados.BDDisciplina;
 import br.com.ciadeideias.smartenem.fragments.EstudoFragment;
 import br.com.ciadeideias.smartenem.model.Disciplina;
@@ -82,6 +82,9 @@ public class EstudoListaActivity extends AppCompatActivity
             startActivity(it);
             finish();
 
+        } else if (id == R.id.nav_calendario){
+            Toast.makeText(EstudoListaActivity.this, "Voce Clicou no Menu Calendário", Toast.LENGTH_SHORT).show();
+
         } else if (id == R.id.nav_plan_estud) {
             Intent it = new Intent(EstudoListaActivity.this, PlanEstuActivity.class);
             startActivity(it);
@@ -96,9 +99,6 @@ public class EstudoListaActivity extends AppCompatActivity
             Intent it = new Intent(EstudoListaActivity.this, DesempenhoActivity.class);
             startActivity(it);
             finish();
-
-        } else if (id == R.id.nav_compart){
-            Toast.makeText(EstudoListaActivity.this, "Voce Clicou no Menu Videos", Toast.LENGTH_SHORT).show();
 
         } else if (id == R.id.nav_ajuda) {
             Toast.makeText(EstudoListaActivity.this, "Voce Clicou no Menu Ajuda", Toast.LENGTH_SHORT).show();

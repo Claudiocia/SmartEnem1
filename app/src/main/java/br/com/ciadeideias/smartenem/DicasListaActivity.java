@@ -1,16 +1,12 @@
 package br.com.ciadeideias.smartenem;
 
-import android.annotation.SuppressLint;
 import android.content.Intent;
-import android.media.Image;
 import android.os.Bundle;
 import android.view.MenuItem;
 import android.view.View;
-import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
 
-import com.github.chrisbanes.photoview.PhotoView;
 import com.google.android.material.navigation.NavigationView;
 
 import java.util.ArrayList;
@@ -23,12 +19,8 @@ import androidx.core.view.GravityCompat;
 import androidx.drawerlayout.widget.DrawerLayout;
 import androidx.fragment.app.FragmentTransaction;
 import br.com.ciadeideias.smartenem.bancodados.BDDica;
-import br.com.ciadeideias.smartenem.bancodados.BDDisciplina;
 import br.com.ciadeideias.smartenem.fragments.DicasFragment;
-import br.com.ciadeideias.smartenem.fragments.EstudoFragment;
 import br.com.ciadeideias.smartenem.model.Dica;
-import br.com.ciadeideias.smartenem.model.Disciplina;
-import br.com.ciadeideias.smartenem.model.NomeDisciplina;
 import br.com.ciadeideias.smartenem.model.TituloDica;
 
 public class DicasListaActivity extends AppCompatActivity
@@ -90,6 +82,9 @@ public class DicasListaActivity extends AppCompatActivity
             startActivity(it);
             finish();
 
+        } else if (id == R.id.nav_calendario){
+            Toast.makeText(DicasListaActivity.this, "Voce Clicou no Menu Calendário", Toast.LENGTH_SHORT).show();
+
         } else if (id == R.id.nav_plan_estud) {
             Intent it = new Intent(DicasListaActivity.this, PlanEstuActivity.class);
             startActivity(it);
@@ -104,9 +99,6 @@ public class DicasListaActivity extends AppCompatActivity
             Intent it = new Intent(DicasListaActivity.this, DesempenhoActivity.class);
             startActivity(it);
             finish();
-
-        } else if (id == R.id.nav_compart){
-            Toast.makeText(DicasListaActivity.this, "Voce Clicou no Menu Videos", Toast.LENGTH_SHORT).show();
 
         } else if (id == R.id.nav_ajuda) {
             Toast.makeText(DicasListaActivity.this, "Voce Clicou no Menu Ajuda", Toast.LENGTH_SHORT).show();

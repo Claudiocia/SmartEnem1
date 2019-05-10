@@ -3,16 +3,18 @@ package br.com.ciadeideias.smartenem;
 import android.content.DialogInterface;
 import android.content.Intent;
 import android.os.Bundle;
+import android.view.MenuItem;
+import android.view.View;
+import android.widget.Toast;
+
 import com.google.android.material.navigation.NavigationView;
-import androidx.core.view.GravityCompat;
-import androidx.drawerlayout.widget.DrawerLayout;
+
 import androidx.appcompat.app.ActionBarDrawerToggle;
 import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.Toolbar;
-import android.view.MenuItem;
-import android.view.View;
-import android.widget.Toast;
+import androidx.core.view.GravityCompat;
+import androidx.drawerlayout.widget.DrawerLayout;
 
 
 public class AboutActivity extends AppCompatActivity
@@ -83,6 +85,9 @@ public class AboutActivity extends AppCompatActivity
             startActivity(it);
             finish();
 
+        } else if (id == R.id.nav_calendario){
+            Toast.makeText(AboutActivity.this, "Voce Clicou no Menu Calendário", Toast.LENGTH_SHORT).show();
+
         } else if (id == R.id.nav_plan_estud) {
             Intent it = new Intent(AboutActivity.this, PlanEstuActivity.class);
             startActivity(it);
@@ -97,9 +102,6 @@ public class AboutActivity extends AppCompatActivity
             Intent it = new Intent(AboutActivity.this, DesempenhoActivity.class);
             startActivity(it);
             finish();
-
-        } else if (id == R.id.nav_compart){
-            Toast.makeText(AboutActivity.this, "Voce Clicou no Menu Videos", Toast.LENGTH_SHORT).show();
 
         } else if (id == R.id.nav_ajuda) {
             Toast.makeText(AboutActivity.this, "Voce Clicou no Menu Ajuda", Toast.LENGTH_SHORT).show();

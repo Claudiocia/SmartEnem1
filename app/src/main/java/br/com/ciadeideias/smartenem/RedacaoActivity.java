@@ -11,20 +11,12 @@ import android.widget.Toast;
 
 import com.google.android.material.navigation.NavigationView;
 
-import java.util.ArrayList;
-import java.util.List;
-
 import androidx.appcompat.app.ActionBarDrawerToggle;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.Toolbar;
 import androidx.core.view.GravityCompat;
 import androidx.drawerlayout.widget.DrawerLayout;
-import androidx.fragment.app.FragmentTransaction;
 import br.com.ciadeideias.smartenem.adapter.RedacaoAdapter;
-import br.com.ciadeideias.smartenem.bancodados.BDDisciplina;
-import br.com.ciadeideias.smartenem.fragments.EstudoFragment;
-import br.com.ciadeideias.smartenem.model.Disciplina;
-import br.com.ciadeideias.smartenem.model.NomeDisciplina;
 import br.com.ciadeideias.smartenem.redacao.CoerenciaTextualActivity;
 import br.com.ciadeideias.smartenem.redacao.CoesaoTextualActivity;
 import br.com.ciadeideias.smartenem.redacao.DicasRedacaoActivity;
@@ -151,6 +143,9 @@ public class RedacaoActivity extends AppCompatActivity
             startActivity(it);
             finish();
 
+        } else if (id == R.id.nav_calendario){
+            Toast.makeText(RedacaoActivity.this, "Voce Clicou no Menu Calendário", Toast.LENGTH_SHORT).show();
+
         } else if (id == R.id.nav_plan_estud) {
             Intent it = new Intent(RedacaoActivity.this, PlanEstuActivity.class);
             startActivity(it);
@@ -165,9 +160,6 @@ public class RedacaoActivity extends AppCompatActivity
             Intent it = new Intent(RedacaoActivity.this, DesempenhoActivity.class);
             startActivity(it);
             finish();
-
-        } else if (id == R.id.nav_compart){
-            Toast.makeText(RedacaoActivity.this, "Voce Clicou no Menu Videos", Toast.LENGTH_SHORT).show();
 
         } else if (id == R.id.nav_ajuda) {
             Toast.makeText(RedacaoActivity.this, "Voce Clicou no Menu Ajuda", Toast.LENGTH_SHORT).show();

@@ -11,7 +11,8 @@
 
     <!-- Strings do menu slider -->
     <string name="premium">Versão Premium</string>
-    <string name="home">Calendário Enem</string>
+    <string name="home">Notícias do Enem</string>
+    <string name="calendar">Calendário</string>
     <string name="plano">Plano de Estudo</string>
     <string name="metas">Metas</string>
     <string name="progresso">Desempenhos</string>
@@ -131,5 +132,25 @@
     <string name="estudo_title">Disciplinas para Estudo</string>
     <string name="estudo_activity">Hora do Estudo</string>
     <string name="exporeda_activity">Proposta de Redação</string>
+
+    <!-- Strings dos cards de apresentação de formulas -->
+    <string name="card_matematica">
+        As fórmulas são instrumentos auxiliares na resolução de problemas. O mais importante não é
+        decorá-las, mas sim entender a lógica da sua aplicação e nesse sentido agilizar a resolução
+        dos problemas. Na matemática as fórmulas são fundamentais para a rapidez nos cálculos e
+        consequente resolução das questões.
+    </string>
+    <string name="card_fisica">
+        Em certas provas de longa duração, como é o caso do Enem e de muitos vestibulares, conhecer
+        as fórmulas pode significar uma boa vantagem, principalmente por conta do escasso tempo
+        disponível. Porém nunca devemos esquecer que elas são uma síntese do desenvolvimento de
+        um raciocínio.
+    </string>
+    <string name="card_quimica">
+        Na química as fórmulas podem representar as equações químicas, quando são representações
+        gráficas das reações que ocorrem entre os diversos elementos da Tabela Periódica, ou uma
+        representação gráfica de um composto químico, quando representa o número e o tipo de átomos
+        que constituem uma molécula.
+    </string>
 
 </resources>

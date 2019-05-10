@@ -2,24 +2,24 @@ package br.com.ciadeideias.smartenem;
 
 import android.content.DialogInterface;
 import android.content.Intent;
-
-import com.google.android.material.navigation.NavigationView;
-import androidx.fragment.app.FragmentTransaction;
-import androidx.core.view.GravityCompat;
-import androidx.drawerlayout.widget.DrawerLayout;
-import androidx.appcompat.app.ActionBarDrawerToggle;
-import androidx.appcompat.app.AlertDialog;
-import androidx.appcompat.app.AppCompatActivity;
 import android.os.Bundle;
-import androidx.appcompat.widget.Toolbar;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.google.android.material.navigation.NavigationView;
+
 import java.util.ArrayList;
 import java.util.List;
 
+import androidx.appcompat.app.ActionBarDrawerToggle;
+import androidx.appcompat.app.AlertDialog;
+import androidx.appcompat.app.AppCompatActivity;
+import androidx.appcompat.widget.Toolbar;
+import androidx.core.view.GravityCompat;
+import androidx.drawerlayout.widget.DrawerLayout;
+import androidx.fragment.app.FragmentTransaction;
 import br.com.ciadeideias.smartenem.fragments.DesempFragment;
 import br.com.ciadeideias.smartenem.model.NomeGrafico;
 
@@ -98,6 +98,9 @@ public class DesempenhoActivity extends AppCompatActivity
             startActivity(it);
             finish();
 
+        } else if (id == R.id.nav_calendario){
+            Toast.makeText(DesempenhoActivity.this, "Voce Clicou no Menu Calendário", Toast.LENGTH_SHORT).show();
+
         } else if (id == R.id.nav_plan_estud) {
             Intent it = new Intent(DesempenhoActivity.this, PlanEstuActivity.class);
             startActivity(it);
@@ -112,9 +115,6 @@ public class DesempenhoActivity extends AppCompatActivity
             Intent it = new Intent(DesempenhoActivity.this, DesempenhoActivity.class);
             startActivity(it);
             finish();
-
-        } else if (id == R.id.nav_compart){
-            Toast.makeText(DesempenhoActivity.this, "Voce Clicou no Menu Videos", Toast.LENGTH_SHORT).show();
 
         } else if (id == R.id.nav_ajuda) {
             Toast.makeText(DesempenhoActivity.this, "Voce Clicou no Menu Ajuda", Toast.LENGTH_SHORT).show();

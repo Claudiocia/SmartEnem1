@@ -39,10 +39,6 @@
             android:label="@string/title_activity_list"
             android:theme="@style/AppTheme.NoActionBar" />
         <activity
-            android:name=".DetailActivity"
-            android:label="@string/title_activity_detail"
-            android:theme="@style/AppTheme.NoActionBar" />
-        <activity
             android:name=".DesempenhoActivity"
             android:label="@string/tit_graficos"
             android:theme="@style/AppTheme.NoActionBar" />
@@ -149,6 +145,14 @@
         <activity
             android:name=".redacao.ExpoRedacaoActivity"
             android:label="@string/exporeda_activity"
+            android:theme="@style/AppTheme.NoActionBar"/>
+        <activity
+            android:name=".DisciplinasCardActivity"
+            android:label="@string/formulas"
+            android:theme="@style/AppTheme.NoActionBar"/>
+        <activity
+            android:name=".FormulasCardActivity"
+            android:label="@string/formulas"
             android:theme="@style/AppTheme.NoActionBar"/>
 
     </application>

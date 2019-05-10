@@ -3,19 +3,18 @@ package br.com.ciadeideias.smartenem.fragments;
 import android.annotation.SuppressLint;
 import android.content.Intent;
 import android.os.Bundle;
+import android.view.LayoutInflater;
+import android.view.View;
+import android.view.ViewGroup;
+import android.widget.Toast;
+
+import java.util.Calendar;
+import java.util.List;
+
 import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
-import android.view.LayoutInflater;
-import android.view.View;
-import android.view.ViewGroup;
-
-import java.text.SimpleDateFormat;
-import java.util.Calendar;
-import java.util.Date;
-import java.util.List;
-
 import br.com.ciadeideias.smartenem.EstuDiarioActivity;
 import br.com.ciadeideias.smartenem.EstudoListaActivity;
 import br.com.ciadeideias.smartenem.R;
@@ -68,10 +67,13 @@ public class EstudoFragment extends Fragment implements RecyclerViewOnClickListe
 
         switch (id){
             case 0:
+                Toast.makeText(getActivity(), "Ainda não existem questões cadastradas desta disciplina", Toast.LENGTH_LONG).show();
+                /*
                 Intent it = new Intent(getContext(), EstuDiarioActivity.class);
                 it.putExtra("hora_estudo", horaEstudo);
                 it.putExtra("disciplina", aux);
                 startActivity(it);
+                */
                 break;
             case 1:
                 Intent it1 = new Intent(getContext(), EstuDiarioActivity.class);
@@ -140,10 +142,13 @@ public class EstudoFragment extends Fragment implements RecyclerViewOnClickListe
                 startActivity(it11);
                 break;
             case 12:
+                Toast.makeText(getActivity(), "Ainda não existem questões cadastradas desta disciplina", Toast.LENGTH_LONG).show();
+                /*
                 Intent it12 = new Intent(getContext(), EstuDiarioActivity.class);
                 it12.putExtra("hora_estudo", horaEstudo);
                 it12.putExtra("disciplina", aux);
                 startActivity(it12);
+                */
                 break;
 
             }

@@ -3,14 +3,17 @@ package br.com.ciadeideias.smartenem;
 import android.content.Context;
 import android.content.DialogInterface;
 import android.content.Intent;
+import android.net.Uri;
 import android.os.Build;
 import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.AbsListView;
 import android.widget.AdapterView;
 import android.widget.BaseAdapter;
+import android.widget.ImageView;
 import android.widget.ListView;
 import android.widget.TextView;
 import android.widget.Toast;
@@ -30,7 +33,9 @@ import br.com.ciadeideias.smartenem.imagem.ImageLoader;
 import br.com.ciadeideias.smartenem.parse.RSSFeed;
 
 public class ListActivity extends AppCompatActivity
-        implements NavigationView.OnNavigationItemSelectedListener, View.OnClickListener {
+        implements NavigationView.OnNavigationItemSelectedListener,
+        View.OnClickListener,
+        AbsListView.OnScrollListener {
 
     private FloatingActionMenu fabMenu;
 
@@ -51,8 +56,10 @@ public class ListActivity extends AppCompatActivity
 
         feed = (RSSFeed) getIntent().getExtras().get("feed");
 
+
         lv = (ListView) findViewById(R.id.listView);
         lv.setVerticalFadingEdgeEnabled(true);
+        lv.setOnScrollListener(this);
 
         adapter = new CustomListAdapter(this);
         lv.setAdapter(adapter);
@@ -100,17 +107,16 @@ public class ListActivity extends AppCompatActivity
             @Override
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
                 int pos = position;
+                String link = feed.getItem(pos).getLink();
 
                 //Toast.makeText(ListActivity.this, "Voce clicou no item número "+pos, Toast.LENGTH_SHORT).show();
-                /*Snackbar.make(view, "Você clicou no item "+pos, Snackbar.LENGTH_LONG)
+                /*Snackbar.make(view, "Você clicou no item "+pos+" e o link é: "+link, Snackbar.LENGTH_LONG)
                         .setAction("Action", null).show();*/
 
-                Bundle bundle = new Bundle();
-                bundle.putSerializable("feed", feed);
-                Intent intent = new Intent(ListActivity.this, DetailActivity.class);
-                intent.putExtras(bundle);
-                intent.putExtra("pos", pos);
+                Intent intent = new Intent(Intent.ACTION_VIEW);
+                intent.setData(Uri.parse(link));
                 startActivity(intent);
+
             }
         });
     }
@@ -155,6 +161,9 @@ public class ListActivity extends AppCompatActivity
         } else if (id == R.id.nav_home) {
             //Toast.makeText(ListActivity.this, "Voce Clicou no Menu Home", Toast.LENGTH_SHORT).show();
 
+        } else if (id == R.id.nav_calendario){
+            Toast.makeText(ListActivity.this, "Voce Clicou no Menu Calendário", Toast.LENGTH_SHORT).show();
+
         } else if (id == R.id.nav_plan_estud) {
             Intent it = new Intent(ListActivity.this, PlanEstuActivity.class);
             startActivity(it);
@@ -169,9 +178,6 @@ public class ListActivity extends AppCompatActivity
             Intent it = new Intent(ListActivity.this, DesempenhoActivity.class);
             startActivity(it);
             finish();
-
-        } else if (id == R.id.nav_compart){
-            Toast.makeText(ListActivity.this, "Voce Clicou no Menu Videos", Toast.LENGTH_SHORT).show();
 
         } else if (id == R.id.nav_ajuda) {
             Toast.makeText(ListActivity.this, "Voce Clicou no Menu Ajuda", Toast.LENGTH_SHORT).show();
@@ -188,18 +194,18 @@ public class ListActivity extends AppCompatActivity
         return true;
     }
 
-    @Override
     public void onClick(View v) {
         String aux = "";
 
         switch (v.getId()) {
             case R.id.fab1:
                 aux = "Fab 1";
+                //simulados
                 break;
             case R.id.fab2:
                 //aux = "Fab 2";
-                Intent it = new Intent(ListActivity.this, EstudoListaActivity.class);
-                startActivity(it);
+                Intent it2 = new Intent(ListActivity.this, EstudoListaActivity.class);
+                startActivity(it2);
                 finish();
                 break;
             case R.id.fab3:
@@ -209,7 +215,10 @@ public class ListActivity extends AppCompatActivity
                 finish();
                 break;
             case R.id.fab4:
-                aux = "Fab 4";
+                //aux = "Fab 4";
+                Intent it4 = new Intent(ListActivity.this, DisciplinasCardActivity.class);
+                startActivity(it4);
+                finish();
                 break;
             case R.id.fab5:
                 //aux = "Fab 5";
@@ -219,6 +228,16 @@ public class ListActivity extends AppCompatActivity
                 break;
         }
         //Toast.makeText(ListActivity.this, "Menu clicado é "+aux, Toast.LENGTH_SHORT).show();
+    }
+
+    @Override
+    public void onScrollStateChanged(AbsListView view, int scrollState) {
+
+    }
+
+    @Override
+    public void onScroll(AbsListView view, int firstVisibleItem, int visibleItemCount, int totalItemCount) {
+
     }
 
     public class CustomListAdapter extends BaseAdapter {
@@ -255,16 +274,14 @@ public class ListActivity extends AppCompatActivity
                 listItem = layoutInflater.inflate(R.layout.item_list, null);
             }
 
-            //ImageView iv = (ImageView) listItem.findViewById(R.id.thumb);
+            ImageView iv = (ImageView) listItem.findViewById(R.id.thumb);
             TextView tvTitle = (TextView) listItem.findViewById(R.id.titulo);
             TextView tvResumo = (TextView) listItem.findViewById(R.id.resumo);
-            TextView tvLocal = (TextView) listItem.findViewById(R.id.local);
             TextView tvDatas = (TextView) listItem.findViewById(R.id.data_list);
 
-           // imageLoader.DisplayImage(feed.getItem(pos).getImagem(), iv);
+            imageLoader.DisplayImage(feed.getItem(pos).getImagem(), iv);
             tvTitle.setText(feed.getItem(pos).getTitulo());
             tvResumo.setText(feed.getItem(pos).getResumo());
-            tvLocal.setText(feed.getItem(pos).getLocal());
             tvDatas.setText(feed.getItem(pos).getData());
 
             return listItem;
@@ -278,5 +295,3 @@ public class ListActivity extends AppCompatActivity
         adapter.notifyDataSetChanged();
     }
 }
-
-
