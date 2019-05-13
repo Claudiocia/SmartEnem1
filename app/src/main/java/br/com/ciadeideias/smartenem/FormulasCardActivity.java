@@ -81,7 +81,9 @@ public class FormulasCardActivity extends AppCompatActivity
             finish();
 
         } else if (id == R.id.nav_calendario){
-            Toast.makeText(FormulasCardActivity.this, "Voce Clicou no Menu Calendário", Toast.LENGTH_SHORT).show();
+            Intent it = new Intent(FormulasCardActivity.this, SplashCalendActivity.class);
+            startActivity(it);
+            finish();
 
         } else if (id == R.id.nav_plan_estud) {
             Intent it = new Intent(FormulasCardActivity.this, PlanEstuActivity.class);

@@ -83,7 +83,9 @@ public class EstudoListaActivity extends AppCompatActivity
             finish();
 
         } else if (id == R.id.nav_calendario){
-            Toast.makeText(EstudoListaActivity.this, "Voce Clicou no Menu Calendário", Toast.LENGTH_SHORT).show();
+            Intent it = new Intent(EstudoListaActivity.this, SplashCalendActivity.class);
+            startActivity(it);
+            finish();
 
         } else if (id == R.id.nav_plan_estud) {
             Intent it = new Intent(EstudoListaActivity.this, PlanEstuActivity.class);

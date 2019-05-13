@@ -22,11 +22,13 @@ import androidx.core.view.GravityCompat;
 import androidx.drawerlayout.widget.DrawerLayout;
 import br.com.ciadeideias.smartenem.AboutActivity;
 import br.com.ciadeideias.smartenem.DesempenhoActivity;
+import br.com.ciadeideias.smartenem.ListActivity;
 import br.com.ciadeideias.smartenem.MetasActivity;
 import br.com.ciadeideias.smartenem.PlanEstuActivity;
 import br.com.ciadeideias.smartenem.PremiumActivity;
 import br.com.ciadeideias.smartenem.R;
 import br.com.ciadeideias.smartenem.SplashActivity;
+import br.com.ciadeideias.smartenem.SplashCalendActivity;
 import br.com.ciadeideias.smartenem.bancodados.BDPlanejamento;
 import br.com.ciadeideias.smartenem.model.Planejamento;
 import br.com.ciadeideias.smartenem.utils.ArraySemRepet;
@@ -485,7 +487,9 @@ public class ConfigPlanestudSegActivity extends AppCompatActivity
             finish();
 
         } else if (id == R.id.nav_calendario){
-            Toast.makeText(ConfigPlanestudSegActivity.this, "Voce Clicou no Menu Calendário", Toast.LENGTH_SHORT).show();
+            Intent it = new Intent(ConfigPlanestudSegActivity.this, SplashCalendActivity.class);
+            startActivity(it);
+            finish();
 
         } else if (id == R.id.nav_plan_estud) {
             Intent it = new Intent(ConfigPlanestudSegActivity.this, PlanEstuActivity.class);

@@ -81,7 +81,9 @@ public class DisciplinasCardActivity extends AppCompatActivity
             finish();
 
         } else if (id == R.id.nav_calendario){
-            Toast.makeText(DisciplinasCardActivity.this, "Voce Clicou no Menu Calendário", Toast.LENGTH_SHORT).show();
+            Intent it = new Intent(DisciplinasCardActivity.this, SplashCalendActivity.class);
+            startActivity(it);
+            finish();
 
         } else if (id == R.id.nav_plan_estud) {
             Intent it = new Intent(DisciplinasCardActivity.this, PlanEstuActivity.class);

@@ -4,6 +4,7 @@ import android.app.Activity;
 import android.content.Context;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
+import android.util.Log;
 import android.widget.ImageView;
 
 import java.io.File;
@@ -81,6 +82,7 @@ public class ImageLoader {
         try {
             Bitmap bitmap = null;
             URL imageUrl = new URL(url);
+            Log.d("claudio", "URL recebida no image loader é: "+imageUrl);
             HttpURLConnection conn = (HttpURLConnection) imageUrl.openConnection();
             conn.setConnectTimeout(30000);
             conn.setReadTimeout(30000);

@@ -86,7 +86,9 @@ public class AboutActivity extends AppCompatActivity
             finish();
 
         } else if (id == R.id.nav_calendario){
-            Toast.makeText(AboutActivity.this, "Voce Clicou no Menu Calendário", Toast.LENGTH_SHORT).show();
+            Intent it = new Intent(AboutActivity.this, SplashCalendActivity.class);
+            startActivity(it);
+            finish();
 
         } else if (id == R.id.nav_plan_estud) {
             Intent it = new Intent(AboutActivity.this, PlanEstuActivity.class);

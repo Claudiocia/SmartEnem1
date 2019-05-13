@@ -3,9 +3,9 @@ package br.com.ciadeideias.smartenem;
 import android.content.Context;
 import android.content.DialogInterface;
 import android.content.Intent;
-import android.net.Uri;
 import android.os.Build;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.MenuItem;
 import android.view.View;
@@ -32,7 +32,7 @@ import androidx.drawerlayout.widget.DrawerLayout;
 import br.com.ciadeideias.smartenem.imagem.ImageLoader;
 import br.com.ciadeideias.smartenem.parse.RSSFeed;
 
-public class ListActivity extends AppCompatActivity
+public class ListCalendActivity extends AppCompatActivity
         implements NavigationView.OnNavigationItemSelectedListener,
         View.OnClickListener,
         AbsListView.OnScrollListener {
@@ -47,7 +47,7 @@ public class ListActivity extends AppCompatActivity
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_list);
+        setContentView(R.layout.activity_list_calend);
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
         toolbar.setLogo(R.mipmap.ic_launcher);
@@ -57,7 +57,7 @@ public class ListActivity extends AppCompatActivity
         feed = (RSSFeed) getIntent().getExtras().get("feed");
 
 
-        lv = (ListView) findViewById(R.id.listView);
+        lv = (ListView) findViewById(R.id.listView_calend);
         lv.setVerticalFadingEdgeEnabled(true);
         lv.setOnScrollListener(this);
 
@@ -93,7 +93,7 @@ public class ListActivity extends AppCompatActivity
         fab4.setOnClickListener(this);
         fab5.setOnClickListener(this);
 
-        DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout);
+        DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout_calend);
         ActionBarDrawerToggle toggle = new ActionBarDrawerToggle(
                 this, drawer, toolbar, R.string.navigation_drawer_open, R.string.navigation_drawer_close);
         drawer.setDrawerListener(toggle);
@@ -109,13 +109,27 @@ public class ListActivity extends AppCompatActivity
                 int pos = position;
                 String link = feed.getItem(pos).getLink();
 
-                //Toast.makeText(ListActivity.this, "Voce clicou no item número "+pos, Toast.LENGTH_SHORT).show();
+                //Toast.makeText(ListCalendActivity.this, "Voce clicou no item número "+pos, Toast.LENGTH_SHORT).show();
                 /*Snackbar.make(view, "Você clicou no item "+pos+" e o link é: "+link, Snackbar.LENGTH_LONG)
-                        .setAction("Action", null).show();*/
+                        .setAction("Action", null).show();
 
                 Intent intent = new Intent(Intent.ACTION_VIEW);
                 intent.setData(Uri.parse(link));
-                startActivity(intent);
+                startActivity(intent); */
+
+                new AlertDialog.Builder(ListCalendActivity.this).setTitle(feed.getItem(pos).getTitulo())
+                        .setMessage(feed.getItem(pos).getTexto()+" \n\n"+feed.getItem(pos).getData())
+                        .setPositiveButton("Fechar", new DialogInterface.OnClickListener() {
+                            @RequiresApi(api = Build.VERSION_CODES.JELLY_BEAN)
+                            @Override
+                            public void onClick(DialogInterface dialog, int which) {
+                            }
+                        }).setNegativeButton("", new DialogInterface.OnClickListener() {
+                    @Override
+                    public void onClick(DialogInterface dialog, int which) {
+
+                    }
+                }).show();
 
             }
         });
@@ -123,7 +137,7 @@ public class ListActivity extends AppCompatActivity
 
     @Override
     public void onBackPressed() {
-        DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout);
+        DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout_calend);
         if (drawer.isDrawerOpen(GravityCompat.START)) {
             drawer.closeDrawer(GravityCompat.START);
         }else if (fabMenu.isOpened()){
@@ -155,43 +169,43 @@ public class ListActivity extends AppCompatActivity
         int id = item.getItemId();
 
         if (id == R.id.nav_premium) {
-            Intent it = new Intent(ListActivity.this, PremiumActivity.class);
+            Intent it = new Intent(ListCalendActivity.this, PremiumActivity.class);
             startActivity(it);
             finish();
         } else if (id == R.id.nav_home) {
-            //Toast.makeText(ListActivity.this, "Voce Clicou no Menu Home", Toast.LENGTH_SHORT).show();
-
-        } else if (id == R.id.nav_calendario){
-            Intent it = new Intent(ListActivity.this, SplashCalendActivity.class);
+            Intent it = new Intent(ListCalendActivity.this, SplashActivity.class);
             startActivity(it);
             finish();
 
+        } else if (id == R.id.nav_calendario){
+            //Toast.makeText(ListCalendActivity.this, "Voce Clicou no Menu Calendário", Toast.LENGTH_SHORT).show();
+
         } else if (id == R.id.nav_plan_estud) {
-            Intent it = new Intent(ListActivity.this, PlanEstuActivity.class);
+            Intent it = new Intent(ListCalendActivity.this, PlanEstuActivity.class);
             startActivity(it);
             finish();
 
         } else if (id == R.id.nav_meta) {
-            Intent it = new Intent(ListActivity.this, MetasActivity.class);
+            Intent it = new Intent(ListCalendActivity.this, MetasActivity.class);
             startActivity(it);
             finish();
 
         } else if (id == R.id.nav_desemp) {
-            Intent it = new Intent(ListActivity.this, DesempenhoActivity.class);
+            Intent it = new Intent(ListCalendActivity.this, DesempenhoActivity.class);
             startActivity(it);
             finish();
 
         } else if (id == R.id.nav_ajuda) {
-            Toast.makeText(ListActivity.this, "Voce Clicou no Menu Ajuda", Toast.LENGTH_SHORT).show();
+            Toast.makeText(ListCalendActivity.this, "Voce Clicou no Menu Ajuda", Toast.LENGTH_SHORT).show();
 
         } else if (id == R.id.nav_sobre) {
-            Intent it = new Intent(ListActivity.this, AboutActivity.class);
+            Intent it = new Intent(ListCalendActivity.this, AboutActivity.class);
             startActivity(it);
             finish();
 
         }
 
-        DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout);
+        DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout_calend);
         drawer.closeDrawer(GravityCompat.START);
         return true;
     }
@@ -206,25 +220,25 @@ public class ListActivity extends AppCompatActivity
                 break;
             case R.id.fab2:
                 //aux = "Fab 2";
-                Intent it2 = new Intent(ListActivity.this, EstudoListaActivity.class);
+                Intent it2 = new Intent(ListCalendActivity.this, EstudoListaActivity.class);
                 startActivity(it2);
                 finish();
                 break;
             case R.id.fab3:
                 //aux = "Fab 3";
-                Intent it3 = new Intent(ListActivity.this, RedacaoActivity.class);
+                Intent it3 = new Intent(ListCalendActivity.this, RedacaoActivity.class);
                 startActivity(it3);
                 finish();
                 break;
             case R.id.fab4:
                 //aux = "Fab 4";
-                Intent it4 = new Intent(ListActivity.this, DisciplinasCardActivity.class);
+                Intent it4 = new Intent(ListCalendActivity.this, DisciplinasCardActivity.class);
                 startActivity(it4);
                 finish();
                 break;
             case R.id.fab5:
                 //aux = "Fab 5";
-                Intent it5 = new Intent(ListActivity.this, DicasListaActivity.class);
+                Intent it5 = new Intent(ListCalendActivity.this, DicasListaActivity.class);
                 startActivity(it5);
                 finish();
                 break;
@@ -246,7 +260,7 @@ public class ListActivity extends AppCompatActivity
         private LayoutInflater layoutInflater;
         public ImageLoader imageLoader;
 
-        public CustomListAdapter(ListActivity activity){
+        public CustomListAdapter(ListCalendActivity activity){
             layoutInflater = (LayoutInflater) activity.getSystemService(Context.LAYOUT_INFLATER_SERVICE);
             imageLoader = new ImageLoader(activity.getApplicationContext());
         }
@@ -273,18 +287,40 @@ public class ListActivity extends AppCompatActivity
             int pos = position;
 
             if (listItem == null){
-                listItem = layoutInflater.inflate(R.layout.item_list, null);
+                listItem = layoutInflater.inflate(R.layout.item_list_calend, null);
             }
 
             ImageView iv = (ImageView) listItem.findViewById(R.id.thumb);
+            TextView tvMesano = (TextView)listItem.findViewById(R.id.mesano);
             TextView tvTitle = (TextView) listItem.findViewById(R.id.titulo);
             TextView tvResumo = (TextView) listItem.findViewById(R.id.resumo);
             TextView tvDatas = (TextView) listItem.findViewById(R.id.data_list);
 
-            imageLoader.DisplayImage(feed.getItem(pos).getImagem(), iv);
+            //imageLoader.DisplayImage(feed.getItem(pos).getImagem(), iv);
+
+            switch (feed.getItem(pos).getData()){
+                case "Aguardando início":
+                    iv.setImageResource(R.drawable.calendario_br);
+                    break;
+                case "Prazo vigente":
+                    iv.setImageResource(R.drawable.calendario_np);
+                    break;
+                case "Prazo encerrado":
+                    iv.setImageResource(R.drawable.calendario_en);
+                    break;
+                case "Últimos dias":
+                    iv.setImageResource(R.drawable.calendario_fp);
+                    break;
+
+            }
+
+            tvMesano.setText(feed.getItem(pos).getLocal());
             tvTitle.setText(feed.getItem(pos).getTitulo());
             tvResumo.setText(feed.getItem(pos).getResumo());
             tvDatas.setText(feed.getItem(pos).getData());
+
+            Log.d("claudio", "O que eu recebo no image é:" + feed.getItem(pos).getImagem().toString());
+
 
             return listItem;
         }
